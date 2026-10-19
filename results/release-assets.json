@@ -1,0 +1,620 @@
+{
+  "repository": "cclwylin/Capture",
+  "tag": "vulkan-lavapipe-2026-10-19",
+  "publication_status": "prepared",
+  "expected_asset_count": 102,
+  "assets": [
+    {
+      "name": "vulkan_verified_captures.tar.gz",
+      "path": "/workspace/vulkan_verified_captures.tar.gz",
+      "bytes": 1397379700,
+      "sha256": "d6559c67c9f15738b0a47f17eeab8b54412b33a29f81b6d33bf645877b911a96"
+    },
+    {
+      "name": "vulkan_verified_pngs.zip",
+      "path": "/workspace/vulkan_verified_pngs.zip",
+      "bytes": 16362731,
+      "sha256": "58df3b2a895aebe5bf6937381cec912a77f2717020dc75d76d777fec45c49e89"
+    },
+    {
+      "name": "vulkan_verified_references.zip",
+      "path": "/workspace/vulkan_verified_references.zip",
+      "bytes": 14571118,
+      "sha256": "3cb6e948f13f18e8138a2e05503751ee5b2014a53bebe91bf3246a09af6b8193"
+    },
+    {
+      "name": "vulkan_descriptor_captures.zip",
+      "path": "/workspace/vulkan_descriptor_captures.zip",
+      "bytes": 6043741,
+      "sha256": "8757d608b4806c9a5d23d9ecc7236ee299d7baa36b802f435460c54d55980d71"
+    },
+    {
+      "name": "lavapipe_renderdoc_fix.tar.gz",
+      "path": "/workspace/lavapipe_renderdoc_fix.tar.gz",
+      "bytes": 45316,
+      "sha256": "541bfb02f0d48c4241dc7d2ea9c95ab32216d839ffa92058179314b00536d9da"
+    },
+    {
+      "name": "vulkan_native_verification.zip",
+      "path": "/workspace/vulkan_native_verification.zip",
+      "bytes": 373714,
+      "sha256": "9f6255c6c252fd75fe6517cd778caea0d61352f077a702ccefb7fddeaae28195"
+    },
+    {
+      "name": "bloom.png",
+      "path": "/workspace/verified-batch/png/bloom.png",
+      "bytes": 178319,
+      "sha256": "f3ce8a02400b61cc7811ee44e649e1b392d13ef9ef41d5a925ca9d1d621db60b"
+    },
+    {
+      "name": "bufferdeviceaddress.png",
+      "path": "/workspace/verified-batch/png/bufferdeviceaddress.png",
+      "bytes": 189156,
+      "sha256": "af747dcd0c9194800cdfd9d7a677e5211a8b90450de679a669e7cc64e2b26546"
+    },
+    {
+      "name": "computecloth.png",
+      "path": "/workspace/verified-batch/png/computecloth.png",
+      "bytes": 98306,
+      "sha256": "4444105f763c10f4348dfc56f2dd4de1611bc5379749c58d3229a23ba21c4801"
+    },
+    {
+      "name": "computecullandlod.png",
+      "path": "/workspace/verified-batch/png/computecullandlod.png",
+      "bytes": 558565,
+      "sha256": "f2e6053b95f01c2f037bda29efea86f20c2c99bfd8e0f1484a44f4ef7653526d"
+    },
+    {
+      "name": "computenbody.png",
+      "path": "/workspace/verified-batch/png/computenbody.png",
+      "bytes": 109517,
+      "sha256": "36e3d5cfafb063cf25f9ac74ade3a91cf375ca3f66b288528828157e48e4ca3e"
+    },
+    {
+      "name": "computeparticles.png",
+      "path": "/workspace/verified-batch/png/computeparticles.png",
+      "bytes": 235352,
+      "sha256": "82c48b22c638f736f115c41b487a8b5299dced4b8d03b16ddcddea7866325aaa"
+    },
+    {
+      "name": "computeraytracing.png",
+      "path": "/workspace/verified-batch/png/computeraytracing.png",
+      "bytes": 203029,
+      "sha256": "e7860e176276a373a47befe641704ad7c702176fe549a7fa06a137ccfb58a201"
+    },
+    {
+      "name": "computeshader.png",
+      "path": "/workspace/verified-batch/png/computeshader.png",
+      "bytes": 173834,
+      "sha256": "a5327f343a462e883ae2ec6b1debef53663b18939d4668fff818fafd72a842d6"
+    },
+    {
+      "name": "conditionalrender.png",
+      "path": "/workspace/verified-batch/png/conditionalrender.png",
+      "bytes": 87838,
+      "sha256": "8532fecd3cdd32480c9b0aaccec918a32baf4af18df61dd6d09b304adfd0e0fa"
+    },
+    {
+      "name": "debugprintf.png",
+      "path": "/workspace/verified-batch/png/debugprintf.png",
+      "bytes": 39953,
+      "sha256": "2a66af15cfe5c297e8c4c44046c4efd4b81bde057143a67db5dd98b1a04bd93a"
+    },
+    {
+      "name": "debugutils.png",
+      "path": "/workspace/verified-batch/png/debugutils.png",
+      "bytes": 75404,
+      "sha256": "0ceec765e3bba34ea26f42621b53f8d2b7f720f22c809adf5a293dfacb316411"
+    },
+    {
+      "name": "deferred.png",
+      "path": "/workspace/verified-batch/png/deferred.png",
+      "bytes": 325897,
+      "sha256": "3b67332772aa052d8fbb651a1579f4b455dba33cf584c55330f9ff28ba91d221"
+    },
+    {
+      "name": "deferredmultisampling.png",
+      "path": "/workspace/verified-batch/png/deferredmultisampling.png",
+      "bytes": 496160,
+      "sha256": "e0f5b0df91dd018e60838d0ca22898a0c02a279479837c44d9476bd18fa2851a"
+    },
+    {
+      "name": "deferredshadows.png",
+      "path": "/workspace/verified-batch/png/deferredshadows.png",
+      "bytes": 523848,
+      "sha256": "9e77c99d78f7537313785a265a8b1f1cc4bda8f0697efef56b0e06f8ce338f5a"
+    },
+    {
+      "name": "descriptorbuffer.png",
+      "path": "/workspace/verified-batch/png/descriptorbuffer.png",
+      "bytes": 200650,
+      "sha256": "d290976fa4a512b0e8d0ed208eccbd3141dc04c11db026eeda617d537885c044"
+    },
+    {
+      "name": "descriptorheap.png",
+      "path": "/workspace/verified-batch/png/descriptorheap.png",
+      "bytes": 207311,
+      "sha256": "ff0143f6fba50a2b4a5e576d39f9536564db528ad2c648aab4d25c7b3966ed13"
+    },
+    {
+      "name": "descriptorheapuntyped.png",
+      "path": "/workspace/verified-batch/png/descriptorheapuntyped.png",
+      "bytes": 193241,
+      "sha256": "6a65d77bb19097ad5955e0d7d77f18e82539b2e2f48914d7c2ea62450ccb8796"
+    },
+    {
+      "name": "descriptorindexing.png",
+      "path": "/workspace/verified-batch/png/descriptorindexing.png",
+      "bytes": 12376,
+      "sha256": "6a5464e84c21c716592c7ed89676d386670ccfe24e768f944696063da323842e"
+    },
+    {
+      "name": "descriptorsets.png",
+      "path": "/workspace/verified-batch/png/descriptorsets.png",
+      "bytes": 204360,
+      "sha256": "aa7599f9bf7d4bb3bcfd4999b638ddf93b60a01a2f5b44ea9ea09eae57157aeb"
+    },
+    {
+      "name": "displacement.png",
+      "path": "/workspace/verified-batch/png/displacement.png",
+      "bytes": 299496,
+      "sha256": "11a4769eb856664abf4d4a2c11576a98907b08411a01398f4c034012e511cb2f"
+    },
+    {
+      "name": "distancefieldfonts.png",
+      "path": "/workspace/verified-batch/png/distancefieldfonts.png",
+      "bytes": 63735,
+      "sha256": "c3736fbe0bb04cf4e31c04cede8ad4c801c05a7d369569087622f6adf862daf4"
+    },
+    {
+      "name": "dynamicrendering.png",
+      "path": "/workspace/verified-batch/png/dynamicrendering.png",
+      "bytes": 34691,
+      "sha256": "0a90b240dd663f37d00539275bbc4545637e16be89019f977db7e9956a6bfd8b"
+    },
+    {
+      "name": "dynamicrenderinglocalread.png",
+      "path": "/workspace/verified-batch/png/dynamicrenderinglocalread.png",
+      "bytes": 421448,
+      "sha256": "e2c4cef44058455adc819a562db4029d090f4429cce7220aa8d205b618e89626"
+    },
+    {
+      "name": "dynamicrenderingmultisampling.png",
+      "path": "/workspace/verified-batch/png/dynamicrenderingmultisampling.png",
+      "bytes": 41225,
+      "sha256": "d2ef9b75b6caf95636476f266ebe58d2a6a4e81645204ed1066488e0e7ebc7a3"
+    },
+    {
+      "name": "dynamicstate.png",
+      "path": "/workspace/verified-batch/png/dynamicstate.png",
+      "bytes": 111874,
+      "sha256": "4af1b71d16f4fe47f759a4e1f7e8eed87368b8e1221722f902f0a2714b6d1960"
+    },
+    {
+      "name": "dynamicuniformbuffer.png",
+      "path": "/workspace/verified-batch/png/dynamicuniformbuffer.png",
+      "bytes": 99984,
+      "sha256": "57dcf8442f41d8fb5e2142985e79327e536cd397224034d9f8f8d40a933016af"
+    },
+    {
+      "name": "gears.png",
+      "path": "/workspace/verified-batch/png/gears.png",
+      "bytes": 18954,
+      "sha256": "820fbd93d55a99b06c4e44c9c7af11b00607b849177e1c41acbf9a7dc1afc590"
+    },
+    {
+      "name": "geometryshader.png",
+      "path": "/workspace/verified-batch/png/geometryshader.png",
+      "bytes": 113600,
+      "sha256": "be62fa404650dfbdf18198907ea4738217c5c9866f63a06da732333a289414ec"
+    },
+    {
+      "name": "gltfloading.png",
+      "path": "/workspace/verified-batch/png/gltfloading.png",
+      "bytes": 65139,
+      "sha256": "bb1de9e35d06c091ff3b4bfc4f79dbcccb8d5f8f501b23556c18288a67d20281"
+    },
+    {
+      "name": "gltfscenerendering.png",
+      "path": "/workspace/verified-batch/png/gltfscenerendering.png",
+      "bytes": 647016,
+      "sha256": "31cbd422ad5d5573f39fb86bd487e101e5f03eca1c9311672bcf0cd4fe6bdba2"
+    },
+    {
+      "name": "gltfskinning.png",
+      "path": "/workspace/verified-batch/png/gltfskinning.png",
+      "bytes": 28068,
+      "sha256": "073fd0c8322410471345666647a744cd0f2dbec01c67c9b9cc18377987cfe88a"
+    },
+    {
+      "name": "graphicspipelinelibrary.png",
+      "path": "/workspace/verified-batch/png/graphicspipelinelibrary.png",
+      "bytes": 10596,
+      "sha256": "aa3499f446e4377c0b7ad3396fd4060ed53439952cd635c89c50b308c14d649f"
+    },
+    {
+      "name": "hdr.png",
+      "path": "/workspace/verified-batch/png/hdr.png",
+      "bytes": 418138,
+      "sha256": "0383bafa9038269a2776d9b2fa7ac7cb6a845c78c4f9bfe690dbf9634315ee86"
+    },
+    {
+      "name": "hostimagecopy.png",
+      "path": "/workspace/verified-batch/png/hostimagecopy.png",
+      "bytes": 121724,
+      "sha256": "e1e6d7cf6cdc7f33d45c50a77d096b8f587fef939d1cd6653624496b721303ed"
+    },
+    {
+      "name": "imgui.png",
+      "path": "/workspace/verified-batch/png/imgui.png",
+      "bytes": 68074,
+      "sha256": "7671a4ca60c21027c63850b48f55d3ed340203c685e83297ac68cad8228d0752"
+    },
+    {
+      "name": "indirectdraw.png",
+      "path": "/workspace/verified-batch/png/indirectdraw.png",
+      "bytes": 726881,
+      "sha256": "834e1e446ddb509371cbd65d599e0b9a54042cf22d08a0a8a066cdd413067e4f"
+    },
+    {
+      "name": "inlineuniformblocks.png",
+      "path": "/workspace/verified-batch/png/inlineuniformblocks.png",
+      "bytes": 36048,
+      "sha256": "6912c036c7cd19d047489e1773f733f8f5a3e6636748c103959a513ba05932d3"
+    },
+    {
+      "name": "inputattachments.png",
+      "path": "/workspace/verified-batch/png/inputattachments.png",
+      "bytes": 32863,
+      "sha256": "9abe4444ac828b2fb54b1ea4cdf62acafc67f03877b4f170a78be24a24d80371"
+    },
+    {
+      "name": "instancing.png",
+      "path": "/workspace/verified-batch/png/instancing.png",
+      "bytes": 258194,
+      "sha256": "3c2a19760f6f9c989162a7cee14233d66d7c6497cba55dafacf1ba7e54e1d237"
+    },
+    {
+      "name": "meshshader.png",
+      "path": "/workspace/verified-batch/png/meshshader.png",
+      "bytes": 31079,
+      "sha256": "21a5a0a4cf652fc021f62ff920df16036a9866538883fe9570b7a395b55cc82d"
+    },
+    {
+      "name": "multisampling.png",
+      "path": "/workspace/verified-batch/png/multisampling.png",
+      "bytes": 70200,
+      "sha256": "69358968878c17c1aab5ae1e62c68ed050a29784d2260cc9cd866ea4d6c14c75"
+    },
+    {
+      "name": "multisamplingalphatocoverage.png",
+      "path": "/workspace/verified-batch/png/multisamplingalphatocoverage.png",
+      "bytes": 631257,
+      "sha256": "1c5f5cdfe4a1ab1486223281bdeab2ea1a3190f125c9dbf8a5bc56873b888f1d"
+    },
+    {
+      "name": "multithreading.png",
+      "path": "/workspace/verified-batch/png/multithreading.png",
+      "bytes": 162858,
+      "sha256": "fa3dfeb2d7cf956bb93a30c5418a899842ce436121382f82ed410c2884470144"
+    },
+    {
+      "name": "multiview.png",
+      "path": "/workspace/verified-batch/png/multiview.png",
+      "bytes": 84185,
+      "sha256": "bcd6b8367c611fe64c48f1c5cceea556d3cdd8a2c30e776987c59fcdb16259c4"
+    },
+    {
+      "name": "negativeviewportheight.png",
+      "path": "/workspace/verified-batch/png/negativeviewportheight.png",
+      "bytes": 16235,
+      "sha256": "f6ba7cfa6c05efd230816e3dce5d056f5a8ca3128142b3bff3860e8cf58e84fa"
+    },
+    {
+      "name": "occlusionquery.png",
+      "path": "/workspace/verified-batch/png/occlusionquery.png",
+      "bytes": 25853,
+      "sha256": "5f219f736bd95e16c921677c7ed06b34af7936427eafc8f070ed8f0ffec6623b"
+    },
+    {
+      "name": "offscreen.png",
+      "path": "/workspace/verified-batch/png/offscreen.png",
+      "bytes": 60520,
+      "sha256": "c7a8f24b39b01040d639cafa2c877a827d8747304545674fedb0b95a112a1223"
+    },
+    {
+      "name": "oit.png",
+      "path": "/workspace/verified-batch/png/oit.png",
+      "bytes": 24914,
+      "sha256": "e5fbb3323822b6c2fd64ba83ce87b1da1cd6f2a0ec968264fc6ebf828ba6d6f0"
+    },
+    {
+      "name": "parallaxmapping.png",
+      "path": "/workspace/verified-batch/png/parallaxmapping.png",
+      "bytes": 233450,
+      "sha256": "b37a74e782d535aa50141ab926754c82d27ee224d36c73cbd586878e1ff9b1ee"
+    },
+    {
+      "name": "particlesystem.png",
+      "path": "/workspace/verified-batch/png/particlesystem.png",
+      "bytes": 187726,
+      "sha256": "14e71de04db37dd23c24835acd85a50058baa532d6b3b21223e2ee2f7856bf07"
+    },
+    {
+      "name": "pbrbasic.png",
+      "path": "/workspace/verified-batch/png/pbrbasic.png",
+      "bytes": 109187,
+      "sha256": "4eaaffa579f97cb10f6ed240ea5f805f81e4860749064d6d04f79b562bc6bcad"
+    },
+    {
+      "name": "pbribl.png",
+      "path": "/workspace/verified-batch/png/pbribl.png",
+      "bytes": 374856,
+      "sha256": "f2f6c96ea7e053a5ff63ceb6ff24fff585d1e29da200c8d111b494d38f076f2a"
+    },
+    {
+      "name": "pbrtexture.png",
+      "path": "/workspace/verified-batch/png/pbrtexture.png",
+      "bytes": 435089,
+      "sha256": "aa683e454814e8986ee181fa2672014e05d6940ae76e4908deac3e73de1b8b56"
+    },
+    {
+      "name": "pipelines.png",
+      "path": "/workspace/verified-batch/png/pipelines.png",
+      "bytes": 97858,
+      "sha256": "9250c8e9f05055602dc52f6ed351ce72c787970a558b10116bb6cc6735e9e66a"
+    },
+    {
+      "name": "pipelinestatistics.png",
+      "path": "/workspace/verified-batch/png/pipelinestatistics.png",
+      "bytes": 67969,
+      "sha256": "f89e48c833f62f32a4fdd3c9b058dee1ec6d6b9ff66a4769a988461a7966269c"
+    },
+    {
+      "name": "pushconstants.png",
+      "path": "/workspace/verified-batch/png/pushconstants.png",
+      "bytes": 11414,
+      "sha256": "42b4c39410756837ae58415c531a3d5c43a9508cce2edaf4800a0f07162e7c2f"
+    },
+    {
+      "name": "pushdescriptors.png",
+      "path": "/workspace/verified-batch/png/pushdescriptors.png",
+      "bytes": 204360,
+      "sha256": "aa7599f9bf7d4bb3bcfd4999b638ddf93b60a01a2f5b44ea9ea09eae57157aeb"
+    },
+    {
+      "name": "radialblur.png",
+      "path": "/workspace/verified-batch/png/radialblur.png",
+      "bytes": 86343,
+      "sha256": "ef290dceeba973a48db80eaa29621f9646f7ec9ab6b642286175dd4c28c6a86b"
+    },
+    {
+      "name": "rayquery.png",
+      "path": "/workspace/verified-batch/png/rayquery.png",
+      "bytes": 50243,
+      "sha256": "0ebc0d84dba91e4146e105f14580ce93401413bfef61062cf064e797125d46ca"
+    },
+    {
+      "name": "raytracingbasic.png",
+      "path": "/workspace/verified-batch/png/raytracingbasic.png",
+      "bytes": 15913,
+      "sha256": "25ae03a0dd5c1e2ed4ef883f4b46fe025218db47fe336a87d43b77fc18161320"
+    },
+    {
+      "name": "raytracingcallable.png",
+      "path": "/workspace/verified-batch/png/raytracingcallable.png",
+      "bytes": 10053,
+      "sha256": "f2b30572b8e323911cdd98dce11d13b5dbc717003a4b74f88d7b81836298e469"
+    },
+    {
+      "name": "raytracinggltf.png",
+      "path": "/workspace/verified-batch/png/raytracinggltf.png",
+      "bytes": 56327,
+      "sha256": "dd5fcca4692ce2f32c6c48f39c561fff4cc66b938d5627cb27373bb703ae4028"
+    },
+    {
+      "name": "raytracingintersection.png",
+      "path": "/workspace/verified-batch/png/raytracingintersection.png",
+      "bytes": 108415,
+      "sha256": "3fb1af734c07ff6ad683c87d6b0a39a45398ff6e4e5794e4ca354b36ca1aa5a4"
+    },
+    {
+      "name": "raytracingpositionfetch.png",
+      "path": "/workspace/verified-batch/png/raytracingpositionfetch.png",
+      "bytes": 35621,
+      "sha256": "c48fc2f72e9dd42052ba82d5026e92ac0173e72671f9a3eed4ff058702faa3ff"
+    },
+    {
+      "name": "raytracingreflections.png",
+      "path": "/workspace/verified-batch/png/raytracingreflections.png",
+      "bytes": 77255,
+      "sha256": "c4a355b87782240fb1ceee51ab67ab21e3c38280c35c802a51c759762fe17ea9"
+    },
+    {
+      "name": "raytracingsbtdata.png",
+      "path": "/workspace/verified-batch/png/raytracingsbtdata.png",
+      "bytes": 10602,
+      "sha256": "ef801bbd17a0c5a841dfeae4e78c6bbee0a94c6676154d53a493a3aced948379"
+    },
+    {
+      "name": "raytracingshadows.png",
+      "path": "/workspace/verified-batch/png/raytracingshadows.png",
+      "bytes": 48576,
+      "sha256": "cfed51fb36836919f1603205cdd46ddbb90e73fa31e21835ce85d8b91fbbf888"
+    },
+    {
+      "name": "raytracingtextures.png",
+      "path": "/workspace/verified-batch/png/raytracingtextures.png",
+      "bytes": 280185,
+      "sha256": "6a0c750108d8da8298580228694bb6d332778261b0ef54a43442f31b8d522b6c"
+    },
+    {
+      "name": "renderheadless.png",
+      "path": "/workspace/verified-batch/png/renderheadless.png",
+      "bytes": 110945,
+      "sha256": "c5036a7e4ac89ea3bb100d50dbc815e47184b95a0ca9473904543388170189d8"
+    },
+    {
+      "name": "screenshot.png",
+      "path": "/workspace/verified-batch/png/screenshot.png",
+      "bytes": 119793,
+      "sha256": "89dbabd48f40a06828d31ba3d543fd3aa66b32bd5e5c5c378eade87e1542ed67"
+    },
+    {
+      "name": "shaderobjects.png",
+      "path": "/workspace/verified-batch/png/shaderobjects.png",
+      "bytes": 111786,
+      "sha256": "ff8b926be9bb13cb07238019a11cc3707223e5cdfcb8a8d9004899b120ecc2e6"
+    },
+    {
+      "name": "shadowmapping.png",
+      "path": "/workspace/verified-batch/png/shadowmapping.png",
+      "bytes": 48890,
+      "sha256": "e0d3c924c724375eba8a6eb36f182f4e9c1b87c7006161fa615f664ae18e99c2"
+    },
+    {
+      "name": "shadowmappingcascade.png",
+      "path": "/workspace/verified-batch/png/shadowmappingcascade.png",
+      "bytes": 454273,
+      "sha256": "0bb12b7a24f5a5fad427839b4bd4c100658a9c4910c32c4049f108778c1e5f2d"
+    },
+    {
+      "name": "shadowmappingomni.png",
+      "path": "/workspace/verified-batch/png/shadowmappingomni.png",
+      "bytes": 107216,
+      "sha256": "1e3b60453f963abf6a98bf7bbc3f7e7297009ed5d2b135a264f03db42a82888b"
+    },
+    {
+      "name": "specializationconstants.png",
+      "path": "/workspace/verified-batch/png/specializationconstants.png",
+      "bytes": 55279,
+      "sha256": "a83ca1c0653bee39f2af977a30ee885cb8c56549ab28f08e5c38884aa3548493"
+    },
+    {
+      "name": "sphericalenvmapping.png",
+      "path": "/workspace/verified-batch/png/sphericalenvmapping.png",
+      "bytes": 119942,
+      "sha256": "608618f98f4b7683ef14d93f39e1d7167683ad0b3c8580c1d7ec7f74a6d05dac"
+    },
+    {
+      "name": "ssao.png",
+      "path": "/workspace/verified-batch/png/ssao.png",
+      "bytes": 601521,
+      "sha256": "582879890b54a8193fa6de8fa5307d24ade9c34a6d5a1b19fe96d6f134daff4a"
+    },
+    {
+      "name": "stencilbuffer.png",
+      "path": "/workspace/verified-batch/png/stencilbuffer.png",
+      "bytes": 16419,
+      "sha256": "85e60d81d8ce0e25297ac8825a3971ac950ed59d6c08de7aa42652e32e4a0cdb"
+    },
+    {
+      "name": "subpasses.png",
+      "path": "/workspace/verified-batch/png/subpasses.png",
+      "bytes": 201688,
+      "sha256": "2d6d2619e42eb882609d0869f39f9baedf6d5c54b41f9c6f9244c2b997571b68"
+    },
+    {
+      "name": "terraintessellation.png",
+      "path": "/workspace/verified-batch/png/terraintessellation.png",
+      "bytes": 439836,
+      "sha256": "f8fa07175cdb6f145ade899923c92a6cc97e154e1ee780a45acef690002e4db9"
+    },
+    {
+      "name": "tessellation.png",
+      "path": "/workspace/verified-batch/png/tessellation.png",
+      "bytes": 163456,
+      "sha256": "3e25e45e003c4ebac8d6eb7ddcef9b68bfd665d74928c538df9906de669b2ffa"
+    },
+    {
+      "name": "textoverlay.png",
+      "path": "/workspace/verified-batch/png/textoverlay.png",
+      "bytes": 90073,
+      "sha256": "a7ca3145536b92ec28cc53798ab798ff889ef272c0c1aa2e76d58bf02a8fa883"
+    },
+    {
+      "name": "texture.png",
+      "path": "/workspace/verified-batch/png/texture.png",
+      "bytes": 167238,
+      "sha256": "3fca397db6b9fad9d0cf5f675861aa653240d7c6ef4c3e9a9b78bcc1064f791e"
+    },
+    {
+      "name": "texture3d.png",
+      "path": "/workspace/verified-batch/png/texture3d.png",
+      "bytes": 71205,
+      "sha256": "f8afd09f71a4f4457aaae7bd6bad465f6c89e24c51b177cbbeda1188b79640ac"
+    },
+    {
+      "name": "texturearray.png",
+      "path": "/workspace/verified-batch/png/texturearray.png",
+      "bytes": 150972,
+      "sha256": "90784dbb8845a8a297fc41d64d7f3cf9cdf7cbda7d1b68ec733c907388da7129"
+    },
+    {
+      "name": "texturecubemap.png",
+      "path": "/workspace/verified-batch/png/texturecubemap.png",
+      "bytes": 465159,
+      "sha256": "53aef73806a169d6697e494f203d975e68c6ca747f402e402e2ed4b042686dfe"
+    },
+    {
+      "name": "texturecubemaparray.png",
+      "path": "/workspace/verified-batch/png/texturecubemaparray.png",
+      "bytes": 403482,
+      "sha256": "024b5f0de480782b41ae36a1764398c4cf97a0ab55c9f505d158e207ab248ccc"
+    },
+    {
+      "name": "texturemipmapgen.png",
+      "path": "/workspace/verified-batch/png/texturemipmapgen.png",
+      "bytes": 590980,
+      "sha256": "6bb3b421a13aa41976ea0222c5c6cb5033a7b3ff3f927655bba762c5193be386"
+    },
+    {
+      "name": "texturesparseresidency.png",
+      "path": "/workspace/verified-batch/png/texturesparseresidency.png",
+      "bytes": 9434,
+      "sha256": "c6f3c309f91604e88043686466b7b777160bcad270bd6a1e70bb003452cf1c0a"
+    },
+    {
+      "name": "timelinesemaphore.png",
+      "path": "/workspace/verified-batch/png/timelinesemaphore.png",
+      "bytes": 109517,
+      "sha256": "36e3d5cfafb063cf25f9ac74ade3a91cf375ca3f66b288528828157e48e4ca3e"
+    },
+    {
+      "name": "triangle.png",
+      "path": "/workspace/verified-batch/png/triangle.png",
+      "bytes": 15980,
+      "sha256": "c2a2fb171b0a3d3ae5c8ded83e6e6d093e03d20f86c7e3b57fa45b84ca584b24"
+    },
+    {
+      "name": "trianglevulkan13.png",
+      "path": "/workspace/verified-batch/png/trianglevulkan13.png",
+      "bytes": 16035,
+      "sha256": "2b6b6a757804f81583c609edbd78b1bb6efbabcfd517662b00eaf37612c6ca6d"
+    },
+    {
+      "name": "vertexattributes.png",
+      "path": "/workspace/verified-batch/png/vertexattributes.png",
+      "bytes": 646615,
+      "sha256": "fa2b75a84c5f214131027467777beddb44903f8e182bf17a795b4295bfe2522d"
+    },
+    {
+      "name": "viewportarray.png",
+      "path": "/workspace/verified-batch/png/viewportarray.png",
+      "bytes": 79885,
+      "sha256": "6689f6e8495e35729250e0eebdc08dc9cac664b352e8914fe71fac5c488a3176"
+    },
+    {
+      "name": "vulkanscene.png",
+      "path": "/workspace/verified-batch/png/vulkanscene.png",
+      "bytes": 269809,
+      "sha256": "d9c1a3c26cfe4f8a46105f23c88a91b01f9cf748b72f4212a2288e945c36fc45"
+    },
+    {
+      "name": "SHA256SUMS",
+      "path": "/workspace/SHA256SUMS",
+      "bytes": 8680,
+      "sha256": "761fdded4db95773b1ddc98e43e17ca60b2d7f0871cb9ff980ef3f56f94d8e89"
+    }
+  ]
+}

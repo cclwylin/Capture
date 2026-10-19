@@ -1,0 +1,3 @@
+Enabled device extension "VK_KHR_fragment_shader_barycentric" is not present at device level
+Could not create Vulkan device: 
+ERROR_EXTENSION_NOT_PRESENT

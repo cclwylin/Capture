@@ -1,0 +1,11 @@
+PASS: saved capture addresses
+PASS: restored addresses, binding offset and collision rejection
+Replaying '/workspace/verified-batch/captures/descriptorbuffer_frame1.rdc' locally..
+Replayed through event 31 (2 draw/dispatch actions, 0 ray dispatches); wrote '/workspace/verified-batch/png/descriptorbuffer.png'.
+Replaying '/workspace/verified-batch/captures/descriptorheap_frame1.rdc' locally..
+Replayed through event 25 (2 draw/dispatch actions, 0 ray dispatches); wrote '/workspace/verified-batch/png/descriptorheap.png'.
+Replaying '/workspace/verified-batch/captures/descriptorheapuntyped_frame1.rdc' locally..
+Replayed through event 27 (2 draw/dispatch actions, 0 ray dispatches); wrote '/workspace/verified-batch/png/descriptorheapuntyped.png'.
+PASS: independent replay, pixel-exact PNG: descriptorbuffer
+PASS: independent replay, pixel-exact PNG: descriptorheap
+PASS: independent replay, pixel-exact PNG: descriptorheapuntyped

@@ -1,0 +1,3567 @@
+{
+  "generated_utc": "2026-10-19T12:39:31.430416+00:00",
+  "counts": {
+    "REPLAYED_PNG": 95,
+    "REPLAYED_NO_IMAGE": 1,
+    "CAPTURE_FAILED": 3
+  },
+  "comparison": "RGB pixel-exact; alpha excluded",
+  "files": [
+    {
+      "example": "bloom",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/bloom_frame1.rdc",
+        "bytes": 4217288,
+        "sha256": "50be0f32e1b9d4f85f7f256be6335aa099373eacb2e6bde340869807fc775957",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/bloom_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/bloom.png",
+        "bytes": 178319,
+        "sha256": "f3ce8a02400b61cc7811ee44e649e1b392d13ef9ef41d5a925ca9d1d621db60b",
+        "release_asset_name": "bloom.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/bloom.png",
+        "bytes": 157479,
+        "sha256": "266a9b108c7a6e25b676a8e75f5fafeec27654d8712781c1fb3cbff77d0e6f2b",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/bloom.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/bloom.capture.log",
+        "replay": "results/logs/bloom.replay.log",
+        "reference": "results/logs/bloom.reference.log"
+      }
+    },
+    {
+      "example": "bufferdeviceaddress",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/bufferdeviceaddress_frame1.rdc",
+        "bytes": 1560421,
+        "sha256": "cc0976807f78f38386dd176ceb7bdfce5f6e7f7f0804748a0e780bbd3272701f",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/bufferdeviceaddress_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/bufferdeviceaddress.png",
+        "bytes": 189156,
+        "sha256": "af747dcd0c9194800cdfd9d7a677e5211a8b90450de679a669e7cc64e2b26546",
+        "release_asset_name": "bufferdeviceaddress.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/bufferdeviceaddress.png",
+        "bytes": 163019,
+        "sha256": "02a9e20a109db04e1c8fde48790b1889ab220359f7ce1f272243284abea2574a",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/bufferdeviceaddress.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/bufferdeviceaddress.capture.log",
+        "replay": "results/logs/bufferdeviceaddress.replay.log",
+        "reference": "results/logs/bufferdeviceaddress.reference.log"
+      }
+    },
+    {
+      "example": "computecloth",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/computecloth_frame1.rdc",
+        "bytes": 3133117,
+        "sha256": "e88edcfac42445c69e796d85b2e789f39aaab919c357fc70b1c37a68f5a2ba36",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/computecloth_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/computecloth.png",
+        "bytes": 98306,
+        "sha256": "4444105f763c10f4348dfc56f2dd4de1611bc5379749c58d3229a23ba21c4801",
+        "release_asset_name": "computecloth.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/computecloth.png",
+        "bytes": 85290,
+        "sha256": "4f5f2651182356a5dd41e901e15fd54e20e10210d3e433bfa5b46c8135259812",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/computecloth.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/computecloth.capture.log",
+        "replay": "results/logs/computecloth.replay.log",
+        "reference": "results/logs/computecloth.reference.log"
+      }
+    },
+    {
+      "example": "computecullandlod",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/computecullandlod_frame4.rdc",
+        "bytes": 4914010,
+        "sha256": "8488939169b04bb6a50482fe5ea3a06dc6bb904c9ced9882a434c75c9cbe9781",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/computecullandlod_frame4.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/computecullandlod.png",
+        "bytes": 558565,
+        "sha256": "f2e6053b95f01c2f037bda29efea86f20c2c99bfd8e0f1484a44f4ef7653526d",
+        "release_asset_name": "computecullandlod.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/computecullandlod.png",
+        "bytes": 500989,
+        "sha256": "e145986d74e97ae5f065f820181fd085fec9f233e259445728661c52ca61e508",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/computecullandlod.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/computecullandlod.capture.log",
+        "replay": "results/logs/computecullandlod.replay.log",
+        "reference": "results/logs/computecullandlod.reference.log"
+      }
+    },
+    {
+      "example": "computeheadless",
+      "status": "REPLAYED_NO_IMAGE",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/computeheadless_capture.rdc",
+        "bytes": 5012,
+        "sha256": "0e6c34df208d1e46918eb24fd80a1911cd62f0ae7eec50fa36b5609f5d7fe7f0",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/computeheadless_capture.rdc"
+      },
+      "log_paths": {
+        "capture": "results/logs/computeheadless.capture.log",
+        "replay": "results/logs/computeheadless.replay.log"
+      }
+    },
+    {
+      "example": "computenbody",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/computenbody_frame1.rdc",
+        "bytes": 927564,
+        "sha256": "ceb081fbd71910aefbf2f65bb1b44b9af3d4b510ef4b13a04f9750f8ae410aa4",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/computenbody_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/computenbody.png",
+        "bytes": 109517,
+        "sha256": "36e3d5cfafb063cf25f9ac74ade3a91cf375ca3f66b288528828157e48e4ca3e",
+        "release_asset_name": "computenbody.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/computenbody.png",
+        "bytes": 94099,
+        "sha256": "524d56d19d00f016401a898180656733f586e484c177f49e4d74da1d1065d2b4",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/computenbody.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/computenbody.capture.log",
+        "replay": "results/logs/computenbody.replay.log",
+        "reference": "results/logs/computenbody.reference.log"
+      }
+    },
+    {
+      "example": "computeparticles",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/computeparticles_frame1.rdc",
+        "bytes": 14394832,
+        "sha256": "7640a28c789ce298a788d7fe5318df6bdd540bc970e38f3b49514dbda052d09b",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/computeparticles_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/computeparticles.png",
+        "bytes": 235352,
+        "sha256": "82c48b22c638f736f115c41b487a8b5299dced4b8d03b16ddcddea7866325aaa",
+        "release_asset_name": "computeparticles.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/computeparticles.png",
+        "bytes": 193923,
+        "sha256": "d5532f4f5be1fb85421b2d941f39879dff5a8d624bb6e93de70744fdaaaf82ea",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/computeparticles.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/computeparticles.capture.log",
+        "replay": "results/logs/computeparticles.replay.log",
+        "reference": "results/logs/computeparticles.reference.log"
+      }
+    },
+    {
+      "example": "computeraytracing",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/computeraytracing_frame1.rdc",
+        "bytes": 3628754,
+        "sha256": "141d899637b4d0070bd884675dffc44259997f8d0a66f098ef44c5e83736eeef",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/computeraytracing_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/computeraytracing.png",
+        "bytes": 203029,
+        "sha256": "e7860e176276a373a47befe641704ad7c702176fe549a7fa06a137ccfb58a201",
+        "release_asset_name": "computeraytracing.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/computeraytracing.png",
+        "bytes": 181601,
+        "sha256": "eeda73ca389ba4585b1fa1d5237db2bc7380bf5400b44b711f7bc96e3dee4940",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/computeraytracing.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/computeraytracing.capture.log",
+        "replay": "results/logs/computeraytracing.replay.log",
+        "reference": "results/logs/computeraytracing.reference.log"
+      }
+    },
+    {
+      "example": "computeshader",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/computeshader_frame1.rdc",
+        "bytes": 1778346,
+        "sha256": "768cca29e864123439142ee0a53a9603916902e9f8919ac920fb59ba4b45124a",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/computeshader_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/computeshader.png",
+        "bytes": 173834,
+        "sha256": "a5327f343a462e883ae2ec6b1debef53663b18939d4668fff818fafd72a842d6",
+        "release_asset_name": "computeshader.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/computeshader.png",
+        "bytes": 156776,
+        "sha256": "7eadf67add071274dfe3ee9818f9ba8126426d0610d859203f566752c1efbe76",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/computeshader.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/computeshader.capture.log",
+        "replay": "results/logs/computeshader.replay.log",
+        "reference": "results/logs/computeshader.reference.log"
+      }
+    },
+    {
+      "example": "conditionalrender",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/conditionalrender_frame1.rdc",
+        "bytes": 12922512,
+        "sha256": "6648b01fc49ad5563307b78c919f55d669c4e674f6a739d93cc7f99a0a1561c9",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/conditionalrender_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/conditionalrender.png",
+        "bytes": 87838,
+        "sha256": "8532fecd3cdd32480c9b0aaccec918a32baf4af18df61dd6d09b304adfd0e0fa",
+        "release_asset_name": "conditionalrender.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/conditionalrender.png",
+        "bytes": 79038,
+        "sha256": "cb8cac1473431e3d6c3b90a435e63e1f328137c535468b940d4714d6269bcac7",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/conditionalrender.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/conditionalrender.capture.log",
+        "replay": "results/logs/conditionalrender.replay.log",
+        "reference": "results/logs/conditionalrender.reference.log"
+      }
+    },
+    {
+      "example": "conservativeraster",
+      "status": "CAPTURE_FAILED",
+      "profile": "A",
+      "log_paths": {
+        "capture": "results/logs/conservativeraster.capture.log"
+      }
+    },
+    {
+      "example": "debugprintf",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/debugprintf_frame1.rdc",
+        "bytes": 828334,
+        "sha256": "f052fce9f7134b2d94bc5c7e364699def68db876e25c3f6cc8427e1cb7d27bd9",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/debugprintf_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/debugprintf.png",
+        "bytes": 39953,
+        "sha256": "2a66af15cfe5c297e8c4c44046c4efd4b81bde057143a67db5dd98b1a04bd93a",
+        "release_asset_name": "debugprintf.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/debugprintf.png",
+        "bytes": 36749,
+        "sha256": "cf1ef46399963c773df6bc6a7c525f0a40594dc76fe3854c3c02ac9ede1304d5",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/debugprintf.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/debugprintf.capture.log",
+        "replay": "results/logs/debugprintf.replay.log",
+        "reference": "results/logs/debugprintf.reference.log"
+      }
+    },
+    {
+      "example": "debugutils",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/debugutils_frame1.rdc",
+        "bytes": 1062182,
+        "sha256": "dd6e7695b51d65512403b131aab9677cd779cad1ced388bcf6e55c70d24daaab",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/debugutils_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/debugutils.png",
+        "bytes": 75404,
+        "sha256": "0ceec765e3bba34ea26f42621b53f8d2b7f720f22c809adf5a293dfacb316411",
+        "release_asset_name": "debugutils.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/debugutils.png",
+        "bytes": 68399,
+        "sha256": "0e3101c90b04d985e24e093f2964ab81bf74276df52cdf538094001986e7873c",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/debugutils.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/debugutils.capture.log",
+        "replay": "results/logs/debugutils.replay.log",
+        "reference": "results/logs/debugutils.reference.log"
+      }
+    },
+    {
+      "example": "deferred",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/deferred_frame1.rdc",
+        "bytes": 64859376,
+        "sha256": "9fb7da6965ede25182c5cede398eb07222110e70efa7a657e6db4e9618392253",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/deferred_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/deferred.png",
+        "bytes": 325897,
+        "sha256": "3b67332772aa052d8fbb651a1579f4b455dba33cf584c55330f9ff28ba91d221",
+        "release_asset_name": "deferred.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/deferred.png",
+        "bytes": 282811,
+        "sha256": "d4957f5aeaddecfb279fd3f83997d67216a6dacef0ff8e968ba2997efc7a4100",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/deferred.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/deferred.capture.log",
+        "replay": "results/logs/deferred.replay.log",
+        "reference": "results/logs/deferred.reference.log"
+      }
+    },
+    {
+      "example": "deferredmultisampling",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/deferredmultisampling_frame1.rdc",
+        "bytes": 366983358,
+        "sha256": "4e31cb45ea671136de9c553bbea4074ef5fee3811e03b4629c4897a3cb73ae36",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/deferredmultisampling_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/deferredmultisampling.png",
+        "bytes": 496160,
+        "sha256": "e0f5b0df91dd018e60838d0ca22898a0c02a279479837c44d9476bd18fa2851a",
+        "release_asset_name": "deferredmultisampling.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/deferredmultisampling.png",
+        "bytes": 432747,
+        "sha256": "1a616ec9168d374fe459aa0d6981f383fd77c57bd8f0eea219508a31534199aa",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/deferredmultisampling.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/deferredmultisampling.capture.log",
+        "replay": "results/logs/deferredmultisampling.replay.log",
+        "reference": "results/logs/deferredmultisampling.reference.log"
+      }
+    },
+    {
+      "example": "deferredshadows",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/deferredshadows_frame1.rdc",
+        "bytes": 109103083,
+        "sha256": "38b80e4ff2a59ba49730adac40da90f958226df78fda7542c8aee0c8e042b434",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/deferredshadows_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/deferredshadows.png",
+        "bytes": 523848,
+        "sha256": "9e77c99d78f7537313785a265a8b1f1cc4bda8f0697efef56b0e06f8ce338f5a",
+        "release_asset_name": "deferredshadows.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/deferredshadows.png",
+        "bytes": 459137,
+        "sha256": "5b80f3da3e0e9be25c7df5e75484486fc9798e4e87deb73c346d7bedaf37e858",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/deferredshadows.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/deferredshadows.capture.log",
+        "replay": "results/logs/deferredshadows.replay.log",
+        "reference": "results/logs/deferredshadows.reference.log"
+      }
+    },
+    {
+      "example": "descriptorbuffer",
+      "status": "REPLAYED_PNG",
+      "profile": "B",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/descriptorbuffer_frame1.rdc",
+        "bytes": 2937530,
+        "sha256": "ccd9da4d8cde2a7571d6d0bbe236292dfc0936fc7cbb697daa953860fb75b41e",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/descriptorbuffer_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/descriptorbuffer.png",
+        "bytes": 200650,
+        "sha256": "d290976fa4a512b0e8d0ed208eccbd3141dc04c11db026eeda617d537885c044",
+        "release_asset_name": "descriptorbuffer.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/descriptorbuffer.png",
+        "bytes": 173966,
+        "sha256": "b5756dbf48a4a88fbf59ca35e6c8faebd92a15baf9993f4da582c92c8b754db2",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/descriptorbuffer.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/descriptorbuffer.capture.log",
+        "replay": "results/logs/descriptorbuffer.replay.log",
+        "reference": "results/logs/descriptorbuffer.reference.log"
+      }
+    },
+    {
+      "example": "descriptorheap",
+      "status": "REPLAYED_PNG",
+      "profile": "B",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/descriptorheap_frame1.rdc",
+        "bytes": 2937096,
+        "sha256": "59d332766937ee768f2ef341a601c1d608485caa790ad1d88c9985a72c2395da",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/descriptorheap_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/descriptorheap.png",
+        "bytes": 207311,
+        "sha256": "ff0143f6fba50a2b4a5e576d39f9536564db528ad2c648aab4d25c7b3966ed13",
+        "release_asset_name": "descriptorheap.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/descriptorheap.png",
+        "bytes": 176722,
+        "sha256": "e78774abbbd5b45eb2be2b72bb935adb82f1edaf24b822d642498893e1bde1e4",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/descriptorheap.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/descriptorheap.capture.log",
+        "replay": "results/logs/descriptorheap.replay.log",
+        "reference": "results/logs/descriptorheap.reference.log"
+      }
+    },
+    {
+      "example": "descriptorheapuntyped",
+      "status": "REPLAYED_PNG",
+      "profile": "B",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/descriptorheapuntyped_frame1.rdc",
+        "bytes": 2914045,
+        "sha256": "cd1500bfd7663fce2e6603a5a0edb011d47032a7d2905c514c49c70c0ddca2c5",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/descriptorheapuntyped_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/descriptorheapuntyped.png",
+        "bytes": 193241,
+        "sha256": "6a65d77bb19097ad5955e0d7d77f18e82539b2e2f48914d7c2ea62450ccb8796",
+        "release_asset_name": "descriptorheapuntyped.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/descriptorheapuntyped.png",
+        "bytes": 166483,
+        "sha256": "db49a2a1641b8eac6e2d3fa4e6dd1446b142a4232e0b8a3a1a373148cc4ee405",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/descriptorheapuntyped.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/descriptorheapuntyped.capture.log",
+        "replay": "results/logs/descriptorheapuntyped.replay.log",
+        "reference": "results/logs/descriptorheapuntyped.reference.log"
+      }
+    },
+    {
+      "example": "descriptorindexing",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/descriptorindexing_frame1.rdc",
+        "bytes": 67370,
+        "sha256": "5bc94ab6e3b7adb70afe760e030656e77e20fa8c1eda708be7aef8d9c4affa82",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/descriptorindexing_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/descriptorindexing.png",
+        "bytes": 12376,
+        "sha256": "6a5464e84c21c716592c7ed89676d386670ccfe24e768f944696063da323842e",
+        "release_asset_name": "descriptorindexing.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/descriptorindexing.png",
+        "bytes": 10217,
+        "sha256": "3886c15702eec6c8c81c00920b5c286fb48f8994b44a668bd59b8a59bcc8e6b5",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/descriptorindexing.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/descriptorindexing.capture.log",
+        "replay": "results/logs/descriptorindexing.replay.log",
+        "reference": "results/logs/descriptorindexing.reference.log"
+      }
+    },
+    {
+      "example": "descriptorsets",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/descriptorsets_frame1.rdc",
+        "bytes": 2938861,
+        "sha256": "b6a7817eab3fea7b4e6afa0a88e0e42fb6d044f5f68e3a2f8050658841246232",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/descriptorsets_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/descriptorsets.png",
+        "bytes": 204360,
+        "sha256": "aa7599f9bf7d4bb3bcfd4999b638ddf93b60a01a2f5b44ea9ea09eae57157aeb",
+        "release_asset_name": "descriptorsets.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/descriptorsets.png",
+        "bytes": 177784,
+        "sha256": "dfad711ae24d92de518efea1061c7e4dad8eaee4bdd612c5c9c9e2cd8444207b",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/descriptorsets.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/descriptorsets.capture.log",
+        "replay": "results/logs/descriptorsets.replay.log",
+        "reference": "results/logs/descriptorsets.reference.log"
+      }
+    },
+    {
+      "example": "displacement",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/displacement_frame1.rdc",
+        "bytes": 6542950,
+        "sha256": "ac9b5d1d356bfc11c77c39fcd0404be72ab2c2672f7ff68ef02a3dce720308fd",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/displacement_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/displacement.png",
+        "bytes": 299496,
+        "sha256": "11a4769eb856664abf4d4a2c11576a98907b08411a01398f4c034012e511cb2f",
+        "release_asset_name": "displacement.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/displacement.png",
+        "bytes": 279368,
+        "sha256": "bc10e1211bbb1eb8ccea52a0f3af6c8fe34c8b277365f302b5bdc27859088ffd",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/displacement.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/displacement.capture.log",
+        "replay": "results/logs/displacement.replay.log",
+        "reference": "results/logs/displacement.reference.log"
+      }
+    },
+    {
+      "example": "distancefieldfonts",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/distancefieldfonts_frame1.rdc",
+        "bytes": 289354,
+        "sha256": "732e2594f9a23e6d866a02bb980906e90694ee020972019ea730e4f2576ef8fb",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/distancefieldfonts_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/distancefieldfonts.png",
+        "bytes": 63735,
+        "sha256": "c3736fbe0bb04cf4e31c04cede8ad4c801c05a7d369569087622f6adf862daf4",
+        "release_asset_name": "distancefieldfonts.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/distancefieldfonts.png",
+        "bytes": 53297,
+        "sha256": "f9139392ad334d7452f3c29a2454ca2953f20e40b7c64bfbbf0eb0bda8826d1b",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/distancefieldfonts.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/distancefieldfonts.capture.log",
+        "replay": "results/logs/distancefieldfonts.replay.log",
+        "reference": "results/logs/distancefieldfonts.reference.log"
+      }
+    },
+    {
+      "example": "dynamicrendering",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/dynamicrendering_frame1.rdc",
+        "bytes": 5390151,
+        "sha256": "17ab41ce72e4bacc03345bfea7ae0a48c9f2fdcf29b38ccb15d83cbba429ef4e",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/dynamicrendering_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/dynamicrendering.png",
+        "bytes": 34691,
+        "sha256": "0a90b240dd663f37d00539275bbc4545637e16be89019f977db7e9956a6bfd8b",
+        "release_asset_name": "dynamicrendering.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/dynamicrendering.png",
+        "bytes": 28997,
+        "sha256": "00241722c69554cc971a5d74c68d186c8de1f6ec172d75bcfe919e0573ad58ac",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/dynamicrendering.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/dynamicrendering.capture.log",
+        "replay": "results/logs/dynamicrendering.replay.log",
+        "reference": "results/logs/dynamicrendering.reference.log"
+      }
+    },
+    {
+      "example": "dynamicrenderinglocalread",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/dynamicrenderinglocalread_frame1.rdc",
+        "bytes": 135616095,
+        "sha256": "443d2ef70ad443a25ffcd6be63bec2c111bfb138eb60ed5dd33d3fd265441719",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/dynamicrenderinglocalread_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/dynamicrenderinglocalread.png",
+        "bytes": 421448,
+        "sha256": "e2c4cef44058455adc819a562db4029d090f4429cce7220aa8d205b618e89626",
+        "release_asset_name": "dynamicrenderinglocalread.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/dynamicrenderinglocalread.png",
+        "bytes": 370091,
+        "sha256": "2bcd71b59380a002585cbb2eef874ffd5d4d9c748d1c7474894499b05d8b7558",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/dynamicrenderinglocalread.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/dynamicrenderinglocalread.capture.log",
+        "replay": "results/logs/dynamicrenderinglocalread.replay.log",
+        "reference": "results/logs/dynamicrenderinglocalread.reference.log"
+      }
+    },
+    {
+      "example": "dynamicrenderingmultisampling",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/dynamicrenderingmultisampling_frame1.rdc",
+        "bytes": 5707197,
+        "sha256": "116105dccab1c68c434bc8bb685bd9f4f378bb1ff1f441599101ea41b1d22109",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/dynamicrenderingmultisampling_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/dynamicrenderingmultisampling.png",
+        "bytes": 41225,
+        "sha256": "d2ef9b75b6caf95636476f266ebe58d2a6a4e81645204ed1066488e0e7ebc7a3",
+        "release_asset_name": "dynamicrenderingmultisampling.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/dynamicrenderingmultisampling.png",
+        "bytes": 33207,
+        "sha256": "7e0caf8b73b9757a2e4c967d0d682b4086e6a750ee64f22fcd8077f750261b07",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/dynamicrenderingmultisampling.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/dynamicrenderingmultisampling.capture.log",
+        "replay": "results/logs/dynamicrenderingmultisampling.replay.log",
+        "reference": "results/logs/dynamicrenderingmultisampling.reference.log"
+      }
+    },
+    {
+      "example": "dynamicstate",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/dynamicstate_frame1.rdc",
+        "bytes": 900203,
+        "sha256": "7db12fd921cdb568c438157c3c76dd6d3bbb61f7ba1d401a1a2ec67e156fec3f",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/dynamicstate_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/dynamicstate.png",
+        "bytes": 111874,
+        "sha256": "4af1b71d16f4fe47f759a4e1f7e8eed87368b8e1221722f902f0a2714b6d1960",
+        "release_asset_name": "dynamicstate.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/dynamicstate.png",
+        "bytes": 98898,
+        "sha256": "a5c83d3d5301ce94aa9afc8e11cf3c4629ee86f4bb5b96f65e80d318a12ca64f",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/dynamicstate.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/dynamicstate.capture.log",
+        "replay": "results/logs/dynamicstate.replay.log",
+        "reference": "results/logs/dynamicstate.reference.log"
+      }
+    },
+    {
+      "example": "dynamicuniformbuffer",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/dynamicuniformbuffer_frame1.rdc",
+        "bytes": 485964,
+        "sha256": "c5fe4690de611c2bab23ac0a5324bfc2af74e8365e6757de05cc51c50229e01c",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/dynamicuniformbuffer_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/dynamicuniformbuffer.png",
+        "bytes": 99984,
+        "sha256": "57dcf8442f41d8fb5e2142985e79327e536cd397224034d9f8f8d40a933016af",
+        "release_asset_name": "dynamicuniformbuffer.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/dynamicuniformbuffer.png",
+        "bytes": 88983,
+        "sha256": "9869fe8895ad179a3fcbb20bcd1ae94088cab0e0074b10f8c4baeb0a73c57bc9",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/dynamicuniformbuffer.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/dynamicuniformbuffer.capture.log",
+        "replay": "results/logs/dynamicuniformbuffer.replay.log",
+        "reference": "results/logs/dynamicuniformbuffer.reference.log"
+      }
+    },
+    {
+      "example": "fragmentshaderbarycentrics",
+      "status": "CAPTURE_FAILED",
+      "profile": "A",
+      "log_paths": {
+        "capture": "results/logs/fragmentshaderbarycentrics.capture.log"
+      }
+    },
+    {
+      "example": "gears",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/gears_frame1.rdc",
+        "bytes": 80136,
+        "sha256": "5b75fe01151ad5ace2ac2485405d80fbba54b80d72803ed50af65c241c3db6cb",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/gears_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/gears.png",
+        "bytes": 18954,
+        "sha256": "820fbd93d55a99b06c4e44c9c7af11b00607b849177e1c41acbf9a7dc1afc590",
+        "release_asset_name": "gears.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/gears.png",
+        "bytes": 16356,
+        "sha256": "2ec00580f9a1f256a316cadb9794273342770e158f09e671dec3f19125bf7324",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/gears.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/gears.capture.log",
+        "replay": "results/logs/gears.replay.log",
+        "reference": "results/logs/gears.reference.log"
+      }
+    },
+    {
+      "example": "geometryshader",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/geometryshader_frame1.rdc",
+        "bytes": 708187,
+        "sha256": "826fd32dbb8e3419dbd3f6ba6e5d28c335ec9a28e5e36d6044aa67281db393d5",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/geometryshader_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/geometryshader.png",
+        "bytes": 113600,
+        "sha256": "be62fa404650dfbdf18198907ea4738217c5c9866f63a06da732333a289414ec",
+        "release_asset_name": "geometryshader.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/geometryshader.png",
+        "bytes": 100461,
+        "sha256": "f18d84fb419b29365e4f77a54da84bda498c5a529355893de9e5e8e3c9be74f3",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/geometryshader.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/geometryshader.capture.log",
+        "replay": "results/logs/geometryshader.replay.log",
+        "reference": "results/logs/geometryshader.reference.log"
+      }
+    },
+    {
+      "example": "gltfloading",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/gltfloading_frame1.rdc",
+        "bytes": 33927877,
+        "sha256": "05fd0941f4a9ebc8e6918185653ebabe8e461c3086a75fd1656906b738bd9d61",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/gltfloading_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/gltfloading.png",
+        "bytes": 65139,
+        "sha256": "bb1de9e35d06c091ff3b4bfc4f79dbcccb8d5f8f501b23556c18288a67d20281",
+        "release_asset_name": "gltfloading.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/gltfloading.png",
+        "bytes": 55195,
+        "sha256": "90574c7f58059ebc943c5a1ac652f0fb0c2b29597579dc78049aa2b26b1a3be3",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/gltfloading.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/gltfloading.capture.log",
+        "replay": "results/logs/gltfloading.replay.log",
+        "reference": "results/logs/gltfloading.reference.log"
+      }
+    },
+    {
+      "example": "gltfscenerendering",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/gltfscenerendering_frame1.rdc",
+        "bytes": 236944101,
+        "sha256": "329078edcf290fb60c885b88810ec0a2427c62aafcbf23aa95dc7cddfa4b44f1",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/gltfscenerendering_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/gltfscenerendering.png",
+        "bytes": 647016,
+        "sha256": "31cbd422ad5d5573f39fb86bd487e101e5f03eca1c9311672bcf0cd4fe6bdba2",
+        "release_asset_name": "gltfscenerendering.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/gltfscenerendering.png",
+        "bytes": 548445,
+        "sha256": "f393533315f50cd45cdd54384db2ac1c4c9449a1baa2e0eb8748ece2be251cde",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/gltfscenerendering.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/gltfscenerendering.capture.log",
+        "replay": "results/logs/gltfscenerendering.replay.log",
+        "reference": "results/logs/gltfscenerendering.reference.log"
+      }
+    },
+    {
+      "example": "gltfskinning",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/gltfskinning_frame1.rdc",
+        "bytes": 1010179,
+        "sha256": "7f80f6d5216f3141eb10ee1647068417d985d187d25ff86c4245ce47db313b14",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/gltfskinning_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/gltfskinning.png",
+        "bytes": 28068,
+        "sha256": "073fd0c8322410471345666647a744cd0f2dbec01c67c9b9cc18377987cfe88a",
+        "release_asset_name": "gltfskinning.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/gltfskinning.png",
+        "bytes": 23334,
+        "sha256": "b3210f0c9c58ba2236cabd817db51a1954af50675fbe35c30172626e98482045",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/gltfskinning.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/gltfskinning.capture.log",
+        "replay": "results/logs/gltfskinning.replay.log",
+        "reference": "results/logs/gltfskinning.reference.log"
+      }
+    },
+    {
+      "example": "graphicspipelinelibrary",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/graphicspipelinelibrary_frame1.rdc",
+        "bytes": 898916,
+        "sha256": "b79c020865973902f2cebe1aa10f15a268b61c198df40543e981b14c9ec9ab89",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/graphicspipelinelibrary_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/graphicspipelinelibrary.png",
+        "bytes": 10596,
+        "sha256": "aa3499f446e4377c0b7ad3396fd4060ed53439952cd635c89c50b308c14d649f",
+        "release_asset_name": "graphicspipelinelibrary.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/graphicspipelinelibrary.png",
+        "bytes": 8321,
+        "sha256": "002bf744ba1b15bae10ad1063d7cd213503cabfb8e5a156d61aa2667c4221805",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/graphicspipelinelibrary.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/graphicspipelinelibrary.capture.log",
+        "replay": "results/logs/graphicspipelinelibrary.replay.log",
+        "reference": "results/logs/graphicspipelinelibrary.reference.log"
+      }
+    },
+    {
+      "example": "hdr",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/hdr_frame1.rdc",
+        "bytes": 47761467,
+        "sha256": "a930512f9fdc7ab6dfb7626edcaac128c76b2391cf4498faa76c9baaef08c9c4",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/hdr_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/hdr.png",
+        "bytes": 418138,
+        "sha256": "0383bafa9038269a2776d9b2fa7ac7cb6a845c78c4f9bfe690dbf9634315ee86",
+        "release_asset_name": "hdr.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/hdr.png",
+        "bytes": 367655,
+        "sha256": "5da361b660c65e17345da5f14ecfdfab1a6cde2d72f7fbf1b90cc55bfb756368",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/hdr.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/hdr.capture.log",
+        "replay": "results/logs/hdr.replay.log",
+        "reference": "results/logs/hdr.reference.log"
+      }
+    },
+    {
+      "example": "hostimagecopy",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/hostimagecopy_frame1.rdc",
+        "bytes": 1446589,
+        "sha256": "3f3efbe993fc89bbbb1fc44ebd84b4431a2776f55b6692866f2001d091f75e97",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/hostimagecopy_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/hostimagecopy.png",
+        "bytes": 121724,
+        "sha256": "e1e6d7cf6cdc7f33d45c50a77d096b8f587fef939d1cd6653624496b721303ed",
+        "release_asset_name": "hostimagecopy.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/hostimagecopy.png",
+        "bytes": 104286,
+        "sha256": "1d255b0179c7e76a74afaa089d25b1673cb25354979345c75a4060df9ef75177",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/hostimagecopy.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/hostimagecopy.capture.log",
+        "replay": "results/logs/hostimagecopy.replay.log",
+        "reference": "results/logs/hostimagecopy.reference.log"
+      }
+    },
+    {
+      "example": "imgui",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/imgui_frame1.rdc",
+        "bytes": 5314588,
+        "sha256": "f781c3e7dd3fd4c8e2c37ed35c063f2b5872a831e02f59ed507b49d7ed480454",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/imgui_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/imgui.png",
+        "bytes": 68074,
+        "sha256": "7671a4ca60c21027c63850b48f55d3ed340203c685e83297ac68cad8228d0752",
+        "release_asset_name": "imgui.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/imgui.png",
+        "bytes": 58126,
+        "sha256": "f3a67cccdf6a811544a90d4fdf65f6e444bdae3c6c8aea442e802d57361161e0",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/imgui.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/imgui.capture.log",
+        "replay": "results/logs/imgui.replay.log",
+        "reference": "results/logs/imgui.reference.log"
+      }
+    },
+    {
+      "example": "indirectdraw",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/indirectdraw_frame1.rdc",
+        "bytes": 11682541,
+        "sha256": "68d96bdd9318683de361bdf44f611ac00e9958573f02c246a9ff2b09012836f3",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/indirectdraw_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/indirectdraw.png",
+        "bytes": 726881,
+        "sha256": "834e1e446ddb509371cbd65d599e0b9a54042cf22d08a0a8a066cdd413067e4f",
+        "release_asset_name": "indirectdraw.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/indirectdraw.png",
+        "bytes": 609498,
+        "sha256": "6277e904d5c24d1d05fd0da7e302e5ae25d947c3bc3650946d5091e30b76cc83",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/indirectdraw.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/indirectdraw.capture.log",
+        "replay": "results/logs/indirectdraw.replay.log",
+        "reference": "results/logs/indirectdraw.reference.log"
+      }
+    },
+    {
+      "example": "inlineuniformblocks",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/inlineuniformblocks_frame1.rdc",
+        "bytes": 234506,
+        "sha256": "45a38b428561a770313999d30da7f7fc5943da59599e3ffc0d04b16e0adf5258",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/inlineuniformblocks_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/inlineuniformblocks.png",
+        "bytes": 36048,
+        "sha256": "6912c036c7cd19d047489e1773f733f8f5a3e6636748c103959a513ba05932d3",
+        "release_asset_name": "inlineuniformblocks.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/inlineuniformblocks.png",
+        "bytes": 30948,
+        "sha256": "30a595448ec8dcf233d97a3a9e6c71393c5b93eab5035d190cc247b1b2853f8b",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/inlineuniformblocks.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/inlineuniformblocks.capture.log",
+        "replay": "results/logs/inlineuniformblocks.replay.log",
+        "reference": "results/logs/inlineuniformblocks.reference.log"
+      }
+    },
+    {
+      "example": "inputattachments",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/inputattachments_frame1.rdc",
+        "bytes": 1036009,
+        "sha256": "ca39ee10aeec2fedf5847701fa5cedd9fa441fad247497b5615cdce0e46d273f",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/inputattachments_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/inputattachments.png",
+        "bytes": 32863,
+        "sha256": "9abe4444ac828b2fb54b1ea4cdf62acafc67f03877b4f170a78be24a24d80371",
+        "release_asset_name": "inputattachments.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/inputattachments.png",
+        "bytes": 29916,
+        "sha256": "a0b501368beebc85ad82cbb47c37321552f58d49e7c220905623b3ba536a4d93",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/inputattachments.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/inputattachments.capture.log",
+        "replay": "results/logs/inputattachments.replay.log",
+        "reference": "results/logs/inputattachments.reference.log"
+      }
+    },
+    {
+      "example": "instancing",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/instancing_frame1.rdc",
+        "bytes": 8271275,
+        "sha256": "77d0c9db923542c62c7ee70e8329cb57cce0109900d40a140159b7aa4b8b89c7",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/instancing_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/instancing.png",
+        "bytes": 258194,
+        "sha256": "3c2a19760f6f9c989162a7cee14233d66d7c6497cba55dafacf1ba7e54e1d237",
+        "release_asset_name": "instancing.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/instancing.png",
+        "bytes": 225997,
+        "sha256": "9519d933801032b48eb71cd49289accd268b0369ca5646894fb27176e540965f",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/instancing.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/instancing.capture.log",
+        "replay": "results/logs/instancing.replay.log",
+        "reference": "results/logs/instancing.reference.log"
+      }
+    },
+    {
+      "example": "meshshader",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/meshshader_frame1.rdc",
+        "bytes": 57373,
+        "sha256": "0631f17c4549d29c1c6d7b2a18eaab3eaf03387d01b733bb9b677e60813027c3",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/meshshader_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/meshshader.png",
+        "bytes": 31079,
+        "sha256": "21a5a0a4cf652fc021f62ff920df16036a9866538883fe9570b7a395b55cc82d",
+        "release_asset_name": "meshshader.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/meshshader.png",
+        "bytes": 26405,
+        "sha256": "5a9d15d996b0d61eb11d81277a5795421f0406d676051607da2751098a9fba2d",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/meshshader.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/meshshader.capture.log",
+        "replay": "results/logs/meshshader.replay.log",
+        "reference": "results/logs/meshshader.reference.log"
+      }
+    },
+    {
+      "example": "multisampling",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/multisampling_frame1.rdc",
+        "bytes": 5984702,
+        "sha256": "5736be6e01ed0d76f5756ba750a27680149f0a27af726778ba00c324804860c0",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/multisampling_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/multisampling.png",
+        "bytes": 70200,
+        "sha256": "69358968878c17c1aab5ae1e62c68ed050a29784d2260cc9cd866ea4d6c14c75",
+        "release_asset_name": "multisampling.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/multisampling.png",
+        "bytes": 59834,
+        "sha256": "bae7dc083f924bcebb20959979ad83ba3c30c165b6e7ed841390f8fe6ddfaae3",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/multisampling.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/multisampling.capture.log",
+        "replay": "results/logs/multisampling.replay.log",
+        "reference": "results/logs/multisampling.reference.log"
+      }
+    },
+    {
+      "example": "multisamplingalphatocoverage",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/multisamplingalphatocoverage_frame1.rdc",
+        "bytes": 7483226,
+        "sha256": "0fb6b8bc92eb3708b018847e25648072695d482fe277a11e04a9bfdb56b1558c",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/multisamplingalphatocoverage_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/multisamplingalphatocoverage.png",
+        "bytes": 631257,
+        "sha256": "1c5f5cdfe4a1ab1486223281bdeab2ea1a3190f125c9dbf8a5bc56873b888f1d",
+        "release_asset_name": "multisamplingalphatocoverage.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/multisamplingalphatocoverage.png",
+        "bytes": 470293,
+        "sha256": "d951c1ee4edaff0dc7f9632e827cbfd065b10f2a4ee50e919d8fd2981ecf9ace",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/multisamplingalphatocoverage.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/multisamplingalphatocoverage.capture.log",
+        "replay": "results/logs/multisamplingalphatocoverage.replay.log",
+        "reference": "results/logs/multisamplingalphatocoverage.reference.log"
+      }
+    },
+    {
+      "example": "multithreading",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/multithreading_frame1.rdc",
+        "bytes": 988907,
+        "sha256": "c9c7f2c75513ddaa692d6f2cb3ca3b02f88d39b400276804b9e37e744a89e466",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/multithreading_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/multithreading.png",
+        "bytes": 162858,
+        "sha256": "fa3dfeb2d7cf956bb93a30c5418a899842ce436121382f82ed410c2884470144",
+        "release_asset_name": "multithreading.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/multithreading.png",
+        "bytes": 140427,
+        "sha256": "832df96c0c9fc1878b46d682ff5b25f90c0ea3058a972ba6ac3d1b7f2acfa438",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/multithreading.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/multithreading.capture.log",
+        "replay": "results/logs/multithreading.replay.log",
+        "reference": "results/logs/multithreading.reference.log"
+      }
+    },
+    {
+      "example": "multiview",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/multiview_frame1.rdc",
+        "bytes": 675178,
+        "sha256": "b650e90956cb7e03cb194a403fca1e9fca02b1ecd2ae81f31c5f22a0ae82e127",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/multiview_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/multiview.png",
+        "bytes": 84185,
+        "sha256": "bcd6b8367c611fe64c48f1c5cceea556d3cdd8a2c30e776987c59fcdb16259c4",
+        "release_asset_name": "multiview.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/multiview.png",
+        "bytes": 77858,
+        "sha256": "2bfe6dbdcf20166223a3d18d0c312dc42d8d2e56d76faf5afaaa3bfd9a5b168c",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/multiview.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/multiview.capture.log",
+        "replay": "results/logs/multiview.replay.log",
+        "reference": "results/logs/multiview.reference.log"
+      }
+    },
+    {
+      "example": "negativeviewportheight",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/negativeviewportheight_frame1.rdc",
+        "bytes": 123692,
+        "sha256": "a99d7022440b1674018a67fca3385a6a605b8541daa9c8ffe076acc85646ad42",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/negativeviewportheight_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/negativeviewportheight.png",
+        "bytes": 16235,
+        "sha256": "f6ba7cfa6c05efd230816e3dce5d056f5a8ca3128142b3bff3860e8cf58e84fa",
+        "release_asset_name": "negativeviewportheight.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/negativeviewportheight.png",
+        "bytes": 13528,
+        "sha256": "05c717327ffde3c25edacf016dbb87c35de167774579cf87c318a6274eb177d5",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/negativeviewportheight.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/negativeviewportheight.capture.log",
+        "replay": "results/logs/negativeviewportheight.replay.log",
+        "reference": "results/logs/negativeviewportheight.reference.log"
+      }
+    },
+    {
+      "example": "occlusionquery",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/occlusionquery_frame1.rdc",
+        "bytes": 549822,
+        "sha256": "5ba072955eb66cecc83eb6c469f61e04f79458b97fef5be04d94f899f2407c41",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/occlusionquery_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/occlusionquery.png",
+        "bytes": 25853,
+        "sha256": "5f219f736bd95e16c921677c7ed06b34af7936427eafc8f070ed8f0ffec6623b",
+        "release_asset_name": "occlusionquery.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/occlusionquery.png",
+        "bytes": 22132,
+        "sha256": "332211f4d41d03ae9c288e899625b749714005168c92b0643e527302e74db446",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/occlusionquery.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/occlusionquery.capture.log",
+        "replay": "results/logs/occlusionquery.replay.log",
+        "reference": "results/logs/occlusionquery.reference.log"
+      }
+    },
+    {
+      "example": "offscreen",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/offscreen_frame1.rdc",
+        "bytes": 2768726,
+        "sha256": "6df63f078313d7a01976de9e4082d56978596a570cd1ef8a34d7881c5e92d3c7",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/offscreen_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/offscreen.png",
+        "bytes": 60520,
+        "sha256": "c7a8f24b39b01040d639cafa2c877a827d8747304545674fedb0b95a112a1223",
+        "release_asset_name": "offscreen.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/offscreen.png",
+        "bytes": 51890,
+        "sha256": "c858ba569bb410c434c97d40636d4c59d7bed3456695ad4d55dfe627066d7a57",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/offscreen.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/offscreen.capture.log",
+        "replay": "results/logs/offscreen.replay.log",
+        "reference": "results/logs/offscreen.reference.log"
+      }
+    },
+    {
+      "example": "oit",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/oit_frame1.rdc",
+        "bytes": 2090624,
+        "sha256": "11be251f673200bd7d6de098af8482f5ad3038109f08887fc173ce50aae62721",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/oit_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/oit.png",
+        "bytes": 24914,
+        "sha256": "e5fbb3323822b6c2fd64ba83ce87b1da1cd6f2a0ec968264fc6ebf828ba6d6f0",
+        "release_asset_name": "oit.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/oit.png",
+        "bytes": 22441,
+        "sha256": "8a5e7898c3d64cfebeab89dedce114b9729556be5cdea736513bbcc5e07f7576",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/oit.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/oit.capture.log",
+        "replay": "results/logs/oit.replay.log",
+        "reference": "results/logs/oit.reference.log"
+      }
+    },
+    {
+      "example": "parallaxmapping",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/parallaxmapping_frame1.rdc",
+        "bytes": 10015286,
+        "sha256": "108c498a7eb8c9f5195f614977a1142481134456d249e87b160d7f6499eba341",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/parallaxmapping_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/parallaxmapping.png",
+        "bytes": 233450,
+        "sha256": "b37a74e782d535aa50141ab926754c82d27ee224d36c73cbd586878e1ff9b1ee",
+        "release_asset_name": "parallaxmapping.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/parallaxmapping.png",
+        "bytes": 207701,
+        "sha256": "ad8e0a3ca072b7c5a4bea4f565291b3b5e442a21d6cd56cd7b25bd90259b9771",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/parallaxmapping.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/parallaxmapping.capture.log",
+        "replay": "results/logs/parallaxmapping.replay.log",
+        "reference": "results/logs/parallaxmapping.reference.log"
+      }
+    },
+    {
+      "example": "particlesystem",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/particlesystem_frame1.rdc",
+        "bytes": 5770041,
+        "sha256": "a289bfdb203a05c72a94e6ea1f18821524ba1db2426433a9a2ee3ab0b7e5a467",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/particlesystem_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/particlesystem.png",
+        "bytes": 187726,
+        "sha256": "14e71de04db37dd23c24835acd85a50058baa532d6b3b21223e2ee2f7856bf07",
+        "release_asset_name": "particlesystem.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/particlesystem.png",
+        "bytes": 162087,
+        "sha256": "0e92c7dcac42efedeb3a3352bf5e830f2b817b2894df70032d99b5cc008dedaf",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/particlesystem.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/particlesystem.capture.log",
+        "replay": "results/logs/particlesystem.replay.log",
+        "reference": "results/logs/particlesystem.reference.log"
+      }
+    },
+    {
+      "example": "pbrbasic",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/pbrbasic_frame1.rdc",
+        "bytes": 565116,
+        "sha256": "6987df0b91a7be4a806856a66e7d205e0db6c4f790a4a2347c4c40a251a7b8d0",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/pbrbasic_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/pbrbasic.png",
+        "bytes": 109187,
+        "sha256": "4eaaffa579f97cb10f6ed240ea5f805f81e4860749064d6d04f79b562bc6bcad",
+        "release_asset_name": "pbrbasic.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/pbrbasic.png",
+        "bytes": 94671,
+        "sha256": "39586c2a4ff497ae4085a850f8560d96a4364fc48e0d869600086bf3354343b9",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/pbrbasic.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/pbrbasic.capture.log",
+        "replay": "results/logs/pbrbasic.replay.log",
+        "reference": "results/logs/pbrbasic.reference.log"
+      }
+    },
+    {
+      "example": "pbribl",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/pbribl_frame1.rdc",
+        "bytes": 84630321,
+        "sha256": "ca5d14dc2c4b2f9d453fb7c317cf7a85c52b7d5db850a1d8fa6f633d2b65beb8",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/pbribl_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/pbribl.png",
+        "bytes": 374856,
+        "sha256": "f2f6c96ea7e053a5ff63ceb6ff24fff585d1e29da200c8d111b494d38f076f2a",
+        "release_asset_name": "pbribl.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/pbribl.png",
+        "bytes": 324612,
+        "sha256": "4104413867f559d8434e90fbbad74018f986c141c1dac88aad961aa4a8a2602b",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/pbribl.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/pbribl.capture.log",
+        "replay": "results/logs/pbribl.replay.log",
+        "reference": "results/logs/pbribl.reference.log"
+      }
+    },
+    {
+      "example": "pbrtexture",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/pbrtexture_frame1.rdc",
+        "bytes": 110129353,
+        "sha256": "57059ff6dd858bf0dfb87c24acac307c7ff7a26f7dce608d5bc2856f2bf1637c",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/pbrtexture_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/pbrtexture.png",
+        "bytes": 435089,
+        "sha256": "aa683e454814e8986ee181fa2672014e05d6940ae76e4908deac3e73de1b8b56",
+        "release_asset_name": "pbrtexture.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/pbrtexture.png",
+        "bytes": 380400,
+        "sha256": "b9504a41ae041a865c7624196dbc2757e47999b38fa1fd2e6bab9c3d8bc1dbc3",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/pbrtexture.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/pbrtexture.capture.log",
+        "replay": "results/logs/pbrtexture.replay.log",
+        "reference": "results/logs/pbrtexture.reference.log"
+      }
+    },
+    {
+      "example": "pipelines",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/pipelines_frame1.rdc",
+        "bytes": 975805,
+        "sha256": "c44af83e4ff973d7b9103ada9a1e738cc8196764a80e8dcf5da5e5c0d2cb0827",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/pipelines_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/pipelines.png",
+        "bytes": 97858,
+        "sha256": "9250c8e9f05055602dc52f6ed351ce72c787970a558b10116bb6cc6735e9e66a",
+        "release_asset_name": "pipelines.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/pipelines.png",
+        "bytes": 88909,
+        "sha256": "8fa960b2f6bace284d71bc0d0ddfaae08de1525614b166749058a8536b93fa3d",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/pipelines.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/pipelines.capture.log",
+        "replay": "results/logs/pipelines.replay.log",
+        "reference": "results/logs/pipelines.reference.log"
+      }
+    },
+    {
+      "example": "pipelinestatistics",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/pipelinestatistics_frame1.rdc",
+        "bytes": 1601561,
+        "sha256": "34e588ccc0337030fb98c807d8bd2aac53a66c004c69f9d7e44382528fabd7c8",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/pipelinestatistics_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/pipelinestatistics.png",
+        "bytes": 67969,
+        "sha256": "f89e48c833f62f32a4fdd3c9b058dee1ec6d6b9ff66a4769a988461a7966269c",
+        "release_asset_name": "pipelinestatistics.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/pipelinestatistics.png",
+        "bytes": 62603,
+        "sha256": "3f76c4488d493b6c7984d7ea22d1234d69e0a4744f9f62a15cf84b6e9432c19d",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/pipelinestatistics.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/pipelinestatistics.capture.log",
+        "replay": "results/logs/pipelinestatistics.replay.log",
+        "reference": "results/logs/pipelinestatistics.reference.log"
+      }
+    },
+    {
+      "example": "pushconstants",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/pushconstants_frame1.rdc",
+        "bytes": 212362,
+        "sha256": "62296bc41cc78b7ac3e2491c738e244a9ffb36cf7034cf7105b3a4fa5fdf3ac7",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/pushconstants_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/pushconstants.png",
+        "bytes": 11414,
+        "sha256": "42b4c39410756837ae58415c531a3d5c43a9508cce2edaf4800a0f07162e7c2f",
+        "release_asset_name": "pushconstants.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/pushconstants.png",
+        "bytes": 9122,
+        "sha256": "952ab0c46dbdd0f7a3e3398130b7c94ddf1dcf8e6f3adb4f5f934fd615f68793",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/pushconstants.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/pushconstants.capture.log",
+        "replay": "results/logs/pushconstants.replay.log",
+        "reference": "results/logs/pushconstants.reference.log"
+      }
+    },
+    {
+      "example": "pushdescriptors",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/pushdescriptors_frame1.rdc",
+        "bytes": 2937364,
+        "sha256": "8de723321a1513f99402878ee10672c19a88dd8a2f313cc374f164d30c5b0a9d",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/pushdescriptors_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/pushdescriptors.png",
+        "bytes": 204360,
+        "sha256": "aa7599f9bf7d4bb3bcfd4999b638ddf93b60a01a2f5b44ea9ea09eae57157aeb",
+        "release_asset_name": "pushdescriptors.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/pushdescriptors.png",
+        "bytes": 177784,
+        "sha256": "dfad711ae24d92de518efea1061c7e4dad8eaee4bdd612c5c9c9e2cd8444207b",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/pushdescriptors.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/pushdescriptors.capture.log",
+        "replay": "results/logs/pushdescriptors.replay.log",
+        "reference": "results/logs/pushdescriptors.reference.log"
+      }
+    },
+    {
+      "example": "radialblur",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/radialblur_frame1.rdc",
+        "bytes": 404486,
+        "sha256": "b94d20e6958d5f7a100d769bfbbaa7e689ec7b524d14d8d54ba48e544ab8ea9f",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/radialblur_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/radialblur.png",
+        "bytes": 86343,
+        "sha256": "ef290dceeba973a48db80eaa29621f9646f7ec9ab6b642286175dd4c28c6a86b",
+        "release_asset_name": "radialblur.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/radialblur.png",
+        "bytes": 76381,
+        "sha256": "3d9dfc42f5a282a8db3bd3cd74b8f721f833caaa0c9e4d4817614806f6e0016e",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/radialblur.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/radialblur.capture.log",
+        "replay": "results/logs/radialblur.replay.log",
+        "reference": "results/logs/radialblur.reference.log"
+      }
+    },
+    {
+      "example": "rayquery",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/rayquery_frame1.rdc",
+        "bytes": 8225343,
+        "sha256": "537618a5ed10373598b01b8e65836fe8cc7861b494fd82fce0558190c22b8596",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/rayquery_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/rayquery.png",
+        "bytes": 50243,
+        "sha256": "0ebc0d84dba91e4146e105f14580ce93401413bfef61062cf064e797125d46ca",
+        "release_asset_name": "rayquery.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/rayquery.png",
+        "bytes": 46003,
+        "sha256": "267982e31a1f8aa455e8c76c5d00d82827db68b14c1ff5dd8a3fc4d28a47c701",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/rayquery.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/rayquery.capture.log",
+        "replay": "results/logs/rayquery.replay.log",
+        "reference": "results/logs/rayquery.reference.log"
+      }
+    },
+    {
+      "example": "raytracingbasic",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/raytracingbasic_frame1.rdc",
+        "bytes": 163922,
+        "sha256": "7e51f3ed399ebdf056d58e55acac4b5c1ce15822fa8c1ab25cf60eacc361f08f",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/raytracingbasic_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/raytracingbasic.png",
+        "bytes": 15913,
+        "sha256": "25ae03a0dd5c1e2ed4ef883f4b46fe025218db47fe336a87d43b77fc18161320",
+        "release_asset_name": "raytracingbasic.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/raytracingbasic.png",
+        "bytes": 13243,
+        "sha256": "9edd1f4af2e2aa53b9d13ca1124e55694df06e95115bf27342008ffb477cc93e",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/raytracingbasic.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/raytracingbasic.capture.log",
+        "replay": "results/logs/raytracingbasic.replay.log",
+        "reference": "results/logs/raytracingbasic.reference.log"
+      }
+    },
+    {
+      "example": "raytracingcallable",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/raytracingcallable_frame1.rdc",
+        "bytes": 38740,
+        "sha256": "29e1a1d4ce74f6267b13b18da84bd1a0e765bf6a8186fb2f91240cd6750148fc",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/raytracingcallable_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/raytracingcallable.png",
+        "bytes": 10053,
+        "sha256": "f2b30572b8e323911cdd98dce11d13b5dbc717003a4b74f88d7b81836298e469",
+        "release_asset_name": "raytracingcallable.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/raytracingcallable.png",
+        "bytes": 7829,
+        "sha256": "fa955eb14a45151a1e35e2144e0ad98b9fa82ca6c0cd2bd780890c907784dce5",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/raytracingcallable.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/raytracingcallable.capture.log",
+        "replay": "results/logs/raytracingcallable.replay.log",
+        "reference": "results/logs/raytracingcallable.reference.log"
+      }
+    },
+    {
+      "example": "raytracinggltf",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/raytracinggltf_frame1.rdc",
+        "bytes": 179281688,
+        "sha256": "32693ff0f49484d687d1c8d9052e7b336831efc80d8a59349a6a79ea92a00f46",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/raytracinggltf_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/raytracinggltf.png",
+        "bytes": 56327,
+        "sha256": "dd5fcca4692ce2f32c6c48f39c561fff4cc66b938d5627cb27373bb703ae4028",
+        "release_asset_name": "raytracinggltf.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/raytracinggltf.png",
+        "bytes": 47600,
+        "sha256": "7ca180efabd9cf0e24ff117974a74998fdd6fb1573f83c1d10151e690ecabc3a",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/raytracinggltf.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/raytracinggltf.capture.log",
+        "replay": "results/logs/raytracinggltf.replay.log",
+        "reference": "results/logs/raytracinggltf.reference.log"
+      }
+    },
+    {
+      "example": "raytracingintersection",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/raytracingintersection_frame1.rdc",
+        "bytes": 467765,
+        "sha256": "0ffa5db3a657f83472ba6660e3a2825680d1c20a0c6a5ca1eeec92d0209c2253",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/raytracingintersection_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/raytracingintersection.png",
+        "bytes": 108415,
+        "sha256": "3fb1af734c07ff6ad683c87d6b0a39a45398ff6e4e5794e4ca354b36ca1aa5a4",
+        "release_asset_name": "raytracingintersection.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/raytracingintersection.png",
+        "bytes": 93146,
+        "sha256": "6c850516ae3bf0e70a5a31af3d511958d42b0c7219f00855c8899c253c4f1c9c",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/raytracingintersection.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/raytracingintersection.capture.log",
+        "replay": "results/logs/raytracingintersection.replay.log",
+        "reference": "results/logs/raytracingintersection.reference.log"
+      }
+    },
+    {
+      "example": "raytracingpositionfetch",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/raytracingpositionfetch_frame1.rdc",
+        "bytes": 1125705,
+        "sha256": "ecbd0ee6f059005d67a5481502daa0613d2561b70dcd9fbaeaa0cc6be71c5b8f",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/raytracingpositionfetch_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/raytracingpositionfetch.png",
+        "bytes": 35621,
+        "sha256": "c48fc2f72e9dd42052ba82d5026e92ac0173e72671f9a3eed4ff058702faa3ff",
+        "release_asset_name": "raytracingpositionfetch.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/raytracingpositionfetch.png",
+        "bytes": 32397,
+        "sha256": "7336590b8f70b1a2074d7273f6475719ff84f378c75741e355c10f75320cae17",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/raytracingpositionfetch.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/raytracingpositionfetch.capture.log",
+        "replay": "results/logs/raytracingpositionfetch.replay.log",
+        "reference": "results/logs/raytracingpositionfetch.reference.log"
+      }
+    },
+    {
+      "example": "raytracingreflections",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/raytracingreflections_frame1.rdc",
+        "bytes": 11000811,
+        "sha256": "286443d320ea42ed39d24b77922682f0fc47bec0d1ee18dad1d2b82ce64b93f5",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/raytracingreflections_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/raytracingreflections.png",
+        "bytes": 77255,
+        "sha256": "c4a355b87782240fb1ceee51ab67ab21e3c38280c35c802a51c759762fe17ea9",
+        "release_asset_name": "raytracingreflections.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/raytracingreflections.png",
+        "bytes": 70380,
+        "sha256": "8c3249d4b778ea0cec7b97c1892b6fba4e407ecfdf61762753afcd062e759423",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/raytracingreflections.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/raytracingreflections.capture.log",
+        "replay": "results/logs/raytracingreflections.replay.log",
+        "reference": "results/logs/raytracingreflections.reference.log"
+      }
+    },
+    {
+      "example": "raytracingsbtdata",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/raytracingsbtdata_frame1.rdc",
+        "bytes": 38951,
+        "sha256": "4ef543b1c2a9a90c40e44d642cbf11deb3e3bcc2b9f73172f490a0fb349dd553",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/raytracingsbtdata_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/raytracingsbtdata.png",
+        "bytes": 10602,
+        "sha256": "ef801bbd17a0c5a841dfeae4e78c6bbee0a94c6676154d53a493a3aced948379",
+        "release_asset_name": "raytracingsbtdata.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/raytracingsbtdata.png",
+        "bytes": 8237,
+        "sha256": "18cc9a6f81a642270840e0e541ac2cd1b553f136ae8474cf6a2cc9e046d05a32",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/raytracingsbtdata.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/raytracingsbtdata.capture.log",
+        "replay": "results/logs/raytracingsbtdata.replay.log",
+        "reference": "results/logs/raytracingsbtdata.reference.log"
+      }
+    },
+    {
+      "example": "raytracingshadows",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/raytracingshadows_frame1.rdc",
+        "bytes": 8177543,
+        "sha256": "fd77941a397d56e1ca1efca52df2b6049dfcc405a1b67b62b846785d44aab2db",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/raytracingshadows_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/raytracingshadows.png",
+        "bytes": 48576,
+        "sha256": "cfed51fb36836919f1603205cdd46ddbb90e73fa31e21835ce85d8b91fbbf888",
+        "release_asset_name": "raytracingshadows.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/raytracingshadows.png",
+        "bytes": 44363,
+        "sha256": "0c5c4a249f3d074273167d9ab99fe018b3e55554af3c2afe39cc1a32f3d6c457",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/raytracingshadows.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/raytracingshadows.capture.log",
+        "replay": "results/logs/raytracingshadows.replay.log",
+        "reference": "results/logs/raytracingshadows.reference.log"
+      }
+    },
+    {
+      "example": "raytracingtextures",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/raytracingtextures_frame1.rdc",
+        "bytes": 6032986,
+        "sha256": "d26d6b08d375fc96ea80edc9d0141b0fe625b4e14fcd932858cfcf9f78987de9",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/raytracingtextures_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/raytracingtextures.png",
+        "bytes": 280185,
+        "sha256": "6a0c750108d8da8298580228694bb6d332778261b0ef54a43442f31b8d522b6c",
+        "release_asset_name": "raytracingtextures.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/raytracingtextures.png",
+        "bytes": 239885,
+        "sha256": "6a34aaa42973b2d9b401194b7f926dfa2201fc56413a9e155764fe5bb909ac3c",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/raytracingtextures.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/raytracingtextures.capture.log",
+        "replay": "results/logs/raytracingtextures.replay.log",
+        "reference": "results/logs/raytracingtextures.reference.log"
+      }
+    },
+    {
+      "example": "renderheadless",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/renderheadless_capture.rdc",
+        "bytes": 1589556,
+        "sha256": "9dd0944d77fa58d54c1be528f9ba7f8e4f07326b88dc0f6bb53ba189bc7c3be6",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/renderheadless_capture.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/renderheadless.png",
+        "bytes": 110945,
+        "sha256": "c5036a7e4ac89ea3bb100d50dbc815e47184b95a0ca9473904543388170189d8",
+        "release_asset_name": "renderheadless.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/renderheadless.ppm",
+        "bytes": 3145745,
+        "sha256": "5a66a675b527ec43ef9f96eef127f76677aff29549dbd297659427dd2d24c75e",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/renderheadless.ppm",
+        "published_to_git": false
+      },
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "log_paths": {
+        "capture": "results/logs/renderheadless.capture.log",
+        "replay": "results/logs/renderheadless.replay.log",
+        "reference": "results/logs/renderheadless.reference.log"
+      }
+    },
+    {
+      "example": "screenshot",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/screenshot_frame1.rdc",
+        "bytes": 2750225,
+        "sha256": "92e481724d8738ed6e172136b4188a3ade306ba1675df9c50ad1367cebd6c4b0",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/screenshot_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/screenshot.png",
+        "bytes": 119793,
+        "sha256": "89dbabd48f40a06828d31ba3d543fd3aa66b32bd5e5c5c378eade87e1542ed67",
+        "release_asset_name": "screenshot.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/screenshot.png",
+        "bytes": 103926,
+        "sha256": "4fd8b137637af5d96b81e88409941c2be6bb6a4f9b1430ef04bf2d723ff1fc3b",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/screenshot.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/screenshot.capture.log",
+        "replay": "results/logs/screenshot.replay.log",
+        "reference": "results/logs/screenshot.reference.log"
+      }
+    },
+    {
+      "example": "shaderobjects",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/shaderobjects_frame1.rdc",
+        "bytes": 900345,
+        "sha256": "1a46af65f14e1b2a3a54f66da59f391e7a5d96c673252bbe202e53bfd30c9b7e",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/shaderobjects_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/shaderobjects.png",
+        "bytes": 111786,
+        "sha256": "ff8b926be9bb13cb07238019a11cc3707223e5cdfcb8a8d9004899b120ecc2e6",
+        "release_asset_name": "shaderobjects.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/shaderobjects.png",
+        "bytes": 98957,
+        "sha256": "2fd0d40fa1b407cb2e9a936e663356adb16de1055c535834cc1e4bead0c2488b",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/shaderobjects.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/shaderobjects.capture.log",
+        "replay": "results/logs/shaderobjects.replay.log",
+        "reference": "results/logs/shaderobjects.reference.log"
+      }
+    },
+    {
+      "example": "shadowmapping",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/shadowmapping_frame1.rdc",
+        "bytes": 1648667,
+        "sha256": "61ed6a261b8117b9e676470fbb8b7a3a80ca9b6e9b0f79224c27ac8028835ef8",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/shadowmapping_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/shadowmapping.png",
+        "bytes": 48890,
+        "sha256": "e0d3c924c724375eba8a6eb36f182f4e9c1b87c7006161fa615f664ae18e99c2",
+        "release_asset_name": "shadowmapping.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/shadowmapping.png",
+        "bytes": 44829,
+        "sha256": "9ffef789645677e21a896e63df292fe4c795210ab0c179142de3296ff3f8113e",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/shadowmapping.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/shadowmapping.capture.log",
+        "replay": "results/logs/shadowmapping.replay.log",
+        "reference": "results/logs/shadowmapping.reference.log"
+      }
+    },
+    {
+      "example": "shadowmappingcascade",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/shadowmappingcascade_frame1.rdc",
+        "bytes": 152629004,
+        "sha256": "aea4d06127375d0115bb05cd1ae3e81594f4599d194722808ef7c6efc9080bb6",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/shadowmappingcascade_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/shadowmappingcascade.png",
+        "bytes": 454273,
+        "sha256": "0bb12b7a24f5a5fad427839b4bd4c100658a9c4910c32c4049f108778c1e5f2d",
+        "release_asset_name": "shadowmappingcascade.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/shadowmappingcascade.png",
+        "bytes": 347066,
+        "sha256": "9ba6b0410542f17d180e207d1cc588b329303349f44904f15fe9482f5a2f3c89",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/shadowmappingcascade.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/shadowmappingcascade.capture.log",
+        "replay": "results/logs/shadowmappingcascade.replay.log",
+        "reference": "results/logs/shadowmappingcascade.reference.log"
+      }
+    },
+    {
+      "example": "shadowmappingomni",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/shadowmappingomni_frame1.rdc",
+        "bytes": 16003359,
+        "sha256": "cdacaa633ba839df60b5e75b754970057bfcee76423e1c81305cafe798014ac9",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/shadowmappingomni_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/shadowmappingomni.png",
+        "bytes": 107216,
+        "sha256": "1e3b60453f963abf6a98bf7bbc3f7e7297009ed5d2b135a264f03db42a82888b",
+        "release_asset_name": "shadowmappingomni.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/shadowmappingomni.png",
+        "bytes": 91535,
+        "sha256": "e7294aa713117928ab0c616986a33772edf42c8bafd9251c27cf04ef121b8c9d",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/shadowmappingomni.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/shadowmappingomni.capture.log",
+        "replay": "results/logs/shadowmappingomni.replay.log",
+        "reference": "results/logs/shadowmappingomni.reference.log"
+      }
+    },
+    {
+      "example": "specializationconstants",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/specializationconstants_frame1.rdc",
+        "bytes": 2126879,
+        "sha256": "646c3cbd83407459e092aaef2fd64b5745634db1427ab52242e7d139bc70918b",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/specializationconstants_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/specializationconstants.png",
+        "bytes": 55279,
+        "sha256": "a83ca1c0653bee39f2af977a30ee885cb8c56549ab28f08e5c38884aa3548493",
+        "release_asset_name": "specializationconstants.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/specializationconstants.png",
+        "bytes": 48111,
+        "sha256": "03a91b05bbcb8627a8b56b5eb2e0f79a3c0b1a675f202c8405324c3ce8025450",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/specializationconstants.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/specializationconstants.capture.log",
+        "replay": "results/logs/specializationconstants.replay.log",
+        "reference": "results/logs/specializationconstants.reference.log"
+      }
+    },
+    {
+      "example": "sphericalenvmapping",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/sphericalenvmapping_frame1.rdc",
+        "bytes": 3808201,
+        "sha256": "0973ccc3b8bdb650870df1daf5c256e4343c29d49e724ce7071498327124dd8f",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/sphericalenvmapping_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/sphericalenvmapping.png",
+        "bytes": 119942,
+        "sha256": "608618f98f4b7683ef14d93f39e1d7167683ad0b3c8580c1d7ec7f74a6d05dac",
+        "release_asset_name": "sphericalenvmapping.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/sphericalenvmapping.png",
+        "bytes": 102113,
+        "sha256": "6c9bf0f7483b24cc7ef72e171026727f9dd15e577919b8d0aceeb511f7326bf8",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/sphericalenvmapping.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/sphericalenvmapping.capture.log",
+        "replay": "results/logs/sphericalenvmapping.replay.log",
+        "reference": "results/logs/sphericalenvmapping.reference.log"
+      }
+    },
+    {
+      "example": "ssao",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/ssao_frame1.rdc",
+        "bytes": 137759528,
+        "sha256": "07ecdeefd54e752b607713231f1da7f419842287238e8b86106292386c4b8a14",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/ssao_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/ssao.png",
+        "bytes": 601521,
+        "sha256": "582879890b54a8193fa6de8fa5307d24ade9c34a6d5a1b19fe96d6f134daff4a",
+        "release_asset_name": "ssao.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/ssao.png",
+        "bytes": 526311,
+        "sha256": "cde51880e96b10f81453956b854ea8d988f5ce545f7a74d2a888ef78de91609d",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/ssao.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/ssao.capture.log",
+        "replay": "results/logs/ssao.replay.log",
+        "reference": "results/logs/ssao.reference.log"
+      }
+    },
+    {
+      "example": "stencilbuffer",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/stencilbuffer_frame1.rdc",
+        "bytes": 1510174,
+        "sha256": "1502f82585d34cece49a6f1bb85b9d53333e9f7e0291cabf8a41ef6ee41899b3",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/stencilbuffer_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/stencilbuffer.png",
+        "bytes": 16419,
+        "sha256": "85e60d81d8ce0e25297ac8825a3971ac950ed59d6c08de7aa42652e32e4a0cdb",
+        "release_asset_name": "stencilbuffer.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/stencilbuffer.png",
+        "bytes": 13944,
+        "sha256": "bed60b97c36948edb93d729c2da506e23936ca978aa8e8d18834f5c0ad507585",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/stencilbuffer.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/stencilbuffer.capture.log",
+        "replay": "results/logs/stencilbuffer.replay.log",
+        "reference": "results/logs/stencilbuffer.reference.log"
+      }
+    },
+    {
+      "example": "subpasses",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/subpasses_frame1.rdc",
+        "bytes": 4396603,
+        "sha256": "f987b037f0108b87d562bf5d05b2d30349956be6b1b603b315535e8c7f004bce",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/subpasses_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/subpasses.png",
+        "bytes": 201688,
+        "sha256": "2d6d2619e42eb882609d0869f39f9baedf6d5c54b41f9c6f9244c2b997571b68",
+        "release_asset_name": "subpasses.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/subpasses.png",
+        "bytes": 168418,
+        "sha256": "ee2bcceb0c8c72f0670cd4632c23cde9bcfe13fb318f6237dd7645f3a5cdc4a2",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/subpasses.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/subpasses.capture.log",
+        "replay": "results/logs/subpasses.replay.log",
+        "reference": "results/logs/subpasses.reference.log"
+      }
+    },
+    {
+      "example": "terraintessellation",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/terraintessellation_frame1.rdc",
+        "bytes": 10603266,
+        "sha256": "adc6836398493ffde5a6d885e4ffa337e4cbbb183cef00c222241efebd3f5fdd",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/terraintessellation_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/terraintessellation.png",
+        "bytes": 439836,
+        "sha256": "f8fa07175cdb6f145ade899923c92a6cc97e154e1ee780a45acef690002e4db9",
+        "release_asset_name": "terraintessellation.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/terraintessellation.png",
+        "bytes": 372019,
+        "sha256": "bd021ff15600109c0b5c82547947c62487d46232ae1382911fc32353125c2353",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/terraintessellation.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/terraintessellation.capture.log",
+        "replay": "results/logs/terraintessellation.replay.log",
+        "reference": "results/logs/terraintessellation.reference.log"
+      }
+    },
+    {
+      "example": "tessellation",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/tessellation_frame1.rdc",
+        "bytes": 3230104,
+        "sha256": "73de1c2c2721eaf89a02d79147fe6bce7b536277d3a7624a3deb82ef3bbed187",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/tessellation_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/tessellation.png",
+        "bytes": 163456,
+        "sha256": "3e25e45e003c4ebac8d6eb7ddcef9b68bfd665d74928c538df9906de669b2ffa",
+        "release_asset_name": "tessellation.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/tessellation.png",
+        "bytes": 141454,
+        "sha256": "ddbe3f944f00d234a97a68349dceb14afa11cbaa0a1728641876a585937384ca",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/tessellation.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/tessellation.capture.log",
+        "replay": "results/logs/tessellation.replay.log",
+        "reference": "results/logs/tessellation.reference.log"
+      }
+    },
+    {
+      "example": "textoverlay",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/textoverlay_frame1.rdc",
+        "bytes": 408887,
+        "sha256": "640f93a30cbbec49914fafeef95c034fb6bb82dbccf75502de5d2f06c90de6e3",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/textoverlay_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/textoverlay.png",
+        "bytes": 90073,
+        "sha256": "a7ca3145536b92ec28cc53798ab798ff889ef272c0c1aa2e76d58bf02a8fa883",
+        "release_asset_name": "textoverlay.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/textoverlay.png",
+        "bytes": 72776,
+        "sha256": "4a97fd7c4c71b81d9fdea816789406c1cf330c5b6f09f6605ddd642417ca92f2",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/textoverlay.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/textoverlay.capture.log",
+        "replay": "results/logs/textoverlay.replay.log",
+        "reference": "results/logs/textoverlay.reference.log"
+      }
+    },
+    {
+      "example": "texture",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/texture_frame1.rdc",
+        "bytes": 1483655,
+        "sha256": "844f7c14d55e8690b9e80b5fd3cf17dde012a3a6b4fb248f8d0295de375db87d",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/texture_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/texture.png",
+        "bytes": 167238,
+        "sha256": "3fca397db6b9fad9d0cf5f675861aa653240d7c6ef4c3e9a9b78bcc1064f791e",
+        "release_asset_name": "texture.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/texture.png",
+        "bytes": 144330,
+        "sha256": "224600e2e6a57c725ceffdb3e324b2f8641895c976c6f72362783f59f0685add",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/texture.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/texture.capture.log",
+        "replay": "results/logs/texture.replay.log",
+        "reference": "results/logs/texture.reference.log"
+      }
+    },
+    {
+      "example": "texture3d",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/texture3d_frame1.rdc",
+        "bytes": 2204605,
+        "sha256": "f02054835352c9529d5b6bfaaf9936d7528a072fa31c9a8406036c53bef22cf8",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/texture3d_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/texture3d.png",
+        "bytes": 71205,
+        "sha256": "f8afd09f71a4f4457aaae7bd6bad465f6c89e24c51b177cbbeda1188b79640ac",
+        "release_asset_name": "texture3d.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/texture3d.png",
+        "bytes": 66867,
+        "sha256": "25f68729a77820dd33f320923e8ddb5b2a914212a16f2b3cdafb41367f22e548",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/texture3d.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/texture3d.capture.log",
+        "replay": "results/logs/texture3d.replay.log",
+        "reference": "results/logs/texture3d.reference.log"
+      }
+    },
+    {
+      "example": "texturearray",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/texturearray_frame1.rdc",
+        "bytes": 1313023,
+        "sha256": "c0fe04b09297567efb92917a5eca40ce103e0a16f90bad4256b5e74b7e027c8e",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/texturearray_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/texturearray.png",
+        "bytes": 150972,
+        "sha256": "90784dbb8845a8a297fc41d64d7f3cf9cdf7cbda7d1b68ec733c907388da7129",
+        "release_asset_name": "texturearray.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/texturearray.png",
+        "bytes": 128013,
+        "sha256": "0290b632a0008573e54ee6e32a50ff29a1ea05be647c9f7567cd6c1c1ea660e9",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/texturearray.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/texturearray.capture.log",
+        "replay": "results/logs/texturearray.replay.log",
+        "reference": "results/logs/texturearray.reference.log"
+      }
+    },
+    {
+      "example": "texturecubemap",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/texturecubemap_frame1.rdc",
+        "bytes": 7986665,
+        "sha256": "320bb10c0c558701e536bd67be2810c53cb3f389de7e042b2bc0c44a2e4cb999",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/texturecubemap_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/texturecubemap.png",
+        "bytes": 465159,
+        "sha256": "53aef73806a169d6697e494f203d975e68c6ca747f402e402e2ed4b042686dfe",
+        "release_asset_name": "texturecubemap.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/texturecubemap.png",
+        "bytes": 398195,
+        "sha256": "5cd55225f1426019a95a1d9c0f5a93cef662689e136d791343a9cc1e8b132764",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/texturecubemap.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/texturecubemap.capture.log",
+        "replay": "results/logs/texturecubemap.replay.log",
+        "reference": "results/logs/texturecubemap.reference.log"
+      }
+    },
+    {
+      "example": "texturecubemaparray",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/texturecubemaparray_frame1.rdc",
+        "bytes": 5632280,
+        "sha256": "e972566c6fafd2774eae283226436aa34daeb9de25d52262173f15c4f204ba7f",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/texturecubemaparray_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/texturecubemaparray.png",
+        "bytes": 403482,
+        "sha256": "024b5f0de480782b41ae36a1764398c4cf97a0ab55c9f505d158e207ab248ccc",
+        "release_asset_name": "texturecubemaparray.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/texturecubemaparray.png",
+        "bytes": 352027,
+        "sha256": "9fe553cd776ac7c8610a52646ddd79358dc1d2beab8dfbc635dfa9280c95c51c",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/texturecubemaparray.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/texturecubemaparray.capture.log",
+        "replay": "results/logs/texturecubemaparray.replay.log",
+        "reference": "results/logs/texturecubemaparray.reference.log"
+      }
+    },
+    {
+      "example": "texturemipmapgen",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/texturemipmapgen_frame1.rdc",
+        "bytes": 2826477,
+        "sha256": "5d4750743fc58bee463df705bd9c3c7a88e7765e9ecb2df8b71c76505aac5e62",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/texturemipmapgen_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/texturemipmapgen.png",
+        "bytes": 590980,
+        "sha256": "6bb3b421a13aa41976ea0222c5c6cb5033a7b3ff3f927655bba762c5193be386",
+        "release_asset_name": "texturemipmapgen.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/texturemipmapgen.png",
+        "bytes": 522859,
+        "sha256": "ed6895f6eac61f09251b36edc29b672b6ae9fbdfbe9740503d9ff6bcf80b870f",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/texturemipmapgen.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/texturemipmapgen.capture.log",
+        "replay": "results/logs/texturemipmapgen.replay.log",
+        "reference": "results/logs/texturemipmapgen.reference.log"
+      }
+    },
+    {
+      "example": "texturesparseresidency",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/texturesparseresidency_frame1.rdc",
+        "bytes": 377270,
+        "sha256": "8b261119d60bd40113313cd04c9763c96cb271b62202990588d97b67161ccdf0",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/texturesparseresidency_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/texturesparseresidency.png",
+        "bytes": 9434,
+        "sha256": "c6f3c309f91604e88043686466b7b777160bcad270bd6a1e70bb003452cf1c0a",
+        "release_asset_name": "texturesparseresidency.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/texturesparseresidency.png",
+        "bytes": 7242,
+        "sha256": "6983413e5b2dde4a829773c5e4fe331f344e394e7f613dc29d6cb2c11fd661c6",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/texturesparseresidency.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/texturesparseresidency.capture.log",
+        "replay": "results/logs/texturesparseresidency.replay.log",
+        "reference": "results/logs/texturesparseresidency.reference.log"
+      }
+    },
+    {
+      "example": "timelinesemaphore",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/timelinesemaphore_frame1.rdc",
+        "bytes": 926686,
+        "sha256": "633721b531e069743cad2eb337ce91954d29e7d9be2c892b09ae1997addf15a3",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/timelinesemaphore_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/timelinesemaphore.png",
+        "bytes": 109517,
+        "sha256": "36e3d5cfafb063cf25f9ac74ade3a91cf375ca3f66b288528828157e48e4ca3e",
+        "release_asset_name": "timelinesemaphore.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/timelinesemaphore.png",
+        "bytes": 94099,
+        "sha256": "524d56d19d00f016401a898180656733f586e484c177f49e4d74da1d1065d2b4",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/timelinesemaphore.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/timelinesemaphore.capture.log",
+        "replay": "results/logs/timelinesemaphore.replay.log",
+        "reference": "results/logs/timelinesemaphore.reference.log"
+      }
+    },
+    {
+      "example": "triangle",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/triangle_frame1.rdc",
+        "bytes": 36102,
+        "sha256": "fb2691ab847aee3c4f59e683b837a57e14fd4a281099068481b8cf40ebf9bb93",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/triangle_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/triangle.png",
+        "bytes": 15980,
+        "sha256": "c2a2fb171b0a3d3ae5c8ded83e6e6d093e03d20f86c7e3b57fa45b84ca584b24",
+        "release_asset_name": "triangle.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/triangle.png",
+        "bytes": 13243,
+        "sha256": "9edd1f4af2e2aa53b9d13ca1124e55694df06e95115bf27342008ffb477cc93e",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/triangle.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/triangle.capture.log",
+        "replay": "results/logs/triangle.replay.log",
+        "reference": "results/logs/triangle.reference.log"
+      }
+    },
+    {
+      "example": "trianglevulkan13",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/trianglevulkan13_frame1.rdc",
+        "bytes": 36453,
+        "sha256": "65b668d4e8c1bb4d11cb3152d46cf71ce7abfb67a63f2d806a4580cef3906b30",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/trianglevulkan13_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/trianglevulkan13.png",
+        "bytes": 16035,
+        "sha256": "2b6b6a757804f81583c609edbd78b1bb6efbabcfd517662b00eaf37612c6ca6d",
+        "release_asset_name": "trianglevulkan13.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/trianglevulkan13.png",
+        "bytes": 13243,
+        "sha256": "9edd1f4af2e2aa53b9d13ca1124e55694df06e95115bf27342008ffb477cc93e",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/trianglevulkan13.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/trianglevulkan13.capture.log",
+        "replay": "results/logs/trianglevulkan13.replay.log",
+        "reference": "results/logs/trianglevulkan13.reference.log"
+      }
+    },
+    {
+      "example": "variablerateshading",
+      "status": "CAPTURE_FAILED",
+      "profile": "A",
+      "log_paths": {
+        "capture": "results/logs/variablerateshading.capture.log"
+      }
+    },
+    {
+      "example": "vertexattributes",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/vertexattributes_frame1.rdc",
+        "bytes": 234790525,
+        "sha256": "6be5f1268e4bd087de2b5c12970925abb631f9c22e93d034e7dc80ecd08e8666",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/vertexattributes_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/vertexattributes.png",
+        "bytes": 646615,
+        "sha256": "fa2b75a84c5f214131027467777beddb44903f8e182bf17a795b4295bfe2522d",
+        "release_asset_name": "vertexattributes.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/vertexattributes.png",
+        "bytes": 548952,
+        "sha256": "27a8ab75d0d03f23a2a14ea79ab8031743c5768944801fc9f00c6a0a5447d8ec",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/vertexattributes.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/vertexattributes.capture.log",
+        "replay": "results/logs/vertexattributes.replay.log",
+        "reference": "results/logs/vertexattributes.reference.log"
+      }
+    },
+    {
+      "example": "viewportarray",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/viewportarray_frame1.rdc",
+        "bytes": 302965,
+        "sha256": "f2f30cf825a7704731662f7e43420db7e5307e5c278ec768991863523663b6ba",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/viewportarray_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/viewportarray.png",
+        "bytes": 79885,
+        "sha256": "6689f6e8495e35729250e0eebdc08dc9cac664b352e8914fe71fac5c488a3176",
+        "release_asset_name": "viewportarray.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/viewportarray.png",
+        "bytes": 74127,
+        "sha256": "7c74ee6750319d81766081fdd3b85ce7ef75e8388f6109bc8376d4a3b1c6eb22",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/viewportarray.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/viewportarray.capture.log",
+        "replay": "results/logs/viewportarray.replay.log",
+        "reference": "results/logs/viewportarray.reference.log"
+      }
+    },
+    {
+      "example": "vulkanscene",
+      "status": "REPLAYED_PNG",
+      "profile": "A",
+      "capture": {
+        "workspace_path": "/workspace/verified-batch/captures/vulkanscene_frame1.rdc",
+        "bytes": 15096112,
+        "sha256": "5a37567339a20cfa0b0b2178e3d636fe4338aa0e2f960dfd264e7156bad83c4a",
+        "published_to_git": false,
+        "release_archive": "vulkan_verified_captures.tar.gz",
+        "archive_member": "captures/vulkanscene_frame1.rdc"
+      },
+      "png": {
+        "workspace_path": "/workspace/verified-batch/png/vulkanscene.png",
+        "bytes": 269809,
+        "sha256": "d9c1a3c26cfe4f8a46105f23c88a91b01f9cf748b72f4212a2288e945c36fc45",
+        "release_asset_name": "vulkanscene.png",
+        "published_to_git": false
+      },
+      "reference": {
+        "workspace_path": "/workspace/verified-batch/reference/vulkanscene.png",
+        "bytes": 239989,
+        "sha256": "2b23ca2d7a0cabff629e64c7d03acff303761ac4aa9237ec2fbafcf550027018",
+        "release_archive": "vulkan_verified_references.zip",
+        "archive_member": "reference/vulkanscene.png",
+        "published_to_git": false
+      },
+      "dimensions": [
+        640,
+        360
+      ],
+      "log_paths": {
+        "capture": "results/logs/vulkanscene.capture.log",
+        "replay": "results/logs/vulkanscene.replay.log",
+        "reference": "results/logs/vulkanscene.reference.log"
+      }
+    }
+  ]
+}

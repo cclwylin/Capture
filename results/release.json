@@ -1,0 +1,19 @@
+{
+  "repository": "cclwylin/Capture",
+  "tag": "vulkan-lavapipe-2026-10-19",
+  "status": "prepared",
+  "url": null,
+  "download_base": null,
+  "counts": {"captures": 96, "replay_pngs": 95, "references": 95},
+  "blocker": null,
+  "planned_assets": [
+    "vulkan_verified_captures.tar.gz",
+    "vulkan_verified_pngs.zip",
+    "vulkan_verified_references.zip",
+    "vulkan_descriptor_captures.zip",
+    "lavapipe_renderdoc_fix.tar.gz",
+    "vulkan_native_verification.zip",
+    "SHA256SUMS",
+    "95 individual replay PNG files"
+  ]
+}

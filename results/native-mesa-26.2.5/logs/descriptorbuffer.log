@@ -1,0 +1,5 @@
+Benchmark finished
+device : llvmpipe (LLVM 19.1.7, 256 bits) (driver version: 109060101)
+runtime: 3.000
+frames : 2408
+fps    : 802.646

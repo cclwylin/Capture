@@ -1,0 +1,11 @@
+ninja: Entering directory `/workspace/mesa-build'
+[1/8] Generating src/git_sha1.h with a custom command
+ninja: Entering directory `/workspace/mesa-26.2.5-build'
+[1/8] Generating src/git_sha1.h with a custom command
+ninja: Entering directory `/workspace/renderdoc-build'
+ninja: no work to do.
+ninja: Entering directory `/workspace/vulkan-xcb-build'
+ninja: no work to do.
+ninja: Entering directory `/workspace/vulkan-build'
+ninja: no work to do.
+tests/noop.rgen

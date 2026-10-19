@@ -1,2 +1,9 @@
 # Unified diffs contain intentional single-space context lines.
 patches/*.patch -whitespace
+# Preserve raw tool output verbatim, including its original whitespace.
+results/logs/*.log -whitespace
+results/evidence/*.log -whitespace
+results/evidence/profile-*-vulkaninfo.txt -whitespace
+results/native-mesa-26.2.5/logs/*.log -whitespace
+results/native-mesa-26.2.5/logs/*.txt -whitespace
+results/native-mesa-26.2.5/results.tsv -whitespace

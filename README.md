@@ -1,5 +1,18 @@
 # RenderDoc replay on Mesa lavapipe
 
+完整繁體中文紀錄：[工作流程、各軟體版本、patch 套用、建置、capture/replay 與驗證結果](docs/WORKFLOW.zh-TW.md)。
+
+| 文件 / 成果 | 位置 |
+| --- | --- |
+| 實際版本、來源 commit、建置參數、執行檔 hash | [software-versions.json](results/software-versions.json) |
+| 四份修補檔 | [patches/](patches/) |
+| 99 個範例的結果與文字 log | [驗證報告](results/report.md) |
+| 95 張 replay PNG 的下載索引 | [PNG 索引](results/gallery.md) |
+| RDC / PNG 的檔案大小與 SHA-256 | [artifacts.json](results/artifacts.json) |
+| RDC / PNG Release 的發佈狀態 | [release.json](results/release.json) |
+
+二進位 RDC、PNG 與原始參考以 GitHub Release 提供；`main` 保存流程、版本、patch、helper、manifest 與文字證據。
+
 This cloud workspace now captures and replays the Sascha Willems Vulkan examples,
 including Vulkan ray tracing. PNGs are saved from the replayed texture through
 `IReplayController::SaveTexture`, rather than extracted capture thumbnails.
@@ -132,6 +145,8 @@ To recapture and verify the whole collection:
 
 ```sh
 python3 /workspace/Capture/run_batch.py --refresh
+python3 /workspace/Capture/report.py
+python3 /workspace/Capture/tools/publish_results.py
 ```
 
 The scripts use the tools and dependencies retained in `/workspace/sysroot` and

@@ -1,0 +1,19 @@
+{
+  "file_format_version": "1.1.2",
+  "layer": {
+    "name": "VK_LAYER_RENDERDOC_Capture",
+    "type": "GLOBAL",
+    "library_path": "/workspace/renderdoc-build/lib/librenderdoc.so",
+    "api_version": "1.4.324",
+    "implementation_version": "47",
+    "description": "RenderDoc capture layer",
+    "functions": {
+      "vkGetInstanceProcAddr": "VK_LAYER_RENDERDOC_CaptureGetInstanceProcAddr",
+      "vkGetDeviceProcAddr": "VK_LAYER_RENDERDOC_CaptureGetDeviceProcAddr",
+      "vkNegotiateLoaderLayerInterfaceVersion": "VK_LAYER_RENDERDOC_CaptureNegotiateLoaderLayerInterfaceVersion"
+    },
+    "pre_instance_functions": {
+      "vkEnumerateInstanceExtensionProperties": "VK_LAYER_RENDERDOC_CaptureEnumerateInstanceExtensionProperties"
+    }
+  }
+}

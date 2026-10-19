@@ -1,0 +1,14 @@
+Multiview features:
+	multiview = 1
+	multiviewGeometryShader = 1
+	multiviewTessellationShader = 1
+
+Multiview properties:
+	maxMultiviewViewCount = 6
+	maxMultiviewInstanceIndex = 2147483647
+Queued one RenderDoc frame capture at presentation boundary.
+Benchmark finished
+device : llvmpipe (LLVM 19.1.7, 256 bits) (driver version: 1)
+runtime: 0.132
+frames : 3
+fps    : 22.718

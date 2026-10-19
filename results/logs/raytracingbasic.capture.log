@@ -1,0 +1,6 @@
+Queued one RenderDoc frame capture at presentation boundary.
+Benchmark finished
+device : llvmpipe (LLVM 19.1.7, 256 bits) (driver version: 1)
+runtime: 0.035
+frames : 3
+fps    : 86.253

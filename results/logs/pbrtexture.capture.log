@@ -1,0 +1,9 @@
+Generating BRDF LUT took 450.873 ms
+Generating irradiance cube with 7 mip levels took 8436.48 ms
+Generating pre-filtered enivornment cube with 10 mip levels took 577.693 ms
+Queued one RenderDoc frame capture at presentation boundary.
+Benchmark finished
+device : llvmpipe (LLVM 19.1.7, 256 bits) (driver version: 1)
+runtime: 0.351
+frames : 3
+fps    : 8.553

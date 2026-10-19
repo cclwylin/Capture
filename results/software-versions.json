@@ -1,0 +1,386 @@
+{
+  "observed_utc": "2026-10-19T12:27:32.065754+00:00",
+  "functional_baseline_commit": "f50a9cee40f5f3ab19f3c69633608ee7a7a2d111",
+  "platform": {
+    "distribution": [
+      "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"",
+      "NAME=\"Debian GNU/Linux\"",
+      "VERSION_ID=\"13\"",
+      "VERSION=\"13 (trixie)\"",
+      "VERSION_CODENAME=trixie",
+      "DEBIAN_VERSION_FULL=13.6",
+      "ID=debian",
+      "HOME_URL=\"https://www.debian.org/\"",
+      "SUPPORT_URL=\"https://www.debian.org/support\"",
+      "BUG_REPORT_URL=\"https://bugs.debian.org/\""
+    ],
+    "architecture": "x86_64",
+    "glibc": "glibc 2.41"
+  },
+  "sources": {
+    "mesa-25": {
+      "checkout": "/workspace/mesa-graphics",
+      "version": "25.0.7",
+      "source": "https://github.com/chaotic-cx/mesa-mirror",
+      "commit": "742a20f48c59e8649533c84c4d49dd95b403f5da"
+    },
+    "mesa-26": {
+      "checkout": "/workspace/mesa-26.2.5",
+      "version": "26.2.5",
+      "source": "https://github.com/chaotic-cx/mesa-mirror",
+      "commit": "ddaf85e353442d9d7f192fdcf1823e652e3f2ee3"
+    },
+    "renderdoc": {
+      "checkout": "/workspace/renderdoc",
+      "version": "1.47 (development source, Release build)",
+      "source": "https://github.com/baldurk/renderdoc",
+      "commit": "45e91661ee457e64279ff86265abdbe214aa6be0"
+    },
+    "vulkan-examples": {
+      "checkout": "/workspace/vulkan",
+      "version": "git snapshot",
+      "source": "https://github.com/SaschaWillems/Vulkan",
+      "commit": "1cbc8d87b731b438f47dea00a2e083ba7d59051d"
+    },
+    "vulkan-assets": {
+      "checkout": "/workspace/vulkan/assets",
+      "version": "git snapshot",
+      "source": "https://github.com/SaschaWillems/Vulkan-Assets",
+      "commit": "a27c0e584434d59b7c7a714e9180eefca6f0ec4b"
+    },
+    "glm": {
+      "checkout": "/workspace/vulkan/external/glm",
+      "version": "0.9.9.0",
+      "source": "https://github.com/g-truc/glm",
+      "commit": "1ad55c5016339b83b7eec98c31007e0aee57d2bf"
+    }
+  },
+  "tools": {
+    "gcc": {
+      "command": [
+        "gcc",
+        "-dumpfullversion"
+      ],
+      "output": "14.2.0",
+      "binary": "/usr/bin/x86_64-linux-gnu-gcc-14",
+      "binary_sha256": "a23ecab8ff08f09ad8c80602c2c5df7f49e09c25905cb8975902e101bf72635f"
+    },
+    "g++": {
+      "command": [
+        "g++",
+        "-dumpfullversion"
+      ],
+      "output": "14.2.0",
+      "binary": "/usr/bin/x86_64-linux-gnu-g++-14",
+      "binary_sha256": "6b3696e4dcb85e1c949c732a02befa50e3983ecf94ce7e8e58d9d503b954b79d"
+    },
+    "cmake": {
+      "command": [
+        "cmake",
+        "--version"
+      ],
+      "output": "cmake version 3.31.6\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+      "binary": "/workspace/sysroot/usr/bin/cmake",
+      "binary_sha256": "9a2692f4d712265eb29c90c3366bfc40df400ea586b0477edabbcf3bae745dc1"
+    },
+    "ninja": {
+      "command": [
+        "ninja",
+        "--version"
+      ],
+      "output": "1.12.1",
+      "binary": "/workspace/sysroot/usr/bin/ninja",
+      "binary_sha256": "e8e646527e23aa7a66d0f04b86b89f1bb2f25edcc1c5e402a0989e5364c8779b"
+    },
+    "llvm-config-19": {
+      "command": [
+        "/workspace/sysroot/usr/bin/llvm-config-19",
+        "--version"
+      ],
+      "output": "19.1.7",
+      "binary": "/workspace/sysroot/usr/lib/llvm-19/bin/llvm-config",
+      "binary_sha256": "0ad6303a9d04d2dd21a7f7dc0aec2a2c0bbaf35b04ac5b43dc7ab48688929772"
+    },
+    "python3": {
+      "command": [
+        "python3",
+        "--version"
+      ],
+      "output": "Python 3.12.14",
+      "binary": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "binary_sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+    },
+    "meson": {
+      "command": [
+        "python3",
+        "-m",
+        "mesonbuild.mesonmain",
+        "--version"
+      ],
+      "output": "1.12.1",
+      "binary": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "binary_sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+    },
+    "pkg-config": {
+      "command": [
+        "pkg-config",
+        "--version"
+      ],
+      "output": "1.8.1",
+      "binary": "/usr/bin/pkgconf",
+      "binary_sha256": "37fdaa317c00805da16bc9c4c8de2300ad1e34511c33bf5e5170bf52c0e3a48e"
+    },
+    "bison": {
+      "command": [
+        "bison",
+        "--version"
+      ],
+      "output": "bison (GNU Bison) 3.8.2\nWritten by Robert Corbett and Richard Stallman.\n\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+      "binary": "/workspace/sysroot/usr/bin/bison",
+      "binary_sha256": "39fc36c38e29481dc3be2d08652e0564b9ea9aa297e38ed21ff0da0ff36967e8"
+    },
+    "flex": {
+      "command": [
+        "flex",
+        "--version"
+      ],
+      "output": "flex 2.6.4",
+      "binary": "/workspace/sysroot/usr/bin/flex",
+      "binary_sha256": "2f756d9099e5e926d938e916b342b36f11e209a413e2bbedee059fa4a87560bf"
+    },
+    "glslangValidator": {
+      "command": [
+        "glslangValidator",
+        "--version"
+      ],
+      "output": "Glslang Version: 11:15.2.0\nESSL Version: OpenGL ES GLSL 3.20 glslang Khronos. 15.2.0\nGLSL Version: 4.60 glslang Khronos. 15.2.0\nSPIR-V Version 0x00010600, Revision 1\nGLSL.std.450 Version 100, Revision 1\nKhronos Tool ID 8\nSPIR-V Generator Version 11\nGL_KHR_vulkan_glsl version 100\nARB_GL_gl_spirv version 100",
+      "binary": "/workspace/sysroot/usr/bin/glslang",
+      "binary_sha256": "3a4fb1feabbe3f2a61a42f067d67c0d2ee6a982ea863fb02c66b7aa271f830eb"
+    },
+    "glslc": {
+      "command": [
+        "glslc",
+        "--version"
+      ],
+      "output": "shaderc 2025.2-1\nspirv-tools 2025.1~rc1-1\nglslang 15.1.0+1.4.309.0-1\n\nTarget: SPIR-V 1.0",
+      "binary": "/workspace/sysroot/usr/bin/glslc",
+      "binary_sha256": "b8bf14977f63ecc6a4bb3a93e75648d8f12e6c973394ddb0eee1627f53f9ae4b"
+    },
+    "renderdoccmd": {
+      "command": [
+        "renderdoccmd",
+        "version"
+      ],
+      "output": "renderdoccmd x64 v1.47 built from 45e91661ee457e64279ff86265abdbe214aa6be0\nAPIs supported at compile-time: Vulkan.\nWindowing systems supported at compile-time: xlib, XCB, Vulkan KHR_display.",
+      "binary": "/workspace/renderdoc-build/bin/renderdoccmd",
+      "binary_sha256": "ab96507ba990518b5a5358e2ea3027b15912535d9fc60f6e957e29621f8b9275"
+    },
+    "gh": {
+      "command": [
+        "gh",
+        "--version"
+      ],
+      "output": "gh version 2.46.0 (2025-01-13 Debian 2.46.0-3)\nhttps://github.com/cli/cli/releases/tag/v2.46.0"
+    }
+  },
+  "python_packages": {
+    "Mako": "1.4.3",
+    "PyYAML": "6.0.3",
+    "packaging": "26.3",
+    "Pillow": "12.3.0"
+  },
+  "vulkan_loader": {
+    "library": "/usr/lib/x86_64-linux-gnu/libvulkan.so.1.4.309",
+    "instance_api_version": "1.4.309"
+  },
+  "vulkan_headers": {
+    "renderdoc": {
+      "path": "/workspace/renderdoc/renderdoc/driver/vulkan/official/vulkan_core.h",
+      "header_version": "1.4.356"
+    },
+    "vulkan-examples": {
+      "path": "/workspace/vulkan/external/vulkan/vulkan_core.h",
+      "header_version": "1.4.355"
+    },
+    "sysroot": {
+      "path": "/workspace/sysroot/usr/include/vulkan/vulkan_core.h",
+      "header_version": "1.4.309"
+    }
+  },
+  "profiles": {
+    "A": {
+      "environment_script": "env.sh",
+      "driver": "/workspace/mesa-build/src/gallium/targets/lavapipe/libvulkan_lvp.so",
+      "driver_sha256": "e565e45d30192c1806d56411ab6eea33bb6454a7204bfc4676db01259b2a3693",
+      "meson_options": {
+        "buildtype": "release",
+        "b_ndebug": "true",
+        "platforms": [
+          "x11"
+        ],
+        "gallium-drivers": [
+          "llvmpipe"
+        ],
+        "gallium-vdpau": "disabled",
+        "gallium-va": "disabled",
+        "vulkan-drivers": [
+          "swrast"
+        ],
+        "gles1": "disabled",
+        "gles2": "disabled",
+        "opengl": false,
+        "gbm": "disabled",
+        "glx": "disabled",
+        "egl": "disabled",
+        "llvm": "enabled",
+        "shared-llvm": "enabled",
+        "valgrind": "disabled",
+        "libunwind": "disabled",
+        "lmsensors": "disabled",
+        "build-tests": false,
+        "video-codecs": []
+      },
+      "runtime_vulkaninfo": {
+        "apiVersion": "1.4.305 (4210993)",
+        "driverVersion": "0.0.1 (1)",
+        "driverID": "DRIVER_ID_MESA_LLVMPIPE",
+        "driverInfo": "Mesa 25.0.7 (git-742a20f48c) (LLVM 19.1.7)",
+        "deviceName": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "bufferDeviceAddressCaptureReplay": "true",
+        "accelerationStructureCaptureReplay": "true",
+        "rayTracingPipelineShaderGroupHandleCaptureReplay": "true",
+        "descriptorBufferCaptureReplay": "false"
+      }
+    },
+    "B": {
+      "environment_script": "descriptor-env.sh",
+      "driver": "/workspace/mesa-26.2.5-build/src/gallium/targets/lavapipe/libvulkan_lvp.so",
+      "driver_sha256": "6694178c3b9ee563d5fbc209ce585c3b27f0839a4b122abc9073f69874c2968b",
+      "meson_options": {
+        "buildtype": "release",
+        "b_ndebug": "true",
+        "platforms": [
+          "x11"
+        ],
+        "gallium-drivers": [
+          "llvmpipe"
+        ],
+        "gallium-va": "disabled",
+        "vulkan-drivers": [
+          "swrast"
+        ],
+        "gles1": "disabled",
+        "gles2": "disabled",
+        "opengl": false,
+        "gbm": "disabled",
+        "glx": "disabled",
+        "egl": "disabled",
+        "llvm": "enabled",
+        "shared-llvm": "enabled",
+        "valgrind": "disabled",
+        "libunwind": "disabled",
+        "lmsensors": "disabled",
+        "build-tests": false,
+        "video-codecs": []
+      },
+      "runtime_vulkaninfo": {
+        "apiVersion": "1.4.354 (4211042)",
+        "driverVersion": "26.2.5 (109060101)",
+        "driverID": "DRIVER_ID_MESA_LLVMPIPE",
+        "driverInfo": "Mesa 26.2.5 (git-ddaf85e353) (LLVM 19.1.7)",
+        "deviceName": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "bufferDeviceAddressCaptureReplay": "true",
+        "accelerationStructureCaptureReplay": "false",
+        "rayTracingPipelineShaderGroupHandleCaptureReplay": "false",
+        "descriptorBufferCaptureReplay": "false"
+      },
+      "descriptorHeapCaptureReplay": {
+        "value": false,
+        "evidence_kind": "built source",
+        "source": "src/gallium/frontends/lavapipe/lvp_device.c",
+        "note": "The retained vulkaninfo version does not print this newer feature structure."
+      }
+    }
+  },
+  "cmake_cache_options": {
+    "renderdoc-build": {
+      "BUILD_VERSION_STABLE": "OFF",
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+      "CMAKE_CXX_FLAGS": "-I/workspace/sysroot/usr/include",
+      "CMAKE_C_COMPILER": "/usr/bin/cc",
+      "CMAKE_C_FLAGS": "",
+      "CMAKE_EXE_LINKER_FLAGS": "-L/workspace/sysroot/usr/lib/x86_64-linux-gnu",
+      "ENABLE_ASAN": "OFF",
+      "ENABLE_DLSYM_HOOKING": "OFF",
+      "ENABLE_EGL": "ON",
+      "ENABLE_GL": "OFF",
+      "ENABLE_GLES": "OFF",
+      "ENABLE_METAL": "OFF",
+      "ENABLE_MSAN": "OFF",
+      "ENABLE_PYRENDERDOC": "OFF",
+      "ENABLE_QRENDERDOC": "OFF",
+      "ENABLE_RENDERDOCCMD": "ON",
+      "ENABLE_TSAN": "OFF",
+      "ENABLE_UNSUPPORTED_EXPERIMENTAL_POSSIBLY_BROKEN_WAYLAND": "OFF",
+      "ENABLE_VULKAN": "ON",
+      "ENABLE_XCB": "ON",
+      "ENABLE_XLIB": "ON",
+      "Vulkan_INCLUDE_DIR": "/workspace/sysroot/usr/include",
+      "Vulkan_LIBRARY": "/workspace/sysroot/usr/lib/x86_64-linux-gnu/libvulkan.so"
+    },
+    "vulkan-xcb-build": {
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+      "CMAKE_CXX_FLAGS": "-I/workspace/sysroot/usr/include",
+      "CMAKE_C_COMPILER": "/usr/bin/cc",
+      "CMAKE_C_FLAGS": "",
+      "CMAKE_EXE_LINKER_FLAGS": "",
+      "USE_D2D_WSI": "OFF",
+      "USE_DIRECTFB_WSI": "OFF",
+      "USE_HEADLESS": "OFF",
+      "USE_RELATIVE_ASSET_PATH": "OFF",
+      "USE_WAYLAND_WSI": "OFF",
+      "Vulkan_INCLUDE_DIR": "/workspace/sysroot/usr/include",
+      "Vulkan_LIBRARY": "/usr/lib/x86_64-linux-gnu/libvulkan.so.1"
+    },
+    "vulkan-build": {
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+      "CMAKE_CXX_FLAGS": "",
+      "CMAKE_C_COMPILER": "/usr/bin/cc",
+      "CMAKE_C_FLAGS": "",
+      "CMAKE_EXE_LINKER_FLAGS": "",
+      "USE_D2D_WSI": "OFF",
+      "USE_DIRECTFB_WSI": "OFF",
+      "USE_HEADLESS": "ON",
+      "USE_RELATIVE_ASSET_PATH": "OFF",
+      "USE_WAYLAND_WSI": "OFF",
+      "Vulkan_INCLUDE_DIR": "/workspace/sysroot/usr/include",
+      "Vulkan_LIBRARY": "/usr/lib/x86_64-linux-gnu/libvulkan.so.1"
+    }
+  },
+  "patches": {
+    "lavapipe-26.2.5-bda-capture-replay.patch": {
+      "sha256": "5623b6aced405e88a2cfbfa4f0b37397fc153945b745e4347f58b28fca47b6bf",
+      "bytes": 6419
+    },
+    "lavapipe-capture-replay.patch": {
+      "sha256": "3ecb562de58529a01146d776b03d35051f527fde5495aa23c55c6129169dff2b",
+      "bytes": 11909
+    },
+    "renderdoc-lavapipe-descriptors.patch": {
+      "sha256": "65b3b2e6e9b3b4da955a8fd1fc60118384bc70b8ae42ce206297e90eb2088957",
+      "bytes": 65946
+    },
+    "renderdoc-replay-export-png.patch": {
+      "sha256": "5c45bac7aeed030d2ff4a77ff9ffe77347aa93d17b4e0db287f88eaf70afe36f",
+      "bytes": 5968
+    }
+  },
+  "source_only_audit": {
+    "version": "27.0.0-devel",
+    "commit": "9641b464e3c94737bbd5f5134e5150afc31c9799",
+    "executed": false
+  }
+}

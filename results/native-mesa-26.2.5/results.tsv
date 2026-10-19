@@ -1,0 +1,7 @@
+example	status	frames	exit_code	RenderDoc_loaded	screenshot
+conservativeraster	UNSUPPORTED_EXTENSION	0	249	False	
+descriptorbuffer	RUNS_AND_RENDERS	2408	0	False	/workspace/lavapipe-26.2.5-native/png/descriptorbuffer.png
+descriptorheap	RUNS_AND_RENDERS	4137	0	False	/workspace/lavapipe-26.2.5-native/png/descriptorheap.png
+descriptorheapuntyped	RUNS_AND_RENDERS	3801	0	False	/workspace/lavapipe-26.2.5-native/png/descriptorheapuntyped.png
+fragmentshaderbarycentrics	UNSUPPORTED_EXTENSION	0	249	False	
+variablerateshading	UNSUPPORTED_EXTENSION	0	249	False	

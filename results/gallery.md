@@ -1,0 +1,105 @@
+# 95 張 replay PNG
+
+影像由獨立程序執行 RenderDoc replay 後以 SaveTexture 匯出，全部與原始參考 RGB 逐像素一致。
+
+94 張視窗影像為 640×360；renderheadless 為 1024×1024。computeheadless 沒有影像，因此不在本頁。
+
+Release 上傳狀態見 [release.json](release.json)。
+
+| Example | 尺寸 | PNG |
+| --- | --- | --- |
+| bloom | 640×360 | `bloom.png`（Release 待上傳） |
+| bufferdeviceaddress | 640×360 | `bufferdeviceaddress.png`（Release 待上傳） |
+| computecloth | 640×360 | `computecloth.png`（Release 待上傳） |
+| computecullandlod | 640×360 | `computecullandlod.png`（Release 待上傳） |
+| computenbody | 640×360 | `computenbody.png`（Release 待上傳） |
+| computeparticles | 640×360 | `computeparticles.png`（Release 待上傳） |
+| computeraytracing | 640×360 | `computeraytracing.png`（Release 待上傳） |
+| computeshader | 640×360 | `computeshader.png`（Release 待上傳） |
+| conditionalrender | 640×360 | `conditionalrender.png`（Release 待上傳） |
+| debugprintf | 640×360 | `debugprintf.png`（Release 待上傳） |
+| debugutils | 640×360 | `debugutils.png`（Release 待上傳） |
+| deferred | 640×360 | `deferred.png`（Release 待上傳） |
+| deferredmultisampling | 640×360 | `deferredmultisampling.png`（Release 待上傳） |
+| deferredshadows | 640×360 | `deferredshadows.png`（Release 待上傳） |
+| descriptorbuffer | 640×360 | `descriptorbuffer.png`（Release 待上傳） |
+| descriptorheap | 640×360 | `descriptorheap.png`（Release 待上傳） |
+| descriptorheapuntyped | 640×360 | `descriptorheapuntyped.png`（Release 待上傳） |
+| descriptorindexing | 640×360 | `descriptorindexing.png`（Release 待上傳） |
+| descriptorsets | 640×360 | `descriptorsets.png`（Release 待上傳） |
+| displacement | 640×360 | `displacement.png`（Release 待上傳） |
+| distancefieldfonts | 640×360 | `distancefieldfonts.png`（Release 待上傳） |
+| dynamicrendering | 640×360 | `dynamicrendering.png`（Release 待上傳） |
+| dynamicrenderinglocalread | 640×360 | `dynamicrenderinglocalread.png`（Release 待上傳） |
+| dynamicrenderingmultisampling | 640×360 | `dynamicrenderingmultisampling.png`（Release 待上傳） |
+| dynamicstate | 640×360 | `dynamicstate.png`（Release 待上傳） |
+| dynamicuniformbuffer | 640×360 | `dynamicuniformbuffer.png`（Release 待上傳） |
+| gears | 640×360 | `gears.png`（Release 待上傳） |
+| geometryshader | 640×360 | `geometryshader.png`（Release 待上傳） |
+| gltfloading | 640×360 | `gltfloading.png`（Release 待上傳） |
+| gltfscenerendering | 640×360 | `gltfscenerendering.png`（Release 待上傳） |
+| gltfskinning | 640×360 | `gltfskinning.png`（Release 待上傳） |
+| graphicspipelinelibrary | 640×360 | `graphicspipelinelibrary.png`（Release 待上傳） |
+| hdr | 640×360 | `hdr.png`（Release 待上傳） |
+| hostimagecopy | 640×360 | `hostimagecopy.png`（Release 待上傳） |
+| imgui | 640×360 | `imgui.png`（Release 待上傳） |
+| indirectdraw | 640×360 | `indirectdraw.png`（Release 待上傳） |
+| inlineuniformblocks | 640×360 | `inlineuniformblocks.png`（Release 待上傳） |
+| inputattachments | 640×360 | `inputattachments.png`（Release 待上傳） |
+| instancing | 640×360 | `instancing.png`（Release 待上傳） |
+| meshshader | 640×360 | `meshshader.png`（Release 待上傳） |
+| multisampling | 640×360 | `multisampling.png`（Release 待上傳） |
+| multisamplingalphatocoverage | 640×360 | `multisamplingalphatocoverage.png`（Release 待上傳） |
+| multithreading | 640×360 | `multithreading.png`（Release 待上傳） |
+| multiview | 640×360 | `multiview.png`（Release 待上傳） |
+| negativeviewportheight | 640×360 | `negativeviewportheight.png`（Release 待上傳） |
+| occlusionquery | 640×360 | `occlusionquery.png`（Release 待上傳） |
+| offscreen | 640×360 | `offscreen.png`（Release 待上傳） |
+| oit | 640×360 | `oit.png`（Release 待上傳） |
+| parallaxmapping | 640×360 | `parallaxmapping.png`（Release 待上傳） |
+| particlesystem | 640×360 | `particlesystem.png`（Release 待上傳） |
+| pbrbasic | 640×360 | `pbrbasic.png`（Release 待上傳） |
+| pbribl | 640×360 | `pbribl.png`（Release 待上傳） |
+| pbrtexture | 640×360 | `pbrtexture.png`（Release 待上傳） |
+| pipelines | 640×360 | `pipelines.png`（Release 待上傳） |
+| pipelinestatistics | 640×360 | `pipelinestatistics.png`（Release 待上傳） |
+| pushconstants | 640×360 | `pushconstants.png`（Release 待上傳） |
+| pushdescriptors | 640×360 | `pushdescriptors.png`（Release 待上傳） |
+| radialblur | 640×360 | `radialblur.png`（Release 待上傳） |
+| rayquery | 640×360 | `rayquery.png`（Release 待上傳） |
+| raytracingbasic | 640×360 | `raytracingbasic.png`（Release 待上傳） |
+| raytracingcallable | 640×360 | `raytracingcallable.png`（Release 待上傳） |
+| raytracinggltf | 640×360 | `raytracinggltf.png`（Release 待上傳） |
+| raytracingintersection | 640×360 | `raytracingintersection.png`（Release 待上傳） |
+| raytracingpositionfetch | 640×360 | `raytracingpositionfetch.png`（Release 待上傳） |
+| raytracingreflections | 640×360 | `raytracingreflections.png`（Release 待上傳） |
+| raytracingsbtdata | 640×360 | `raytracingsbtdata.png`（Release 待上傳） |
+| raytracingshadows | 640×360 | `raytracingshadows.png`（Release 待上傳） |
+| raytracingtextures | 640×360 | `raytracingtextures.png`（Release 待上傳） |
+| renderheadless | 1024×1024 | `renderheadless.png`（Release 待上傳） |
+| screenshot | 640×360 | `screenshot.png`（Release 待上傳） |
+| shaderobjects | 640×360 | `shaderobjects.png`（Release 待上傳） |
+| shadowmapping | 640×360 | `shadowmapping.png`（Release 待上傳） |
+| shadowmappingcascade | 640×360 | `shadowmappingcascade.png`（Release 待上傳） |
+| shadowmappingomni | 640×360 | `shadowmappingomni.png`（Release 待上傳） |
+| specializationconstants | 640×360 | `specializationconstants.png`（Release 待上傳） |
+| sphericalenvmapping | 640×360 | `sphericalenvmapping.png`（Release 待上傳） |
+| ssao | 640×360 | `ssao.png`（Release 待上傳） |
+| stencilbuffer | 640×360 | `stencilbuffer.png`（Release 待上傳） |
+| subpasses | 640×360 | `subpasses.png`（Release 待上傳） |
+| terraintessellation | 640×360 | `terraintessellation.png`（Release 待上傳） |
+| tessellation | 640×360 | `tessellation.png`（Release 待上傳） |
+| textoverlay | 640×360 | `textoverlay.png`（Release 待上傳） |
+| texture | 640×360 | `texture.png`（Release 待上傳） |
+| texture3d | 640×360 | `texture3d.png`（Release 待上傳） |
+| texturearray | 640×360 | `texturearray.png`（Release 待上傳） |
+| texturecubemap | 640×360 | `texturecubemap.png`（Release 待上傳） |
+| texturecubemaparray | 640×360 | `texturecubemaparray.png`（Release 待上傳） |
+| texturemipmapgen | 640×360 | `texturemipmapgen.png`（Release 待上傳） |
+| texturesparseresidency | 640×360 | `texturesparseresidency.png`（Release 待上傳） |
+| timelinesemaphore | 640×360 | `timelinesemaphore.png`（Release 待上傳） |
+| triangle | 640×360 | `triangle.png`（Release 待上傳） |
+| trianglevulkan13 | 640×360 | `trianglevulkan13.png`（Release 待上傳） |
+| vertexattributes | 640×360 | `vertexattributes.png`（Release 待上傳） |
+| viewportarray | 640×360 | `viewportarray.png`（Release 待上傳） |
+| vulkanscene | 640×360 | `vulkanscene.png`（Release 待上傳） |

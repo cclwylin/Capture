@@ -1,0 +1,4 @@
+Replaying '/workspace/verified-batch/captures/descriptorheap_frame1.rdc' locally..
+Couldn't load and replay '/workspace/verified-batch/captures/descriptorheap_frame1.rdc': Current replaying hardware unsupported or incompatible with captured hardware: Descriptor heap replay requires the experimental lavapipe regeneration path (RDOC_LVP_DESCRIPTOR_REPLAY=1)
+
+More debugging information may be available by enabling API validation on replay via `File` -> `Open Capture with Options`

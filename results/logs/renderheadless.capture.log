@@ -1,0 +1,4 @@
+Running headless rendering example
+GPU: llvmpipe (LLVM 19.1.7, 256 bits)
+Framebuffer image saved to headless.ppm
+Finished. Press enter to terminate...

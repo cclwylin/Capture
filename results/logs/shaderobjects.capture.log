@@ -1,0 +1,7 @@
+Queued one RenderDoc frame capture at presentation boundary.
+Could not load binary shader files (ERROR_INCOMPATIBLE_SHADER_BINARY_EXT, loading SPIR - V instead
+Benchmark finished
+device : llvmpipe (LLVM 19.1.7, 256 bits) (driver version: 1)
+runtime: 0.083
+frames : 3
+fps    : 35.995

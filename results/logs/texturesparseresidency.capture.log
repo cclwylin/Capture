@@ -1,0 +1,22 @@
+Sparse image format properties: 1
+	 Image granularity: w = 128 h = 128 d = 1
+	 Aspect mask: 1
+	 Flags: 0
+Image memory requirements:
+	 Size: 89915392
+	 Alignment: 65536
+Sparse image memory requirements: 1
+	 Image granularity: w = 128 h = 128 d = 1
+	 Mip tail first LOD: 13
+	 Mip tail size: 0
+	 Mip tail offset: 0
+	 Mip tail stride: 0
+Texture info:
+	Dim: 4096 x 4096
+	Virtual pages: 1372
+Queued one RenderDoc frame capture at presentation boundary.
+Benchmark finished
+device : llvmpipe (LLVM 19.1.7, 256 bits) (driver version: 1)
+runtime: 0.382
+frames : 3
+fps    : 7.857

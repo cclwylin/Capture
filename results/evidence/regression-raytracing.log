@@ -1,0 +1,42 @@
+Benchmark finished
+device : llvmpipe (LLVM 19.1.7, 256 bits) (driver version: 1)
+runtime: 0.007
+frames : 3
+fps    : 433.748
+device: llvmpipe (LLVM 19.1.7, 256 bits)
+PASS: capture addresses saved
+device: llvmpipe (LLVM 19.1.7, 256 bits)
+PASS: occupied address rejected without overwriting memory
+PASS: memory, buffer, and AS addresses restored in independent process
+PASS: shader group handle restored despite different pipeline creation order
+PASS: new IDs do not collide; invalid capture handle rejected
+Replaying '/workspace/verified-batch/captures/rayquery_frame1.rdc' locally..
+Replayed through event 34 (12 draw/dispatch actions, 0 ray dispatches); wrote '/workspace/verified-batch/png/rayquery.png'.
+Replaying '/workspace/verified-batch/captures/raytracingbasic_frame1.rdc' locally..
+Replayed through event 19 (1 draw/dispatch actions, 1 ray dispatches); wrote '/workspace/verified-batch/png/raytracingbasic.png'.
+Replaying '/workspace/verified-batch/captures/raytracingcallable_frame1.rdc' locally..
+Replayed through event 22 (1 draw/dispatch actions, 1 ray dispatches); wrote '/workspace/verified-batch/png/raytracingcallable.png'.
+Replaying '/workspace/verified-batch/captures/raytracinggltf_frame1.rdc' locally..
+Replayed through event 26 (1 draw/dispatch actions, 1 ray dispatches); wrote '/workspace/verified-batch/png/raytracinggltf.png'.
+Replaying '/workspace/verified-batch/captures/raytracingintersection_frame1.rdc' locally..
+Replayed through event 21 (1 draw/dispatch actions, 1 ray dispatches); wrote '/workspace/verified-batch/png/raytracingintersection.png'.
+Replaying '/workspace/verified-batch/captures/raytracingpositionfetch_frame1.rdc' locally..
+Replayed through event 88 (1 draw/dispatch actions, 1 ray dispatches); wrote '/workspace/verified-batch/png/raytracingpositionfetch.png'.
+Replaying '/workspace/verified-batch/captures/raytracingreflections_frame1.rdc' locally..
+Replayed through event 33 (1 draw/dispatch actions, 1 ray dispatches); wrote '/workspace/verified-batch/png/raytracingreflections.png'.
+Replaying '/workspace/verified-batch/captures/raytracingsbtdata_frame1.rdc' locally..
+Replayed through event 19 (1 draw/dispatch actions, 1 ray dispatches); wrote '/workspace/verified-batch/png/raytracingsbtdata.png'.
+Replaying '/workspace/verified-batch/captures/raytracingshadows_frame1.rdc' locally..
+Replayed through event 27 (1 draw/dispatch actions, 1 ray dispatches); wrote '/workspace/verified-batch/png/raytracingshadows.png'.
+Replaying '/workspace/verified-batch/captures/raytracingtextures_frame1.rdc' locally..
+Replayed through event 22 (1 draw/dispatch actions, 1 ray dispatches); wrote '/workspace/verified-batch/png/raytracingtextures.png'.
+PASS: pixel-exact replay: rayquery
+PASS: pixel-exact replay: raytracingbasic
+PASS: pixel-exact replay: raytracingcallable
+PASS: pixel-exact replay: raytracinggltf
+PASS: pixel-exact replay: raytracingintersection
+PASS: pixel-exact replay: raytracingpositionfetch
+PASS: pixel-exact replay: raytracingreflections
+PASS: pixel-exact replay: raytracingsbtdata
+PASS: pixel-exact replay: raytracingshadows
+PASS: pixel-exact replay: raytracingtextures

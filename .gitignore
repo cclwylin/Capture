@@ -2,3 +2,8 @@ __pycache__/
 *.rdc
 *.so
 *.o
+
+# Generated binary captures and images are GitHub Release assets.
+results/png/
+results/reference/
+results/native-mesa-26.2.5/png/
