@@ -1,7 +1,7 @@
 {
   "repository": "cclwylin/Capture",
   "tag": "vulkan-lavapipe-2026-10-19",
-  "publication_status": "prepared",
+  "publication_status": "draft",
   "expected_asset_count": 102,
   "assets": [
     {
@@ -616,5 +616,7 @@
       "bytes": 8680,
       "sha256": "761fdded4db95773b1ddc98e43e17ca60b2d7f0871cb9ff980ef3f56f94d8e89"
     }
-  ]
+  ],
+  "release_id": 417280380,
+  "uploaded_asset_count": 0
 }

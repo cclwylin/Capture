@@ -28,7 +28,8 @@
 - [Release 實際發佈狀態與下載位置](../results/release.json)
 
 `.rdc`、PNG、原始參考影像以 **GitHub Release assets** 提供；`main` 保存文字文件、patch、版本清單、manifest 與 log。
-`release.json` 的 `prepared` 表示尚未發佈；只有 `published` 才代表 Release 與下載連結已確認可用。
+`release.json` 的 `prepared` 表示檔案已備妥，`draft` 表示已建立 Release 草稿；兩者都尚未發佈。
+只有 `published` 才代表 Release 與下載連結已確認可用。
 
 ## 2. 使用哪些版本
 
@@ -372,6 +373,14 @@ Mesa 自己的 [功能表（barycentric / VRS）](https://github.com/chaotic-cx/
 預備 tag：`vulkan-lavapipe-2026-10-19`。
 Release 說明已準備於 [RELEASE_NOTES.zh-TW.md](RELEASE_NOTES.zh-TW.md)。
 上傳需要 `api.github.com` 與 `uploads.github.com` 能連線；Git push 成功本身不代表 Release API 可用。
+
+本次環境曾有兩個不同的阻礙：網路 proxy 對 API 回覆 CONNECT 403，加入上述網域後已能建立 draft；
+接著 asset upload 回覆 HTTP 401 `Bad credentials`，尚未上傳任何附件。
+API 成功不保證上傳端取得有效憑證。已保存 `GITHUB_RELEASE_TOKEN` Secret 要求草稿，
+將它對應到 `GH_TOKEN`，限定送往 `api.github.com`、`uploads.github.com`。
+需要由使用者在環境 Secrets 填入限定 `cclwylin/Capture`、具有 **Contents: Read and write** 的 fine-grained PAT，
+儲存並發布環境後重測。Secret 值不放在聊天、Git、指令文字或 log 中。
+實際發佈狀態以 [release.json](../results/release.json) 為準，已存在的 draft 應接續上傳，避免重建。
 
 發佈順序為：完成並驗證檔案 → push 文件到 `main` → 建立 draft Release → 上傳並檢查所有 assets → 發佈 Release。
 使用現有 GitHub 認證，不將 token 寫進文件或 log。

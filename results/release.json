@@ -1,11 +1,15 @@
 {
   "repository": "cclwylin/Capture",
   "tag": "vulkan-lavapipe-2026-10-19",
-  "status": "prepared",
+  "status": "draft",
   "url": null,
   "download_base": null,
-  "counts": {"captures": 96, "replay_pngs": 95, "references": 95},
-  "blocker": null,
+  "counts": {
+    "captures": 96,
+    "replay_pngs": 95,
+    "references": 95
+  },
+  "blocker": "GitHub API access and draft creation succeed. Release asset POST to uploads.github.com returns HTTP 401 Bad credentials with the current runtime authentication; no assets are uploaded. A GITHUB_RELEASE_TOKEN secret requirement targeting GH_TOKEN for api.github.com and uploads.github.com has been saved for user configuration and publication.",
   "planned_assets": [
     "vulkan_verified_captures.tar.gz",
     "vulkan_verified_pngs.zip",
@@ -15,5 +19,10 @@
     "vulkan_native_verification.zip",
     "SHA256SUMS",
     "95 individual replay PNG files"
-  ]
+  ],
+  "release_id": 417280380,
+  "draft_url": "https://github.com/cclwylin/Capture/releases/tag/untagged-82b2f3d0c5536460c49d",
+  "target_commit": "b49a10fb1aaec884459946af1cba9109d3f530f1",
+  "uploaded_assets": 0,
+  "last_upload_attempt_utc": "2026-10-19T12:46:49.004391+00:00"
 }
