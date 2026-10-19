@@ -1,0 +1,174 @@
+diff --git a/renderdoccmd/renderdoccmd.cpp b/renderdoccmd/renderdoccmd.cpp
+index 5d68737..2b97bcf 100644
+--- a/renderdoccmd/renderdoccmd.cpp
++++ b/renderdoccmd/renderdoccmd.cpp
+@@ -522,11 +522,100 @@ public:
+   }
+ };
+ 
++// Select the final presented image after executing the captured commands. This
++// deliberately does not use ICaptureFile::GetThumbnail(), which never replays.
++static void FindReplayOutput(const rdcarray<ActionDescription> &actions, uint32_t &lastEvent,
++                             uint32_t &workCount, uint32_t &rayCount, ResourceId &output)
++{
++  for(const ActionDescription &action : actions)
++  {
++    lastEvent = std::max(lastEvent, action.eventId);
++    if(action.flags & (ActionFlags::Drawcall | ActionFlags::Dispatch | ActionFlags::DispatchRay |
++                       ActionFlags::MeshDispatch))
++    {
++      workCount++;
++      if(action.flags & ActionFlags::DispatchRay)
++        rayCount++;
++      if(action.outputs[0] != ResourceId())
++        output = action.outputs[0];
++    }
++    if(action.flags & ActionFlags::Present && action.copyDestination != ResourceId())
++      output = action.copyDestination;
++    FindReplayOutput(action.children, lastEvent, workCount, rayCount, output);
++  }
++}
++
++static int ExportReplayPNG(IReplayController *renderer, const std::string &filename)
++{
++  uint32_t lastEvent = 0, workCount = 0, rayCount = 0;
++  ResourceId output;
++  FindReplayOutput(renderer->GetRootActions(), lastEvent, workCount, rayCount, output);
++  if(workCount == 0)
++  {
++    std::cerr << "Capture contains no draw, compute dispatch, or ray dispatch; "
++                 "cannot export a rendered frame."
++              << std::endl;
++    return 1;
++  }
++  renderer->SetFrameEvent(lastEvent, true);
++  ResultDetails fatal = renderer->GetFatalErrorStatus();
++  if(!fatal.OK())
++  {
++    std::cerr << "Replay failed: " << fatal.Message() << std::endl;
++    return 1;
++  }
++  if(filename.empty())
++  {
++    std::cout << "Replayed through event " << lastEvent << " (" << workCount
++              << " draw/dispatch actions, " << rayCount << " ray dispatches)." << std::endl;
++    return 0;
++  }
++  if(output == ResourceId())
++  {
++    for(const TextureDescription &texture : renderer->GetTextures())
++      if(texture.creationFlags & TextureCategory::SwapBuffer)
++      {
++        output = texture.resourceId;
++        break;
++      }
++  }
++  if(output == ResourceId())
++  {
++    std::cerr << "Capture has no presented image or colour attachment to export." << std::endl;
++    return 1;
++  }
++
++  TextureSave save;
++  save.resourceId = output;
++  save.destType = FileType::PNG;
++  save.mip = 0;
++  save.slice.sliceIndex = 0;
++  save.alpha = AlphaMapping::Discard;
++  ResultDetails result = renderer->SaveTexture(save, conv(filename));
++  fatal = renderer->GetFatalErrorStatus();
++  if(!fatal.OK())
++  {
++    std::cerr << "Replay readback failed: " << fatal.Message() << std::endl;
++    return 1;
++  }
++  if(!result.OK())
++  {
++    std::cerr << "Couldn't export replayed image: " << result.Message() << std::endl;
++    return 1;
++  }
++  std::cout << "Replayed through event " << lastEvent << " (" << workCount
++            << " draw/dispatch actions, " << rayCount << " ray dispatches); wrote '"
++            << filename << "'." << std::endl;
++  return 0;
++}
++
+ struct ReplayCommand : public Command
+ {
+ private:
+   std::string filename;
+   std::string remote_host;
++  std::string export_png;
++  bool verify = false;
+   uint32_t width = 0;
+   uint32_t height = 0;
+   uint32_t loops = 0;
+@@ -540,6 +629,10 @@ public:
+     parser.add<uint32_t>("height", 'h', "The preview window height.", false, 720);
+     parser.add<uint32_t>("loops", 'l', "How many times to loop the replay, or 0 for indefinite.",
+                          false, 0);
++    parser.add<std::string>("export-png", 'o',
++                            "Replay once and export the final image as PNG without a preview window.",
++                            false);
++    parser.add("verify", 0, "Replay once without a preview window, including captures without images.");
+     parser.add<std::string>("remote-host", 0,
+                             "Instead of replaying locally, replay on this host over the network.",
+                             false);
+@@ -569,6 +662,9 @@ public:
+ 
+     if(parser.exist("remote-host"))
+       remote_host = parser.get<std::string>("remote-host");
++    if(parser.exist("export-png"))
++      export_png = parser.get<std::string>("export-png");
++    verify = parser.exist("verify");
+ 
+     width = parser.get<uint32_t>("width");
+     height = parser.get<uint32_t>("height");
+@@ -603,14 +699,22 @@ public:
+ 
+       if(result.OK())
+       {
+-        DisplayRendererPreview(renderer, width, height, loops);
++        int status = 0;
++        if(export_png.empty() && !verify)
++          DisplayRendererPreview(renderer, width, height, loops);
++        else
++          status = ExportReplayPNG(renderer, export_png);
+ 
+         remote->CloseCapture(renderer);
++        remote->ShutdownConnection();
++        return status;
+       }
+       else
+       {
+         std::cerr << "Couldn't load and replay '" << filename << "': " << result.Message()
+                   << std::endl;
++        remote->ShutdownConnection();
++        return 1;
+       }
+ 
+       remote->ShutdownConnection();
+@@ -626,6 +730,7 @@ public:
+       if(res.code != ResultCode::Succeeded)
+       {
+         std::cerr << "Couldn't load '" << filename << "': " << res.Message() << std::endl;
++        file->Shutdown();
+         return 1;
+       }
+ 
+@@ -637,9 +742,14 @@ public:
+ 
+       if(result.OK())
+       {
+-        DisplayRendererPreview(renderer, width, height, loops);
++        int status = 0;
++        if(export_png.empty() && !verify)
++          DisplayRendererPreview(renderer, width, height, loops);
++        else
++          status = ExportReplayPNG(renderer, export_png);
+ 
+         renderer->Shutdown();
++        return status;
+       }
+       else
+       {

@@ -1,0 +1,284 @@
+diff --git a/src/gallium/frontends/lavapipe/lvp_device.c b/src/gallium/frontends/lavapipe/lvp_device.c
+index 934c501..257763c 100644
+--- a/src/gallium/frontends/lavapipe/lvp_device.c
++++ b/src/gallium/frontends/lavapipe/lvp_device.c
+@@ -40,16 +40,28 @@
+ #include "util/os_time.h"
+ #include "util/u_thread.h"
+ #include "util/u_atomic.h"
++#include "util/u_debug.h"
+ #include "util/timespec.h"
+ #include "util/ptralloc.h"
+ #include "nir.h"
+ #include "nir_builder.h"
+ 
+ #if DETECT_OS_LINUX
++#include <errno.h>
+ #include <sys/mman.h>
+ #include <sys/resource.h>
+ #endif
+ 
++bool
++lvp_capture_replay_enabled(void)
++{
++#if DETECT_OS_LINUX && UINTPTR_MAX == UINT64_MAX && defined(MAP_FIXED_NOREPLACE)
++   return debug_get_bool_option("LVP_CAPTURE_REPLAY", false);
++#else
++   return false;
++#endif
++}
++
+ #if DETECT_OS_ANDROID
+ #include "vk_android.h"
+ #endif
+@@ -432,7 +444,7 @@ lvp_get_features(const struct lvp_physical_device *pdevice,
+       .hostQueryReset = true,
+       .timelineSemaphore = true,
+       .bufferDeviceAddress = true,
+-      .bufferDeviceAddressCaptureReplay = false,
++      .bufferDeviceAddressCaptureReplay = lvp_capture_replay_enabled(),
+       .bufferDeviceAddressMultiDevice = false,
+       .vulkanMemoryModel = true,
+       .vulkanMemoryModelDeviceScope = true,
+@@ -482,7 +494,7 @@ lvp_get_features(const struct lvp_physical_device *pdevice,
+ 
+       /* VK_KHR_acceleration_structure */
+       .accelerationStructure = true,
+-      .accelerationStructureCaptureReplay = false,
++      .accelerationStructureCaptureReplay = lvp_capture_replay_enabled(),
+       .accelerationStructureIndirectBuild = false,
+       .accelerationStructureHostCommands = false,
+       .descriptorBindingAccelerationStructureUpdateAfterBind = true,
+@@ -543,7 +555,7 @@ lvp_get_features(const struct lvp_physical_device *pdevice,
+ 
+       /* VK_KHR_ray_tracing_pipeline */
+       .rayTracingPipeline = true,
+-      .rayTracingPipelineShaderGroupHandleCaptureReplay = false,
++      .rayTracingPipelineShaderGroupHandleCaptureReplay = lvp_capture_replay_enabled(),
+       .rayTracingPipelineShaderGroupHandleCaptureReplayMixed = false,
+       .rayTracingPipelineTraceRaysIndirect = true,
+       .rayTraversalPrimitiveCulling = true,
+@@ -1189,7 +1201,8 @@ lvp_get_properties(const struct lvp_physical_device *device, struct vk_propertie
+       /* This isn't strictly necessary, but Doom Eternal breaks if the
+        * alignment is any lower. */
+       .shaderGroupBaseAlignment = 32,
+-      .shaderGroupHandleCaptureReplaySize = 0,
++      .shaderGroupHandleCaptureReplaySize = lvp_capture_replay_enabled() ?
++         sizeof(struct lvp_ray_tracing_capture_handle) : 0,
+       .maxRayDispatchInvocationCount = 1024 * 1024 * 64,
+       .shaderGroupHandleAlignment = 16,
+       .maxRayHitAttributeSize = LVP_RAY_HIT_ATTRIBS_SIZE,
+@@ -1903,6 +1916,8 @@ VKAPI_ATTR VkResult VKAPI_CALL lvp_AllocateMemory(
+    ASSERTED const VkImportAndroidHardwareBufferInfoANDROID *ahb_import_info = NULL;
+ #endif
+    const VkImportMemoryHostPointerInfoEXT *host_ptr_info = NULL;
++   VkMemoryAllocateFlags allocation_flags = 0;
++   uint64_t capture_address = 0;
+    VkResult error = VK_ERROR_OUT_OF_DEVICE_MEMORY;
+    assert(pAllocateInfo->sType == VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO);
+    int priority = 0;
+@@ -1915,6 +1930,12 @@ VKAPI_ATTR VkResult VKAPI_CALL lvp_AllocateMemory(
+ 
+    vk_foreach_struct_const(ext, pAllocateInfo->pNext) {
+       switch ((unsigned)ext->sType) {
++      case VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO:
++         allocation_flags = ((const VkMemoryAllocateFlagsInfo *)ext)->flags;
++         break;
++      case VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO:
++         capture_address = ((const VkMemoryOpaqueCaptureAddressAllocateInfo *)ext)->opaqueCaptureAddress;
++         break;
+       case VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT:
+          host_ptr_info = (VkImportMemoryHostPointerInfoEXT*)ext;
+          assert(host_ptr_info->handleType == VK_EXTERNAL_MEMORY_HANDLE_TYPE_HOST_ALLOCATION_BIT_EXT);
+@@ -1965,7 +1986,59 @@ VKAPI_ATTR VkResult VKAPI_CALL lvp_AllocateMemory(
+    mem->android_hardware_buffer = NULL;
+ #endif
+ 
+-   if (host_ptr_info) {
++   if (lvp_capture_replay_enabled() &&
++       (allocation_flags & VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT)) {
++#if DETECT_OS_LINUX && UINTPTR_MAX == UINT64_MAX && defined(MAP_FIXED_NOREPLACE)
++      /* Lavapipe device addresses are CPU pointers. Reserve the same pages when
++       * replaying instead of silently accepting an address we cannot restore.
++       * Never use MAP_FIXED: a capture must not overwrite an existing mapping.
++       * Keep new capture allocations away from the process heap and libraries.
++       */
++      static uint64_t next_capture_address = UINT64_C(0x200000000000);
++      uint64_t page_size;
++      os_get_page_size(&page_size);
++      uint64_t size = align64(mem->size, page_size);
++      void *map = MAP_FAILED;
++      if (host_ptr_info || import_info || export_info || !size ||
++          (capture_address & (page_size - 1))) {
++         error = VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS;
++         goto fail;
++      }
++      for (unsigned attempt = 0; attempt < 1024; attempt++) {
++         uint64_t address = capture_address;
++         if (!address) {
++            uint64_t step = align64(size, UINT64_C(0x10000));
++            address = p_atomic_add_return(&next_capture_address, step) - step;
++         }
++         map = mmap((void *)(uintptr_t)address, size, PROT_READ | PROT_WRITE,
++                    MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED_NOREPLACE, -1, 0);
++         if (map != MAP_FAILED) {
++            /* Old kernels can ignore unknown mmap flags. Verify the address. */
++            if ((uintptr_t)map != address) {
++               munmap(map, size);
++               map = MAP_FAILED;
++               errno = EEXIST;
++            } else {
++               break;
++            }
++         }
++         if (capture_address || errno != EEXIST)
++            break;
++      }
++      if (map == MAP_FAILED) {
++         if (capture_address)
++            error = VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS;
++         goto fail;
++      }
++      mem->map = map;
++      mem->mem_alloc = (struct llvmpipe_memory_allocation) { .cpu_addr = map };
++      mem->pmem = (void *)&mem->mem_alloc;
++      mem->memory_type = LVP_DEVICE_MEMORY_TYPE_CAPTURE_REPLAY;
++      set_mem_priority(mem, priority);
++#else
++      unreachable("capture replay requires Linux and 64-bit pointers");
++#endif
++   } else if (host_ptr_info) {
+       mem->mem_alloc = (struct llvmpipe_memory_allocation) {
+          .cpu_addr = host_ptr_info->pHostPointer,
+       };
+@@ -2056,10 +2129,16 @@ VKAPI_ATTR void VKAPI_CALL lvp_FreeMemory(
+    if (mem == NULL)
+       return;
+ 
+-   if (mem->memory_type != LVP_DEVICE_MEMORY_TYPE_USER_PTR)
++   if (mem->memory_type != LVP_DEVICE_MEMORY_TYPE_USER_PTR &&
++       mem->memory_type != LVP_DEVICE_MEMORY_TYPE_CAPTURE_REPLAY)
+       device->pscreen->unmap_memory(device->pscreen, mem->pmem);
+ 
+    switch(mem->memory_type) {
++   case LVP_DEVICE_MEMORY_TYPE_CAPTURE_REPLAY:
++#if DETECT_OS_LINUX
++      munmap(mem->map, mem->size);
++#endif
++      break;
+    case LVP_DEVICE_MEMORY_TYPE_DEFAULT:
+       device->pscreen->free_memory(device->pscreen, mem->pmem);
+       break;
+diff --git a/src/gallium/frontends/lavapipe/lvp_image.c b/src/gallium/frontends/lavapipe/lvp_image.c
+index 90365de..3955651 100644
+--- a/src/gallium/frontends/lavapipe/lvp_image.c
++++ b/src/gallium/frontends/lavapipe/lvp_image.c
+@@ -652,7 +652,9 @@ VKAPI_ATTR uint64_t VKAPI_CALL lvp_GetDeviceMemoryOpaqueCaptureAddress(
+     VkDevice                                    device,
+     const VkDeviceMemoryOpaqueCaptureAddressInfo* pInfo)
+ {
+-   return 0;
++   LVP_FROM_HANDLE(lvp_device_memory, mem, pInfo->memory);
++   return mem->memory_type == LVP_DEVICE_MEMORY_TYPE_CAPTURE_REPLAY ?
++      (uint64_t)(uintptr_t)mem->map : 0;
+ }
+ 
+ static struct pipe_sampler_view *
+diff --git a/src/gallium/frontends/lavapipe/lvp_private.h b/src/gallium/frontends/lavapipe/lvp_private.h
+index 81b85cc..9c22c92 100644
+--- a/src/gallium/frontends/lavapipe/lvp_private.h
++++ b/src/gallium/frontends/lavapipe/lvp_private.h
+@@ -232,8 +232,12 @@ enum lvp_device_memory_type {
+    LVP_DEVICE_MEMORY_TYPE_USER_PTR,
+    LVP_DEVICE_MEMORY_TYPE_OPAQUE_FD,
+    LVP_DEVICE_MEMORY_TYPE_DMA_BUF,
++   LVP_DEVICE_MEMORY_TYPE_CAPTURE_REPLAY,
+ };
+ 
++/* Experimental Linux/64-bit capture-replay support, opt-in until CTS coverage. */
++bool lvp_capture_replay_enabled(void);
++
+ struct lvp_device_memory {
+    struct vk_object_base base;
+    struct pipe_memory_allocation *pmem;
+@@ -510,6 +514,14 @@ struct lvp_ray_tracing_group_handle {
+    uint32_t index;
+ };
+ 
++#define LVP_CAPTURE_HANDLE_MAGIC 0x4c565052u
++struct lvp_ray_tracing_capture_handle {
++   uint32_t magic;
++   uint32_t version;
++   uint32_t index;
++   uint32_t reserved[5];
++};
++
+ struct lvp_ray_tracing_group {
+    struct lvp_ray_tracing_group_handle handle;
+    uint32_t recursive_index;
+diff --git a/src/gallium/frontends/lavapipe/lvp_ray_tracing_pipeline.c b/src/gallium/frontends/lavapipe/lvp_ray_tracing_pipeline.c
+index b395cc5..4518bfc 100644
+--- a/src/gallium/frontends/lavapipe/lvp_ray_tracing_pipeline.c
++++ b/src/gallium/frontends/lavapipe/lvp_ray_tracing_pipeline.c
+@@ -60,7 +60,23 @@ lvp_init_ray_tracing_groups(struct lvp_pipeline *pipeline,
+          unreachable("Unimplemented VkRayTracingShaderGroupTypeKHR");
+       }
+ 
+-      dst->handle.index = p_atomic_inc_return(&pipeline->device->group_handle_alloc);
++      if (group_info->pShaderGroupCaptureReplayHandle) {
++         const struct lvp_ray_tracing_capture_handle *handle =
++            group_info->pShaderGroupCaptureReplayHandle;
++         dst->handle.index = handle->index;
++         /* Pipeline compilation can be parallel. Reserve restored IDs so new
++          * groups and library groups cannot collide with them. */
++         uint32_t old = p_atomic_read(&pipeline->device->group_handle_alloc);
++         while (old < handle->index) {
++            uint32_t observed = p_atomic_cmpxchg(&pipeline->device->group_handle_alloc,
++                                                old, handle->index);
++            if (observed == old)
++               break;
++            old = observed;
++         }
++      } else {
++         dst->handle.index = p_atomic_inc_return(&pipeline->device->group_handle_alloc);
++      }
+    }
+ 
+    if (!create_info->pLibraryInfo)
+@@ -166,6 +182,15 @@ lvp_compile_ray_tracing_stages(struct lvp_pipeline *pipeline,
+ {
+    VkResult result = VK_SUCCESS;
+ 
++   for (uint32_t i = 0; i < create_info->groupCount; i++) {
++      const struct lvp_ray_tracing_capture_handle *handle =
++         create_info->pGroups[i].pShaderGroupCaptureReplayHandle;
++      if (handle && (!lvp_capture_replay_enabled() ||
++                     handle->magic != LVP_CAPTURE_HANDLE_MAGIC ||
++                     handle->version != 1 || !handle->index))
++         return vk_error(pipeline->device, VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS);
++   }
++
+    uint32_t i = 0;
+    for (; i < create_info->stageCount; i++) {
+       nir_shader *nir;
+@@ -1241,6 +1266,20 @@ lvp_GetRayTracingCaptureReplayShaderGroupHandlesKHR(
+    size_t dataSize,
+    void *pData)
+ {
++   VK_FROM_HANDLE(lvp_pipeline, p, pipeline);
++   const size_t handle_size = sizeof(struct lvp_ray_tracing_capture_handle);
++   if (!lvp_capture_replay_enabled())
++      return VK_ERROR_FEATURE_NOT_PRESENT;
++   if (dataSize < handle_size * groupCount)
++      return VK_INCOMPLETE;
++   for (uint32_t i = 0; i < groupCount; i++) {
++      struct lvp_ray_tracing_capture_handle handle = {
++         .magic = LVP_CAPTURE_HANDLE_MAGIC,
++         .version = 1,
++         .index = p->rt.groups[firstGroup + i].handle.index,
++      };
++      memcpy((uint8_t *)pData + i * handle_size, &handle, handle_size);
++   }
+    return VK_SUCCESS;
+ }
+ 

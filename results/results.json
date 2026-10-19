@@ -1,0 +1,3556 @@
+[
+  {
+    "example": "bloom",
+    "capture_exit": 0,
+    "capture_seconds": 0.465,
+    "capture": "/workspace/verified-batch/captures/bloom_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.315,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/bloom.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 154,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/bloom.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "bufferdeviceaddress",
+    "capture_exit": 0,
+    "capture_seconds": 0.216,
+    "capture": "/workspace/verified-batch/captures/bufferdeviceaddress_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.318,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/bufferdeviceaddress.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        163
+      ],
+      [
+        6,
+        152
+      ],
+      [
+        6,
+        139
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/bufferdeviceaddress.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "computecloth",
+    "capture_exit": 0,
+    "capture_seconds": 0.516,
+    "capture": "/workspace/verified-batch/captures/computecloth_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.267,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/computecloth.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 66,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/computecloth.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "computecullandlod",
+    "capture_exit": 0,
+    "capture_seconds": 3.29,
+    "capture": "/workspace/verified-batch/captures/computecullandlod_frame4.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 3.195,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/computecullandlod.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        204
+      ],
+      [
+        0,
+        204
+      ],
+      [
+        0,
+        128
+      ]
+    ],
+    "actions": 262145,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/computecullandlod.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "computeheadless",
+    "capture_exit": 0,
+    "capture_seconds": 0.114,
+    "capture": "/workspace/verified-batch/captures/computeheadless_capture.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.214,
+    "status": "REPLAYED_NO_IMAGE",
+    "detail": "Compute-only example writes a Fibonacci buffer; it has no colour image."
+  },
+  {
+    "example": "computenbody",
+    "capture_exit": 0,
+    "capture_seconds": 1.371,
+    "capture": "/workspace/verified-batch/captures/computenbody_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 1.026,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/computenbody.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 3,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/computenbody.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "computeparticles",
+    "capture_exit": 0,
+    "capture_seconds": 0.825,
+    "capture": "/workspace/verified-batch/captures/computeparticles_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.722,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/computeparticles.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        255
+      ],
+      [
+        6,
+        255
+      ],
+      [
+        6,
+        255
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/computeparticles.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "computeraytracing",
+    "capture_exit": 0,
+    "capture_seconds": 1.978,
+    "capture": "/workspace/verified-batch/captures/computeraytracing_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 1.218,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/computeraytracing.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        1,
+        255
+      ],
+      [
+        3,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/computeraytracing.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "computeshader",
+    "capture_exit": 0,
+    "capture_seconds": 0.265,
+    "capture": "/workspace/verified-batch/captures/computeshader_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.265,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/computeshader.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 3,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/computeshader.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "conditionalrender",
+    "capture_exit": 0,
+    "capture_seconds": 0.568,
+    "capture": "/workspace/verified-batch/captures/conditionalrender_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.375,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/conditionalrender.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 236,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/conditionalrender.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "conservativeraster",
+    "capture_exit": 249,
+    "capture_seconds": 0.117,
+    "status": "CAPTURE_FAILED",
+    "detail": "Enabled device extension \"VK_EXT_conservative_rasterization\" is not present at device level\nCould not create Vulkan device: \nERROR_EXTENSION_NOT_PRESENT",
+    "failure_reason": "Native driver lacks VK_EXT_conservative_rasterization."
+  },
+  {
+    "example": "debugprintf",
+    "capture_exit": 0,
+    "capture_seconds": 0.216,
+    "capture": "/workspace/verified-batch/captures/debugprintf_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.216,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/debugprintf.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        255
+      ],
+      [
+        5,
+        255
+      ],
+      [
+        4,
+        255
+      ]
+    ],
+    "actions": 86,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/debugprintf.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "debugutils",
+    "capture_exit": 0,
+    "capture_seconds": 0.319,
+    "capture": "/workspace/verified-batch/captures/debugutils_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.268,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/debugutils.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        5,
+        255
+      ],
+      [
+        4,
+        255
+      ]
+    ],
+    "actions": 258,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/debugutils.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "deferred",
+    "capture_exit": 0,
+    "capture_seconds": 0.722,
+    "capture": "/workspace/verified-batch/captures/deferred_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.57,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/deferred.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 3,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/deferred.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "deferredmultisampling",
+    "capture_exit": 0,
+    "capture_seconds": 2.142,
+    "capture": "/workspace/verified-batch/captures/deferredmultisampling_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 21.108,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/deferredmultisampling.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 3,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/deferredmultisampling.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "deferredshadows",
+    "capture_exit": 0,
+    "capture_seconds": 1.176,
+    "capture": "/workspace/verified-batch/captures/deferredshadows_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.78,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/deferredshadows.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 5,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/deferredshadows.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "descriptorbuffer",
+    "capture_exit": 249,
+    "capture_seconds": 0.115,
+    "status": "CAPTURE_FAILED",
+    "detail": "Enabled device extension \"VK_EXT_descriptor_buffer\" is not present at device level\nCould not create Vulkan device: \nERROR_EXTENSION_NOT_PRESENT",
+    "failure_reason": "descriptorBufferCaptureReplay=false; RenderDoc filters the native extension."
+  },
+  {
+    "example": "descriptorheap",
+    "capture_exit": 249,
+    "capture_seconds": 0.115,
+    "status": "CAPTURE_FAILED",
+    "detail": "Enabled device extension \"VK_EXT_descriptor_heap\" is not present at device level\nCould not create Vulkan device: \nERROR_EXTENSION_NOT_PRESENT",
+    "failure_reason": "Native driver lacks VK_EXT_descriptor_heap."
+  },
+  {
+    "example": "descriptorheapuntyped",
+    "capture_exit": 249,
+    "capture_seconds": 0.119,
+    "status": "CAPTURE_FAILED",
+    "detail": "Enabled device extension \"VK_EXT_descriptor_heap\" is not present at device level\nEnabled device extension \"VK_KHR_shader_untyped_pointers\" is not present at device level\nCould not create Vulkan device: \nERROR_EXTENSION_NOT_PRESENT",
+    "failure_reason": "Native driver lacks descriptor heap and VK_KHR_shader_untyped_pointers."
+  },
+  {
+    "example": "descriptorindexing",
+    "capture_exit": 0,
+    "capture_seconds": 0.215,
+    "capture": "/workspace/verified-batch/captures/descriptorindexing_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.265,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/descriptorindexing.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        242
+      ],
+      [
+        6,
+        189
+      ],
+      [
+        6,
+        241
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/descriptorindexing.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "descriptorsets",
+    "capture_exit": 0,
+    "capture_seconds": 0.217,
+    "capture": "/workspace/verified-batch/captures/descriptorsets_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.266,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/descriptorsets.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        162
+      ],
+      [
+        6,
+        150
+      ],
+      [
+        6,
+        135
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/descriptorsets.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "displacement",
+    "capture_exit": 0,
+    "capture_seconds": 2.431,
+    "capture": "/workspace/verified-batch/captures/displacement_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 1.773,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/displacement.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        134
+      ],
+      [
+        6,
+        134
+      ],
+      [
+        3,
+        125
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/displacement.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "distancefieldfonts",
+    "capture_exit": 0,
+    "capture_seconds": 0.214,
+    "capture": "/workspace/verified-batch/captures/distancefieldfonts_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.222,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/distancefieldfonts.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/distancefieldfonts.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "dynamicrendering",
+    "capture_exit": 0,
+    "capture_seconds": 0.318,
+    "capture": "/workspace/verified-batch/captures/dynamicrendering_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.266,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/dynamicrendering.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 3,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/dynamicrendering.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "dynamicrenderinglocalread",
+    "capture_exit": 0,
+    "capture_seconds": 0.985,
+    "capture": "/workspace/verified-batch/captures/dynamicrenderinglocalread_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.667,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/dynamicrenderinglocalread.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        221
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 26,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/dynamicrenderinglocalread.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "dynamicrenderingmultisampling",
+    "capture_exit": 0,
+    "capture_seconds": 0.42,
+    "capture": "/workspace/verified-batch/captures/dynamicrenderingmultisampling_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 1.435,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/dynamicrenderingmultisampling.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 3,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/dynamicrenderingmultisampling.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "dynamicstate",
+    "capture_exit": 0,
+    "capture_seconds": 0.214,
+    "capture": "/workspace/verified-batch/captures/dynamicstate_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.264,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/dynamicstate.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        7,
+        255
+      ]
+    ],
+    "actions": 86,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/dynamicstate.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "dynamicuniformbuffer",
+    "capture_exit": 0,
+    "capture_seconds": 0.214,
+    "capture": "/workspace/verified-batch/captures/dynamicuniformbuffer_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.216,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/dynamicuniformbuffer.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 125,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/dynamicuniformbuffer.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "fragmentshaderbarycentrics",
+    "capture_exit": 249,
+    "capture_seconds": 0.115,
+    "status": "CAPTURE_FAILED",
+    "detail": "Enabled device extension \"VK_KHR_fragment_shader_barycentric\" is not present at device level\nCould not create Vulkan device: \nERROR_EXTENSION_NOT_PRESENT",
+    "failure_reason": "Native driver lacks VK_KHR_fragment_shader_barycentric."
+  },
+  {
+    "example": "gears",
+    "capture_exit": 0,
+    "capture_seconds": 0.217,
+    "capture": "/workspace/verified-batch/captures/gears_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.217,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/gears.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        209
+      ],
+      [
+        0,
+        207
+      ],
+      [
+        0,
+        206
+      ]
+    ],
+    "actions": 3,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/gears.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "geometryshader",
+    "capture_exit": 0,
+    "capture_seconds": 0.319,
+    "capture": "/workspace/verified-batch/captures/geometryshader_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.266,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/geometryshader.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/geometryshader.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "gltfloading",
+    "capture_exit": 0,
+    "capture_seconds": 1.22,
+    "capture": "/workspace/verified-batch/captures/gltfloading_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.321,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/gltfloading.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        2,
+        255
+      ],
+      [
+        1,
+        255
+      ],
+      [
+        1,
+        255
+      ]
+    ],
+    "actions": 5,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/gltfloading.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "gltfscenerendering",
+    "capture_exit": 0,
+    "capture_seconds": 0.876,
+    "capture": "/workspace/verified-batch/captures/gltfscenerendering_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.672,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/gltfscenerendering.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 25,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/gltfscenerendering.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "gltfskinning",
+    "capture_exit": 0,
+    "capture_seconds": 0.416,
+    "capture": "/workspace/verified-batch/captures/gltfskinning_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.27,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/gltfskinning.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        35,
+        255
+      ],
+      [
+        58,
+        255
+      ],
+      [
+        7,
+        255
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/gltfskinning.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "graphicspipelinelibrary",
+    "capture_exit": 0,
+    "capture_seconds": 0.215,
+    "capture": "/workspace/verified-batch/captures/graphicspipelinelibrary_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.22,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/graphicspipelinelibrary.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        232
+      ],
+      [
+        6,
+        232
+      ],
+      [
+        6,
+        232
+      ]
+    ],
+    "actions": 9,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/graphicspipelinelibrary.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "hdr",
+    "capture_exit": 0,
+    "capture_seconds": 0.622,
+    "capture": "/workspace/verified-batch/captures/hdr_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.415,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/hdr.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 5,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/hdr.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "hostimagecopy",
+    "capture_exit": 0,
+    "capture_seconds": 0.27,
+    "capture": "/workspace/verified-batch/captures/hostimagecopy_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.318,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/hostimagecopy.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        255
+      ],
+      [
+        6,
+        255
+      ],
+      [
+        6,
+        255
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/hostimagecopy.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "imgui",
+    "capture_exit": 0,
+    "capture_seconds": 0.418,
+    "capture": "/workspace/verified-batch/captures/imgui_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.317,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/imgui.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 26,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/imgui.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "indirectdraw",
+    "capture_exit": 0,
+    "capture_seconds": 2.792,
+    "capture": "/workspace/verified-batch/captures/indirectdraw_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 1.946,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/indirectdraw.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 14,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/indirectdraw.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "inlineuniformblocks",
+    "capture_exit": 0,
+    "capture_seconds": 0.214,
+    "capture": "/workspace/verified-batch/captures/inlineuniformblocks_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.266,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/inlineuniformblocks.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        83
+      ],
+      [
+        8,
+        112
+      ],
+      [
+        15,
+        192
+      ]
+    ],
+    "actions": 16,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/inlineuniformblocks.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "inputattachments",
+    "capture_exit": 0,
+    "capture_seconds": 0.265,
+    "capture": "/workspace/verified-batch/captures/inputattachments_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.268,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/inputattachments.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        26,
+        255
+      ],
+      [
+        26,
+        255
+      ],
+      [
+        33,
+        255
+      ]
+    ],
+    "actions": 87,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/inputattachments.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "instancing",
+    "capture_exit": 0,
+    "capture_seconds": 0.67,
+    "capture": "/workspace/verified-batch/captures/instancing_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.518,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/instancing.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 3,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/instancing.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "meshshader",
+    "capture_exit": 0,
+    "capture_seconds": 0.164,
+    "capture": "/workspace/verified-batch/captures/meshshader_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.217,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/meshshader.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        254
+      ],
+      [
+        0,
+        254
+      ],
+      [
+        0,
+        254
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/meshshader.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "multisampling",
+    "capture_exit": 0,
+    "capture_seconds": 0.372,
+    "capture": "/workspace/verified-batch/captures/multisampling_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 1.273,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/multisampling.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        2,
+        255
+      ],
+      [
+        2,
+        255
+      ],
+      [
+        2,
+        255
+      ]
+    ],
+    "actions": 3,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/multisampling.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "multisamplingalphatocoverage",
+    "capture_exit": 0,
+    "capture_seconds": 0.621,
+    "capture": "/workspace/verified-batch/captures/multisamplingalphatocoverage_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 1.426,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/multisamplingalphatocoverage.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        188
+      ],
+      [
+        0,
+        189
+      ],
+      [
+        3,
+        194
+      ]
+    ],
+    "actions": 50,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/multisamplingalphatocoverage.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "multithreading",
+    "capture_exit": 0,
+    "capture_seconds": 0.618,
+    "capture": "/workspace/verified-batch/captures/multithreading_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.568,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/multithreading.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 341,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/multithreading.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "multiview",
+    "capture_exit": 0,
+    "capture_seconds": 0.314,
+    "capture": "/workspace/verified-batch/captures/multiview_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.317,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/multiview.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 16,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/multiview.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "negativeviewportheight",
+    "capture_exit": 0,
+    "capture_seconds": 0.214,
+    "capture": "/workspace/verified-batch/captures/negativeviewportheight_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.266,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/negativeviewportheight.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/negativeviewportheight.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "occlusionquery",
+    "capture_exit": 0,
+    "capture_seconds": 0.319,
+    "capture": "/workspace/verified-batch/captures/occlusionquery_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.267,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/occlusionquery.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 6,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/occlusionquery.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "offscreen",
+    "capture_exit": 0,
+    "capture_seconds": 0.417,
+    "capture": "/workspace/verified-batch/captures/offscreen_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.317,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/offscreen.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        133
+      ],
+      [
+        0,
+        133
+      ]
+    ],
+    "actions": 5,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/offscreen.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "oit",
+    "capture_exit": 0,
+    "capture_seconds": 0.571,
+    "capture": "/workspace/verified-batch/captures/oit_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.417,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/oit.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        3,
+        247
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        131
+      ]
+    ],
+    "actions": 128,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/oit.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "parallaxmapping",
+    "capture_exit": 0,
+    "capture_seconds": 0.316,
+    "capture": "/workspace/verified-batch/captures/parallaxmapping_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.317,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/parallaxmapping.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        247
+      ],
+      [
+        0,
+        249
+      ],
+      [
+        0,
+        248
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/parallaxmapping.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "particlesystem",
+    "capture_exit": 0,
+    "capture_seconds": 0.318,
+    "capture": "/workspace/verified-batch/captures/particlesystem_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.264,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/particlesystem.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 5,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/particlesystem.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "pbrbasic",
+    "capture_exit": 0,
+    "capture_seconds": 0.317,
+    "capture": "/workspace/verified-batch/captures/pbrbasic_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.316,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/pbrbasic.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 49,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/pbrbasic.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "pbribl",
+    "capture_exit": 0,
+    "capture_seconds": 10.247,
+    "capture": "/workspace/verified-batch/captures/pbribl_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.417,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/pbribl.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 11,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/pbribl.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "pbrtexture",
+    "capture_exit": 0,
+    "capture_seconds": 10.166,
+    "capture": "/workspace/verified-batch/captures/pbrtexture_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.468,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/pbrtexture.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/pbrtexture.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "pipelines",
+    "capture_exit": 0,
+    "capture_seconds": 0.267,
+    "capture": "/workspace/verified-batch/captures/pipelines_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.265,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/pipelines.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        5,
+        255
+      ],
+      [
+        4,
+        255
+      ]
+    ],
+    "actions": 258,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/pipelines.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "pipelinestatistics",
+    "capture_exit": 0,
+    "capture_seconds": 0.317,
+    "capture": "/workspace/verified-batch/captures/pipelinestatistics_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.366,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/pipelinestatistics.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 9,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/pipelinestatistics.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "pushconstants",
+    "capture_exit": 0,
+    "capture_seconds": 0.214,
+    "capture": "/workspace/verified-batch/captures/pushconstants_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.271,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/pushconstants.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        253
+      ],
+      [
+        6,
+        200
+      ],
+      [
+        6,
+        240
+      ]
+    ],
+    "actions": 16,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/pushconstants.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "pushdescriptors",
+    "capture_exit": 0,
+    "capture_seconds": 0.216,
+    "capture": "/workspace/verified-batch/captures/pushdescriptors_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.317,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/pushdescriptors.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        162
+      ],
+      [
+        6,
+        150
+      ],
+      [
+        6,
+        135
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/pushdescriptors.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "radialblur",
+    "capture_exit": 0,
+    "capture_seconds": 0.366,
+    "capture": "/workspace/verified-batch/captures/radialblur_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.369,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/radialblur.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        86
+      ],
+      [
+        0,
+        91
+      ],
+      [
+        0,
+        254
+      ]
+    ],
+    "actions": 5,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/radialblur.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "rayquery",
+    "capture_exit": 0,
+    "capture_seconds": 10.125,
+    "capture": "/workspace/verified-batch/captures/rayquery_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 6.718,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/rayquery.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        173
+      ],
+      [
+        0,
+        137
+      ],
+      [
+        0,
+        137
+      ]
+    ],
+    "actions": 12,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/rayquery.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "raytracingbasic",
+    "capture_exit": 0,
+    "capture_seconds": 0.164,
+    "capture": "/workspace/verified-batch/captures/raytracingbasic_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.265,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/raytracingbasic.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        254
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 1,
+    "reference_kind": "capture_lossless_png",
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/raytracingbasic.png"
+  },
+  {
+    "example": "raytracingcallable",
+    "capture_exit": 0,
+    "capture_seconds": 0.164,
+    "capture": "/workspace/verified-batch/captures/raytracingcallable_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.264,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/raytracingcallable.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 1,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/raytracingcallable.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "raytracinggltf",
+    "capture_exit": 0,
+    "capture_seconds": 2.034,
+    "capture": "/workspace/verified-batch/captures/raytracinggltf_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.769,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/raytracinggltf.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        2,
+        255
+      ],
+      [
+        2,
+        255
+      ],
+      [
+        1,
+        255
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 1,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/raytracinggltf.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "raytracingintersection",
+    "capture_exit": 0,
+    "capture_seconds": 0.668,
+    "capture": "/workspace/verified-batch/captures/raytracingintersection_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.565,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/raytracingintersection.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        254
+      ],
+      [
+        0,
+        254
+      ],
+      [
+        0,
+        250
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 1,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/raytracingintersection.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "raytracingpositionfetch",
+    "capture_exit": 0,
+    "capture_seconds": 0.619,
+    "capture": "/workspace/verified-batch/captures/raytracingpositionfetch_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.522,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/raytracingpositionfetch.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        26,
+        255
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 1,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/raytracingpositionfetch.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "raytracingreflections",
+    "capture_exit": 0,
+    "capture_seconds": 1.32,
+    "capture": "/workspace/verified-batch/captures/raytracingreflections_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.971,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/raytracingreflections.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        220
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 1,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/raytracingreflections.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "raytracingsbtdata",
+    "capture_exit": 0,
+    "capture_seconds": 0.164,
+    "capture": "/workspace/verified-batch/captures/raytracingsbtdata_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.216,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/raytracingsbtdata.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 1,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/raytracingsbtdata.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "raytracingshadows",
+    "capture_exit": 0,
+    "capture_seconds": 9.56,
+    "capture": "/workspace/verified-batch/captures/raytracingshadows_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 6.702,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/raytracingshadows.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        176
+      ],
+      [
+        0,
+        137
+      ],
+      [
+        0,
+        137
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 1,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/raytracingshadows.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "raytracingtextures",
+    "capture_exit": 0,
+    "capture_seconds": 0.217,
+    "capture": "/workspace/verified-batch/captures/raytracingtextures_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.266,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/raytracingtextures.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        225
+      ],
+      [
+        0,
+        228
+      ],
+      [
+        14,
+        225
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 1,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/raytracingtextures.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "renderheadless",
+    "capture_exit": 0,
+    "capture_seconds": 0.172,
+    "capture": "/workspace/verified-batch/captures/renderheadless_capture.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.272,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/renderheadless.png",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 3,
+    "ray_dispatches": 0,
+    "reference_kind": "native_headless_ppm",
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/renderheadless.ppm"
+  },
+  {
+    "example": "screenshot",
+    "capture_exit": 0,
+    "capture_seconds": 0.268,
+    "capture": "/workspace/verified-batch/captures/screenshot_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.268,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/screenshot.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        3,
+        255
+      ],
+      [
+        0,
+        191
+      ],
+      [
+        0,
+        191
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/screenshot.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "shaderobjects",
+    "capture_exit": 0,
+    "capture_seconds": 0.216,
+    "capture": "/workspace/verified-batch/captures/shaderobjects_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.268,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/shaderobjects.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 86,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/shaderobjects.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "shadowmapping",
+    "capture_exit": 0,
+    "capture_seconds": 0.418,
+    "capture": "/workspace/verified-batch/captures/shadowmapping_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.374,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/shadowmapping.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        166
+      ],
+      [
+        0,
+        137
+      ],
+      [
+        0,
+        137
+      ]
+    ],
+    "actions": 24,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/shadowmapping.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "shadowmappingcascade",
+    "capture_exit": 0,
+    "capture_seconds": 3.476,
+    "capture": "/workspace/verified-batch/captures/shadowmappingcascade_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 2.171,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/shadowmappingcascade.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        167
+      ],
+      [
+        0,
+        192
+      ],
+      [
+        1,
+        175
+      ]
+    ],
+    "actions": 55,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/shadowmappingcascade.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "shadowmappingomni",
+    "capture_exit": 0,
+    "capture_seconds": 0.368,
+    "capture": "/workspace/verified-batch/captures/shadowmappingomni_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.365,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/shadowmappingomni.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        217
+      ],
+      [
+        6,
+        217
+      ],
+      [
+        6,
+        217
+      ]
+    ],
+    "actions": 168,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/shadowmappingomni.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "specializationconstants",
+    "capture_exit": 0,
+    "capture_seconds": 0.265,
+    "capture": "/workspace/verified-batch/captures/specializationconstants_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.264,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/specializationconstants.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 27,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/specializationconstants.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "sphericalenvmapping",
+    "capture_exit": 0,
+    "capture_seconds": 0.315,
+    "capture": "/workspace/verified-batch/captures/sphericalenvmapping_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.268,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/sphericalenvmapping.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        5,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/sphericalenvmapping.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "ssao",
+    "capture_exit": 0,
+    "capture_seconds": 0.869,
+    "capture": "/workspace/verified-batch/captures/ssao_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.573,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/ssao.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        215
+      ],
+      [
+        0,
+        203
+      ],
+      [
+        0,
+        189
+      ]
+    ],
+    "actions": 28,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/ssao.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "stencilbuffer",
+    "capture_exit": 0,
+    "capture_seconds": 0.322,
+    "capture": "/workspace/verified-batch/captures/stencilbuffer_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.266,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/stencilbuffer.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        255
+      ],
+      [
+        1,
+        255
+      ],
+      [
+        1,
+        255
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/stencilbuffer.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "subpasses",
+    "capture_exit": 0,
+    "capture_seconds": 0.471,
+    "capture": "/workspace/verified-batch/captures/subpasses_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.321,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/subpasses.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        253
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 101,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/subpasses.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "terraintessellation",
+    "capture_exit": 0,
+    "capture_seconds": 0.47,
+    "capture": "/workspace/verified-batch/captures/terraintessellation_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.367,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/terraintessellation.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        255
+      ],
+      [
+        5,
+        255
+      ],
+      [
+        7,
+        255
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/terraintessellation.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "tessellation",
+    "capture_exit": 0,
+    "capture_seconds": 0.42,
+    "capture": "/workspace/verified-batch/captures/tessellation_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.315,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/tessellation.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        240
+      ],
+      [
+        0,
+        233
+      ],
+      [
+        0,
+        220
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/tessellation.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "textoverlay",
+    "capture_exit": 0,
+    "capture_seconds": 0.271,
+    "capture": "/workspace/verified-batch/captures/textoverlay_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.267,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/textoverlay.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/textoverlay.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "texture",
+    "capture_exit": 0,
+    "capture_seconds": 0.214,
+    "capture": "/workspace/verified-batch/captures/texture_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.369,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/texture.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        2,
+        255
+      ],
+      [
+        2,
+        255
+      ],
+      [
+        3,
+        255
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/texture.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "texture3d",
+    "capture_exit": 0,
+    "capture_seconds": 0.476,
+    "capture": "/workspace/verified-batch/captures/texture3d_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.265,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/texture3d.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        255
+      ],
+      [
+        6,
+        255
+      ],
+      [
+        6,
+        255
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/texture3d.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "texturearray",
+    "capture_exit": 0,
+    "capture_seconds": 0.215,
+    "capture": "/workspace/verified-batch/captures/texturearray_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.217,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/texturearray.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/texturearray.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "texturecubemap",
+    "capture_exit": 0,
+    "capture_seconds": 0.419,
+    "capture": "/workspace/verified-batch/captures/texturecubemap_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.314,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/texturecubemap.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        2,
+        255
+      ],
+      [
+        3,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/texturecubemap.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "texturecubemaparray",
+    "capture_exit": 0,
+    "capture_seconds": 0.365,
+    "capture": "/workspace/verified-batch/captures/texturecubemaparray_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.314,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/texturecubemaparray.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/texturecubemaparray.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "texturemipmapgen",
+    "capture_exit": 0,
+    "capture_seconds": 0.265,
+    "capture": "/workspace/verified-batch/captures/texturemipmapgen_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.267,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/texturemipmapgen.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        223
+      ],
+      [
+        6,
+        201
+      ],
+      [
+        6,
+        183
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/texturemipmapgen.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "texturesparseresidency",
+    "capture_exit": 0,
+    "capture_seconds": 0.57,
+    "capture": "/workspace/verified-batch/captures/texturesparseresidency_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.973,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/texturesparseresidency.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        6
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/texturesparseresidency.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "timelinesemaphore",
+    "capture_exit": 0,
+    "capture_seconds": 1.269,
+    "capture": "/workspace/verified-batch/captures/timelinesemaphore_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.973,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/timelinesemaphore.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 3,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/timelinesemaphore.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "triangle",
+    "capture_exit": 0,
+    "capture_seconds": 0.214,
+    "capture": "/workspace/verified-batch/captures/triangle_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.265,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/triangle.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        254
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/triangle.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "trianglevulkan13",
+    "capture_exit": 0,
+    "capture_seconds": 0.164,
+    "capture": "/workspace/verified-batch/captures/trianglevulkan13_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.215,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/trianglevulkan13.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        254
+      ]
+    ],
+    "actions": 1,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/trianglevulkan13.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "variablerateshading",
+    "capture_exit": 249,
+    "capture_seconds": 0.115,
+    "status": "CAPTURE_FAILED",
+    "detail": "Enabled device extension \"VK_KHR_fragment_shading_rate\" is not present at device level\nCould not create Vulkan device: \nERROR_EXTENSION_NOT_PRESENT",
+    "failure_reason": "Native driver lacks VK_KHR_fragment_shading_rate."
+  },
+  {
+    "example": "vertexattributes",
+    "capture_exit": 0,
+    "capture_seconds": 0.822,
+    "capture": "/workspace/verified-batch/captures/vertexattributes_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.577,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/vertexattributes.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 25,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/vertexattributes.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "viewportarray",
+    "capture_exit": 0,
+    "capture_seconds": 0.217,
+    "capture": "/workspace/verified-batch/captures/viewportarray_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.217,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/viewportarray.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "actions": 14,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/viewportarray.png",
+    "reference_kind": "capture_lossless_png"
+  },
+  {
+    "example": "vulkanscene",
+    "capture_exit": 0,
+    "capture_seconds": 0.566,
+    "capture": "/workspace/verified-batch/captures/vulkanscene_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.365,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/vulkanscene.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        238
+      ],
+      [
+        0,
+        238
+      ]
+    ],
+    "actions": 20,
+    "ray_dispatches": 0,
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/vulkanscene.png",
+    "reference_kind": "capture_lossless_png"
+  }
+]
