@@ -1,0 +1,7 @@
+{
+  "file_format_version": "1.0.0",
+  "ICD": {
+    "library_path": "/workspace/mesa-26.2.5-build/src/gallium/targets/lavapipe/libvulkan_lvp.so",
+    "api_version": "1.4.0"
+  }
+}

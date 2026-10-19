@@ -6,13 +6,15 @@ including Vulkan ray tracing. PNGs are saved from the replayed texture through
 
 ## Verified results
 
-- 99 examples attempted: 93 captured and replayed successfully.
-- 92 image-producing examples exported PNGs. Their RGB pixels match the original
+- 99 examples attempted: 96 captured and replayed successfully.
+- 95 image-producing examples exported PNGs. Their RGB pixels match the original
   capture-time image exactly; the headless renderer matches its native PPM output.
 - `computeheadless` executes a compute dispatch and has no colour image to export.
 - All nine `raytracing*` examples and `rayquery` passed independent-process replay
   and exact RGB comparison at 640×360.
-- Six examples remain unavailable, with the reasons listed below.
+- `descriptorbuffer`, `descriptorheap`, and `descriptorheapuntyped` now each have
+  one complete captured frame, independent-process replay, and an exact RGB PNG.
+- Three examples remain unavailable, with the reasons listed below.
 
 See `/workspace/verified-batch/report.md` and `results.json` for per-example
 results, actual exit codes, timings, images, and capture paths.
@@ -59,6 +61,56 @@ it submits asynchronous compute before its graphics path updates the UBO. It is
 captured at frame 4; other windowed examples use frame 1. Each RDC holds one frame.
 Headless examples are instrumented in generated copies; upstream sources stay intact.
 
+## Descriptor examples on Mesa 26.2.5
+
+The three descriptor examples use a separate Mesa 26.2.5 lavapipe profile. The
+original 93 captures continue to use the Mesa 25.0.7 profile, including its ray
+tracing capture/replay patch. `run_batch.py` selects the profile for each example.
+
+`patches/lavapipe-26.2.5-bda-capture-replay.patch` ports the opt-in Linux 64-bit BDA
+address restoration to the current driver's memory object layout. It preserves
+addresses in an independent process and rejects an occupied address without
+overwriting the existing mapping. The native baseline driver is retained at
+`/workspace/lavapipe-26.2.5-native/libvulkan_lvp.so` for the earlier native tests.
+
+`patches/renderdoc-lavapipe-descriptors.patch` adds an experimental lavapipe path
+enabled with `RDOC_LVP_DESCRIPTOR_REPLAY=1`:
+
+- Record descriptor descriptions and their capture-time bytes; regenerate native
+  descriptor bytes in the replay process and replace matching bytes within bound
+  descriptor buffer/heap memory ranges before upload.
+- Record/replay resource and sampler descriptor writes, heap binds, push data,
+  shader set/binding mappings, and the untyped-pointers feature structure.
+- Keep images, views, samplers, and indirect buffer dependencies in the capture.
+  Heap draws execute the native `VK_EXT_descriptor_heap` commands and original
+  SPIR-V shaders, including the untyped-pointers example.
+- Check descriptor sizes and ambiguous byte patterns. Heap replay without the
+  experimental mode fails with an explanatory error.
+
+This path does not enable Mesa's `descriptorBufferCaptureReplay` or
+`descriptorHeapCaptureReplay` feature bits. It regenerates the descriptors whose
+CPU/JIT pointers cannot be reused across processes. The opt-in extension exposure
+is limited to the lavapipe driver. Verification covers these examples' CPU-written
+descriptor buffers and full-frame replay/PNG export; GPU-written or transformed
+descriptors, arbitrary descriptor updates, partial replay state restoration,
+heap inspection, shader debugging, other drivers, and Vulkan CTS conformance are
+not claimed. Heap descriptor-write pNext chains are rejected in this prototype.
+
+```sh
+cd /workspace/Capture
+./rebuild.sh
+./start.sh
+python3 run_batch.py --refresh descriptorbuffer descriptorheap descriptorheapuntyped
+./verify_descriptors.sh
+source ./descriptor-env.sh
+renderdoccmd replay --export-png /workspace/descriptorheap.png \
+  /workspace/verified-batch/captures/descriptorheap_frame1.rdc
+```
+
+The descriptor verification also checks BDA address restoration with a nonzero
+binding offset, occupied-address rejection, opt-in disabled behavior, and replay
+rejection without descriptor regeneration.
+
 ## Run in the prepared cloud snapshot
 
 ```sh
@@ -103,12 +155,9 @@ capture, replays all ten ray tracing/query captures, and compares every RGB pixe
 
 | Example | Observed blocker |
 | --- | --- |
-| conservativeraster | Native Mesa 25.0.7 lacks `VK_EXT_conservative_rasterization` |
-| descriptorbuffer | Native extension exists, but `descriptorBufferCaptureReplay=false`; RenderDoc filters it |
-| descriptorheap | Native driver lacks `VK_EXT_descriptor_heap` |
-| descriptorheapuntyped | Native driver lacks descriptor heap and `VK_KHR_shader_untyped_pointers` |
-| fragmentshaderbarycentrics | Native driver lacks `VK_KHR_fragment_shader_barycentric` |
-| variablerateshading | Native driver lacks `VK_KHR_fragment_shading_rate` |
+| conservativeraster | Native lavapipe, also tested on Mesa 26.2.5, lacks `VK_EXT_conservative_rasterization` |
+| fragmentshaderbarycentrics | Native lavapipe, also tested on Mesa 26.2.5, lacks `VK_KHR_fragment_shader_barycentric` |
+| variablerateshading | Native lavapipe, also tested on Mesa 26.2.5, lacks `VK_KHR_fragment_shading_rate` |
 
 These are not ray-tracing failures and do not have usable RDCs in the verified set.
 Replaying ray-tracing captures requires this patched driver and opt-in; stock Mesa
@@ -120,6 +169,7 @@ acceptance or support on other drivers is made.
 | Component | Checkout | Commit |
 | --- | --- | --- |
 | Mesa graphics | `/workspace/mesa-graphics` | `742a20f48c59e8649533c84c4d49dd95b403f5da` (25.0.7) |
+| Mesa descriptor profile | `/workspace/mesa-26.2.5` | `ddaf85e353442d9d7f192fdcf1823e652e3f2ee3` (26.2.5) |
 | RenderDoc | `/workspace/renderdoc` | `45e91661ee457e64279ff86265abdbe214aa6be0` |
 | Sascha Willems examples | `/workspace/vulkan` | `1cbc8d87b731b438f47dea00a2e083ba7d59051d` |
 | Vulkan assets submodule | `/workspace/vulkan/assets` | `a27c0e584434d59b7c7a714e9180eefca6f0ec4b` |

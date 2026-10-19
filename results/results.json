@@ -551,27 +551,120 @@
   },
   {
     "example": "descriptorbuffer",
-    "capture_exit": 249,
-    "capture_seconds": 0.115,
-    "status": "CAPTURE_FAILED",
-    "detail": "Enabled device extension \"VK_EXT_descriptor_buffer\" is not present at device level\nCould not create Vulkan device: \nERROR_EXTENSION_NOT_PRESENT",
-    "failure_reason": "descriptorBufferCaptureReplay=false; RenderDoc filters the native extension."
+    "driver_profile": "Mesa 26.2.5 descriptor regeneration",
+    "capture_exit": 0,
+    "capture_seconds": 0.215,
+    "capture": "/workspace/verified-batch/captures/descriptorbuffer_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.215,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/descriptorbuffer.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        6,
+        161
+      ],
+      [
+        6,
+        148
+      ],
+      [
+        6,
+        133
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_kind": "capture_lossless_png",
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/descriptorbuffer.png"
   },
   {
     "example": "descriptorheap",
-    "capture_exit": 249,
-    "capture_seconds": 0.115,
-    "status": "CAPTURE_FAILED",
-    "detail": "Enabled device extension \"VK_EXT_descriptor_heap\" is not present at device level\nCould not create Vulkan device: \nERROR_EXTENSION_NOT_PRESENT",
-    "failure_reason": "Native driver lacks VK_EXT_descriptor_heap."
+    "driver_profile": "Mesa 26.2.5 descriptor regeneration",
+    "capture_exit": 0,
+    "capture_seconds": 0.215,
+    "capture": "/workspace/verified-batch/captures/descriptorheap_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.215,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/descriptorheap.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        161
+      ],
+      [
+        0,
+        148
+      ],
+      [
+        0,
+        133
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_kind": "capture_lossless_png",
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/descriptorheap.png"
   },
   {
     "example": "descriptorheapuntyped",
-    "capture_exit": 249,
-    "capture_seconds": 0.119,
-    "status": "CAPTURE_FAILED",
-    "detail": "Enabled device extension \"VK_EXT_descriptor_heap\" is not present at device level\nEnabled device extension \"VK_KHR_shader_untyped_pointers\" is not present at device level\nCould not create Vulkan device: \nERROR_EXTENSION_NOT_PRESENT",
-    "failure_reason": "Native driver lacks descriptor heap and VK_KHR_shader_untyped_pointers."
+    "driver_profile": "Mesa 26.2.5 descriptor regeneration",
+    "capture_exit": 0,
+    "capture_seconds": 0.164,
+    "capture": "/workspace/verified-batch/captures/descriptorheapuntyped_frame1.rdc",
+    "replay_exit": 0,
+    "replay_seconds": 0.214,
+    "status": "REPLAYED_PNG",
+    "png": "/workspace/verified-batch/png/descriptorheapuntyped.png",
+    "dimensions": [
+      640,
+      360
+    ],
+    "channel_ranges": [
+      [
+        0,
+        101
+      ],
+      [
+        0,
+        187
+      ],
+      [
+        0,
+        110
+      ]
+    ],
+    "actions": 2,
+    "ray_dispatches": 0,
+    "reference_kind": "capture_lossless_png",
+    "reference_mean_absolute_error": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pixel_exact": true,
+    "reference": "/workspace/verified-batch/reference/descriptorheapuntyped.png"
   },
   {
     "example": "descriptorindexing",

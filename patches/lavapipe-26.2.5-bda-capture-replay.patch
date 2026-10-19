@@ -1,0 +1,161 @@
+diff --git a/src/gallium/frontends/lavapipe/lvp_device.c b/src/gallium/frontends/lavapipe/lvp_device.c
+index 5dc1ace..1c7878b 100644
+--- a/src/gallium/frontends/lavapipe/lvp_device.c
++++ b/src/gallium/frontends/lavapipe/lvp_device.c
+@@ -49,6 +49,7 @@
+ #include "nir_builder.h"
+ 
+ #if DETECT_OS_LINUX
++#include <errno.h>
+ #include <sys/mman.h>
+ #include <sys/resource.h>
+ #include <sys/sysinfo.h>
+@@ -537,7 +538,7 @@ lvp_get_features(const struct lvp_physical_device *pdevice,
+       .hostQueryReset = true,
+       .timelineSemaphore = true,
+       .bufferDeviceAddress = true,
+-      .bufferDeviceAddressCaptureReplay = false,
++      .bufferDeviceAddressCaptureReplay = lvp_capture_replay_enabled(),
+       .bufferDeviceAddressMultiDevice = false,
+       .vulkanMemoryModel = true,
+       .vulkanMemoryModelDeviceScope = true,
+@@ -2161,6 +2162,16 @@ get_mem_priority(float priority)
+    return priority = 1;
+ }
+ 
++bool
++lvp_capture_replay_enabled(void)
++{
++#if DETECT_OS_LINUX && UINTPTR_MAX == UINT64_MAX && defined(MAP_FIXED_NOREPLACE)
++   return debug_get_bool_option("LVP_CAPTURE_REPLAY", false);
++#else
++   return false;
++#endif
++}
++
+ VKAPI_ATTR VkResult VKAPI_CALL lvp_AllocateMemory(
+    VkDevice                                    _device,
+    const VkMemoryAllocateInfo*                 pAllocateInfo,
+@@ -2171,12 +2182,16 @@ VKAPI_ATTR VkResult VKAPI_CALL lvp_AllocateMemory(
+    struct lvp_device_memory *mem;
+    ASSERTED const VkImportMemoryFdInfoKHR *import_info = NULL;
+    const VkMemoryAllocateFlagsInfo *mem_flags = NULL;
++   uint64_t capture_address = 0;
+    VkResult error = VK_ERROR_OUT_OF_DEVICE_MEMORY;
+    assert(pAllocateInfo->sType == VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO);
+    int priority = 0;
+ 
+    vk_foreach_struct_const(ext, pAllocateInfo->pNext) {
+       switch ((unsigned)ext->sType) {
++      case VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO:
++         capture_address = ((const VkMemoryOpaqueCaptureAddressAllocateInfo *)ext)->opaqueCaptureAddress;
++         break;
+       case VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR:
+          import_info = (VkImportMemoryFdInfoKHR*)ext;
+          assert_memhandle_type(import_info->handleType);
+@@ -2209,7 +2224,54 @@ VKAPI_ATTR VkResult VKAPI_CALL lvp_AllocateMemory(
+    mem->memory_type = LVP_DEVICE_MEMORY_TYPE_DEFAULT;
+    mem->backed_fd = -1;
+ 
+-   if (mem->vk.host_ptr) {
++   if (lvp_capture_replay_enabled() && mem_flags &&
++       (mem_flags->flags & VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT)) {
++#if DETECT_OS_LINUX && UINTPTR_MAX == UINT64_MAX && defined(MAP_FIXED_NOREPLACE)
++      static uint64_t next_capture_address = UINT64_C(0x200000000000);
++      uint64_t page_size;
++      os_get_page_size(&page_size);
++      uint64_t size = align64(mem->vk.size, page_size);
++      void *map = MAP_FAILED;
++      if (mem->vk.host_ptr || mem->vk.import_handle_type ||
++          mem->vk.export_handle_types || !size ||
++          (capture_address & (page_size - 1))) {
++         error = VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS;
++         goto fail;
++      }
++      for (unsigned attempt = 0; attempt < 1024; attempt++) {
++         uint64_t address = capture_address;
++         if (!address) {
++            uint64_t step = align64(size, UINT64_C(0x10000));
++            address = p_atomic_add_return(&next_capture_address, step) - step;
++         }
++         map = mmap((void *)(uintptr_t)address, size, PROT_READ | PROT_WRITE,
++                    MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED_NOREPLACE, -1, 0);
++         if (map != MAP_FAILED) {
++            if ((uintptr_t)map != address) {
++               munmap(map, size);
++               map = MAP_FAILED;
++               errno = EEXIST;
++            } else {
++               break;
++            }
++         }
++         if (capture_address || errno != EEXIST)
++            break;
++      }
++      if (map == MAP_FAILED) {
++         if (capture_address)
++            error = VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS;
++         goto fail;
++      }
++      mem->map = map;
++      mem->mem_alloc = (struct llvmpipe_memory_allocation) { .cpu_addr = map };
++      mem->pmem = (void *)&mem->mem_alloc;
++      mem->memory_type = LVP_DEVICE_MEMORY_TYPE_CAPTURE_REPLAY;
++      set_mem_priority(mem, priority);
++#else
++      UNREACHABLE("capture replay requires Linux and 64-bit pointers");
++#endif
++   } else if (mem->vk.host_ptr) {
+       mem->mem_alloc = (struct llvmpipe_memory_allocation) {
+          .cpu_addr = mem->vk.host_ptr,
+       };
+@@ -2299,10 +2361,16 @@ VKAPI_ATTR void VKAPI_CALL lvp_FreeMemory(
+    if (mem == NULL)
+       return;
+ 
+-   if (mem->memory_type != LVP_DEVICE_MEMORY_TYPE_USER_PTR)
++   if (mem->memory_type != LVP_DEVICE_MEMORY_TYPE_USER_PTR &&
++       mem->memory_type != LVP_DEVICE_MEMORY_TYPE_CAPTURE_REPLAY)
+       device->pscreen->unmap_memory(device->pscreen, mem->pmem);
+ 
+    switch(mem->memory_type) {
++   case LVP_DEVICE_MEMORY_TYPE_CAPTURE_REPLAY:
++#if DETECT_OS_LINUX
++      munmap(mem->map, mem->vk.size);
++#endif
++      break;
+    case LVP_DEVICE_MEMORY_TYPE_DEFAULT:
+       device->pscreen->free_memory(device->pscreen, mem->pmem);
+       break;
+diff --git a/src/gallium/frontends/lavapipe/lvp_image.c b/src/gallium/frontends/lavapipe/lvp_image.c
+index 44d457f..650d763 100644
+--- a/src/gallium/frontends/lavapipe/lvp_image.c
++++ b/src/gallium/frontends/lavapipe/lvp_image.c
+@@ -666,7 +666,9 @@ VKAPI_ATTR uint64_t VKAPI_CALL lvp_GetDeviceMemoryOpaqueCaptureAddress(
+     VkDevice                                    device,
+     const VkDeviceMemoryOpaqueCaptureAddressInfo* pInfo)
+ {
+-   return 0;
++   VK_FROM_HANDLE(lvp_device_memory, mem, pInfo->memory);
++   return mem->memory_type == LVP_DEVICE_MEMORY_TYPE_CAPTURE_REPLAY ?
++      (uint64_t)(uintptr_t)mem->map : 0;
+ }
+ 
+ static struct pipe_sampler_view *
+diff --git a/src/gallium/frontends/lavapipe/lvp_private.h b/src/gallium/frontends/lavapipe/lvp_private.h
+index bdb6114..e857f64 100644
+--- a/src/gallium/frontends/lavapipe/lvp_private.h
++++ b/src/gallium/frontends/lavapipe/lvp_private.h
+@@ -250,8 +250,12 @@ enum lvp_device_memory_type {
+    LVP_DEVICE_MEMORY_TYPE_USER_PTR,
+    LVP_DEVICE_MEMORY_TYPE_OPAQUE_FD,
+    LVP_DEVICE_MEMORY_TYPE_DMA_BUF,
++   LVP_DEVICE_MEMORY_TYPE_CAPTURE_REPLAY,
+ };
+ 
++/* Experimental Linux/64-bit address restoration; opt-in. */
++bool lvp_capture_replay_enabled(void);
++
+ struct lvp_device_memory {
+    struct vk_device_memory vk;
+ 

@@ -1,0 +1,150 @@
+{
+  "verified_utc": "2026-10-19T12:13:04.148274+00:00",
+  "mesa_version": "26.2.5",
+  "mesa_commit": "ddaf85e353442d9d7f192fdcf1823e652e3f2ee3",
+  "renderdoc_commit": "45e91661ee457e64279ff86265abdbe214aa6be0",
+  "icd": "/workspace/Capture/lavapipe-descriptor-replay.json",
+  "driver_sha256": "6694178c3b9ee563d5fbc209ce585c3b27f0839a4b122abc9073f69874c2968b",
+  "renderdoc_library_sha256": "992a52b2a3eaf151bc130953f474a19ff034446f76c7ec614778013cd0cc312d",
+  "environment": {
+    "LVP_CAPTURE_REPLAY": "1",
+    "RDOC_LVP_DESCRIPTOR_REPLAY": "1",
+    "LP_NUM_THREADS": "2"
+  },
+  "processes": "Capture and replay execute in separate subprocesses.",
+  "checks": [
+    "one captured frame per example",
+    "two replayed draw actions per example",
+    "all RGB pixels equal the lossless capture-time reference",
+    "BDA restoration in separate processes with nonzero binding offset",
+    "occupied BDA address rejected without overwriting sentinel",
+    "BDA feature disabled without opt-in",
+    "heap replay rejected without descriptor regeneration",
+    "all ten previous ray tracing/query replays still RGB exact"
+  ],
+  "examples": [
+    {
+      "example": "descriptorbuffer",
+      "driver_profile": "Mesa 26.2.5 descriptor regeneration",
+      "capture_exit": 0,
+      "capture_seconds": 0.215,
+      "capture": "/workspace/verified-batch/captures/descriptorbuffer_frame1.rdc",
+      "replay_exit": 0,
+      "replay_seconds": 0.215,
+      "status": "REPLAYED_PNG",
+      "png": "/workspace/verified-batch/png/descriptorbuffer.png",
+      "dimensions": [
+        640,
+        360
+      ],
+      "channel_ranges": [
+        [
+          6,
+          161
+        ],
+        [
+          6,
+          148
+        ],
+        [
+          6,
+          133
+        ]
+      ],
+      "actions": 2,
+      "ray_dispatches": 0,
+      "reference_kind": "capture_lossless_png",
+      "reference_mean_absolute_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pixel_exact": true,
+      "reference": "/workspace/verified-batch/reference/descriptorbuffer.png",
+      "capture_sha256": "ccd9da4d8cde2a7571d6d0bbe236292dfc0936fc7cbb697daa953860fb75b41e",
+      "png_sha256": "d290976fa4a512b0e8d0ed208eccbd3141dc04c11db026eeda617d537885c044"
+    },
+    {
+      "example": "descriptorheap",
+      "driver_profile": "Mesa 26.2.5 descriptor regeneration",
+      "capture_exit": 0,
+      "capture_seconds": 0.215,
+      "capture": "/workspace/verified-batch/captures/descriptorheap_frame1.rdc",
+      "replay_exit": 0,
+      "replay_seconds": 0.215,
+      "status": "REPLAYED_PNG",
+      "png": "/workspace/verified-batch/png/descriptorheap.png",
+      "dimensions": [
+        640,
+        360
+      ],
+      "channel_ranges": [
+        [
+          0,
+          161
+        ],
+        [
+          0,
+          148
+        ],
+        [
+          0,
+          133
+        ]
+      ],
+      "actions": 2,
+      "ray_dispatches": 0,
+      "reference_kind": "capture_lossless_png",
+      "reference_mean_absolute_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pixel_exact": true,
+      "reference": "/workspace/verified-batch/reference/descriptorheap.png",
+      "capture_sha256": "59d332766937ee768f2ef341a601c1d608485caa790ad1d88c9985a72c2395da",
+      "png_sha256": "ff0143f6fba50a2b4a5e576d39f9536564db528ad2c648aab4d25c7b3966ed13"
+    },
+    {
+      "example": "descriptorheapuntyped",
+      "driver_profile": "Mesa 26.2.5 descriptor regeneration",
+      "capture_exit": 0,
+      "capture_seconds": 0.164,
+      "capture": "/workspace/verified-batch/captures/descriptorheapuntyped_frame1.rdc",
+      "replay_exit": 0,
+      "replay_seconds": 0.214,
+      "status": "REPLAYED_PNG",
+      "png": "/workspace/verified-batch/png/descriptorheapuntyped.png",
+      "dimensions": [
+        640,
+        360
+      ],
+      "channel_ranges": [
+        [
+          0,
+          101
+        ],
+        [
+          0,
+          187
+        ],
+        [
+          0,
+          110
+        ]
+      ],
+      "actions": 2,
+      "ray_dispatches": 0,
+      "reference_kind": "capture_lossless_png",
+      "reference_mean_absolute_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pixel_exact": true,
+      "reference": "/workspace/verified-batch/reference/descriptorheapuntyped.png",
+      "capture_sha256": "cd1500bfd7663fce2e6603a5a0edb011d47032a7d2905c514c49c70c0ddca2c5",
+      "png_sha256": "6a65d77bb19097ad5955e0d7d77f18e82539b2e2f48914d7c2ea62450ccb8796"
+    }
+  ]
+}

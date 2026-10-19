@@ -14,12 +14,21 @@ OUT = ROOT / 'verified-batch'
 for folder in ('captures', 'png', 'reference', 'logs'):
     (OUT / folder).mkdir(parents=True, exist_ok=True)
 BASE = dict(os.environ)
-for key in ('LD_PRELOAD', 'VK_INSTANCE_LAYERS', 'VK_LAYER_PATH'):
+for key in ('LD_PRELOAD', 'VK_INSTANCE_LAYERS', 'VK_LAYER_PATH', 'VK_ICD_FILENAMES',
+            'VK_LOADER_LAYERS_DISABLE', 'RDOC_LVP_DESCRIPTOR_REPLAY'):
     BASE.pop(key, None)
 BASE.update(DISPLAY=':99', VK_DRIVER_FILES=str(ROOT / 'lavapipe-capture-replay.json'),
             LVP_CAPTURE_REPLAY='1', LP_NUM_THREADS='2',
             LD_LIBRARY_PATH=f'{ROOT}/renderdoc-build/lib:{ROOT}/sysroot/usr/lib/x86_64-linux-gnu')
 CMD = ROOT / 'renderdoc-build/bin/renderdoccmd'
+DESCRIPTOR_EXAMPLES = {'descriptorbuffer', 'descriptorheap', 'descriptorheapuntyped'}
+
+def replay_environment(name):
+    env = dict(BASE)
+    if name in DESCRIPTOR_EXAMPLES:
+        env.update(VK_DRIVER_FILES=str(ROOT / 'Capture/lavapipe-descriptor-replay.json'),
+                   RDOC_LVP_DESCRIPTOR_REPLAY='1')
+    return env
 
 def run(command, env, log):
     started = time.monotonic()
@@ -34,8 +43,11 @@ def run(command, env, log):
 
 def process(name):
     result = dict(example=name)
+    base = replay_environment(name)
+    result['driver_profile'] = ('Mesa 26.2.5 descriptor regeneration' if name in DESCRIPTOR_EXAMPLES
+                                else 'Mesa 25.0.7 capture/replay')
     headless = name in ('computeheadless', 'renderheadless')
-    env = dict(BASE, VK_LAYER_PATH=str(ROOT), VK_INSTANCE_LAYERS='VK_LAYER_RENDERDOC_Capture',
+    env = dict(base, VK_LAYER_PATH=str(ROOT), VK_INSTANCE_LAYERS='VK_LAYER_RENDERDOC_Capture',
                RDOC_LOSSLESS_REFERENCE='1',
                RDOC_CAPTURE_PATH=str(OUT / 'captures' / name))
     if not headless:
@@ -77,7 +89,7 @@ def process(name):
     log = OUT / 'logs' / f'{name}.replay.log'
     command = [str(CMD), 'replay', '--verify', str(files[0])] if name == 'computeheadless' else [
         str(CMD), 'replay', '--export-png', str(png), str(files[0])]
-    rc, duration = run(command, BASE, log)
+    rc, duration = run(command, base, log)
     result.update(replay_exit=rc, replay_seconds=duration)
     text = log.read_text(errors='replace')
     if name == 'computeheadless' and rc == 0:
@@ -104,7 +116,7 @@ def process(name):
         result['reference_kind'] = 'native_headless_ppm'
         rc = 0
     else:
-        rc, _ = run([str(CMD), 'thumb', '--out=' + str(reference), str(files[0])], BASE,
+        rc, _ = run([str(CMD), 'thumb', '--out=' + str(reference), str(files[0])], base,
                     OUT / 'logs' / f'{name}.reference.log')
         result['reference_kind'] = 'capture_lossless_png'
     if rc == 0 and reference.exists():

@@ -1,8 +1,10 @@
 # Verified lavapipe replay results
 
-99 examples attempted; 93 captured and replayed successfully. 92 PNGs match their original RGB pixels exactly; one compute-only example has no image. Six examples are blocked before capture by the extensions listed below.
+99 examples attempted; 96 captured and replayed successfully. 95 PNGs match their original RGB pixels exactly; one compute-only example has no image. Three examples are blocked before capture by the extensions listed below.
 
 All nine `raytracing*` examples and `rayquery` passed. Capture and replay run in separate processes. Every replay explicitly uses the patched Mesa lavapipe ICD with `LVP_CAPTURE_REPLAY=1`. This is an experimental Linux 64-bit implementation.
+
+The three descriptor examples use Mesa 26.2.5 with the BDA address-restoration patch and RenderDoc descriptor regeneration (`RDOC_LVP_DESCRIPTOR_REPLAY=1`). The original 93 examples use the retained Mesa 25.0.7 capture/replay profile. Both profiles are selected automatically by `run_batch.py`.
 
 A PNG in the replay column is produced by executing the capture and reading the final texture with `SaveTexture`. The separate reference column is the original capture-time image. RGB pixels match exactly for every exported image.
 
@@ -26,9 +28,9 @@ A PNG in the replay column is produced by executing the capture and reading the 
 | deferred | RGB exact | [PNG](/workspace/verified-batch/png/deferred.png) | [Reference](/workspace/verified-batch/reference/deferred.png) | [RDC](/workspace/verified-batch/captures/deferred_frame1.rdc) |
 | deferredmultisampling | RGB exact | [PNG](/workspace/verified-batch/png/deferredmultisampling.png) | [Reference](/workspace/verified-batch/reference/deferredmultisampling.png) | [RDC](/workspace/verified-batch/captures/deferredmultisampling_frame1.rdc) |
 | deferredshadows | RGB exact | [PNG](/workspace/verified-batch/png/deferredshadows.png) | [Reference](/workspace/verified-batch/reference/deferredshadows.png) | [RDC](/workspace/verified-batch/captures/deferredshadows_frame1.rdc) |
-| descriptorbuffer | descriptorBufferCaptureReplay=false; RenderDoc filters the native extension. | — | — | — |
-| descriptorheap | Native driver lacks VK_EXT_descriptor_heap. | — | — | — |
-| descriptorheapuntyped | Native driver lacks descriptor heap and VK_KHR_shader_untyped_pointers. | — | — | — |
+| descriptorbuffer | RGB exact | [PNG](/workspace/verified-batch/png/descriptorbuffer.png) | [Reference](/workspace/verified-batch/reference/descriptorbuffer.png) | [RDC](/workspace/verified-batch/captures/descriptorbuffer_frame1.rdc) |
+| descriptorheap | RGB exact | [PNG](/workspace/verified-batch/png/descriptorheap.png) | [Reference](/workspace/verified-batch/reference/descriptorheap.png) | [RDC](/workspace/verified-batch/captures/descriptorheap_frame1.rdc) |
+| descriptorheapuntyped | RGB exact | [PNG](/workspace/verified-batch/png/descriptorheapuntyped.png) | [Reference](/workspace/verified-batch/reference/descriptorheapuntyped.png) | [RDC](/workspace/verified-batch/captures/descriptorheapuntyped_frame1.rdc) |
 | descriptorindexing | RGB exact | [PNG](/workspace/verified-batch/png/descriptorindexing.png) | [Reference](/workspace/verified-batch/reference/descriptorindexing.png) | [RDC](/workspace/verified-batch/captures/descriptorindexing_frame1.rdc) |
 | descriptorsets | RGB exact | [PNG](/workspace/verified-batch/png/descriptorsets.png) | [Reference](/workspace/verified-batch/reference/descriptorsets.png) | [RDC](/workspace/verified-batch/captures/descriptorsets_frame1.rdc) |
 | displacement | RGB exact | [PNG](/workspace/verified-batch/png/displacement.png) | [Reference](/workspace/verified-batch/reference/displacement.png) | [RDC](/workspace/verified-batch/captures/displacement_frame1.rdc) |

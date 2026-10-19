@@ -13,9 +13,6 @@ results = json.loads((OUT / 'results.json').read_text())
 assert len(results) == 99 and len({r['example'] for r in results}) == 99
 blockers = {
     'conservativeraster': 'Native driver lacks VK_EXT_conservative_rasterization.',
-    'descriptorbuffer': 'descriptorBufferCaptureReplay=false; RenderDoc filters the native extension.',
-    'descriptorheap': 'Native driver lacks VK_EXT_descriptor_heap.',
-    'descriptorheapuntyped': 'Native driver lacks descriptor heap and VK_KHR_shader_untyped_pointers.',
     'fragmentshaderbarycentrics': 'Native driver lacks VK_KHR_fragment_shader_barycentric.',
     'variablerateshading': 'Native driver lacks VK_KHR_fragment_shading_rate.',
 }
@@ -45,22 +42,26 @@ for result in results:
                   reference_mean_absolute_error=ImageStat.Stat(difference).mean)
 
 counts = dict(Counter(r['status'] for r in results))
-assert counts == {'REPLAYED_PNG': 92, 'REPLAYED_NO_IMAGE': 1, 'CAPTURE_FAILED': 6}, counts
+assert counts == {'REPLAYED_PNG': 95, 'REPLAYED_NO_IMAGE': 1, 'CAPTURE_FAILED': 3}, counts
 (OUT / 'results.json').write_text(json.dumps(results, indent=2) + '\n')
 with (OUT / 'results.tsv').open('w') as file:
-    writer = csv.writer(file, delimiter='\t')
+    writer = csv.writer(file, delimiter='\t', lineterminator='\n')
     writer.writerow(['example', 'status', 'capture_exit', 'replay_exit', 'RGB_exact', 'reason'])
     for r in results:
         writer.writerow([r['example'], r['status'], r.get('capture_exit', ''), r.get('replay_exit', ''),
-                         r.get('pixel_exact', ''), r.get('failure_reason', r.get('detail', ''))])
+                         r.get('pixel_exact', ''), r.get('failure_reason', r.get('detail', '')) or '—'])
 
 lines = ['# Verified lavapipe replay results', '',
-         '99 examples attempted; 93 captured and replayed successfully. '
-         '92 PNGs match their original RGB pixels exactly; one compute-only example has no image. '
-         'Six examples are blocked before capture by the extensions listed below.', '',
+         '99 examples attempted; 96 captured and replayed successfully. '
+         '95 PNGs match their original RGB pixels exactly; one compute-only example has no image. '
+         'Three examples are blocked before capture by the extensions listed below.', '',
          'All nine `raytracing*` examples and `rayquery` passed. Capture and replay run in separate '
          'processes. Every replay explicitly uses the patched Mesa lavapipe ICD with '
          '`LVP_CAPTURE_REPLAY=1`. This is an experimental Linux 64-bit implementation.', '',
+         'The three descriptor examples use Mesa 26.2.5 with the BDA address-restoration patch '
+         'and RenderDoc descriptor regeneration (`RDOC_LVP_DESCRIPTOR_REPLAY=1`). '
+         'The original 93 examples use the retained Mesa 25.0.7 capture/replay profile. '
+         'Both profiles are selected automatically by `run_batch.py`.', '',
          'A PNG in the replay column is produced by executing the capture and reading the final '
          'texture with `SaveTexture`. The separate reference column is the original capture-time '
          'image. RGB pixels match exactly for every exported image.', '',
@@ -75,4 +76,4 @@ for r in results:
 (OUT / 'report.md').write_text('\n'.join(lines) + '\n')
 for name in ('results.json', 'results.tsv', 'report.md'):
     shutil.copy2(OUT / name, ROOT / 'Capture/results' / name)
-print('PASS: 92/92 replay PNGs match original RGB pixels exactly; 93 successful replays; 6 blockers.')
+print('PASS: 95/95 replay PNGs match original RGB pixels exactly; 96 successful replays; 3 blockers.')

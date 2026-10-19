@@ -1,0 +1,1280 @@
+diff --git a/renderdoc/driver/vulkan/vk_common.cpp b/renderdoc/driver/vulkan/vk_common.cpp
+index 34a1843..bf1dae3 100644
+--- a/renderdoc/driver/vulkan/vk_common.cpp
++++ b/renderdoc/driver/vulkan/vk_common.cpp
+@@ -2123,3 +2123,14 @@ TEST_CASE("Validate CombineDepthStencilLayouts works", "[vulkan]")
+ }
+ 
+ #endif
++
++
++bool IsLvpDescriptorReplay(VkPhysicalDevice physicalDevice)
++{
++  const char *enabled = getenv("RDOC_LVP_DESCRIPTOR_REPLAY");
++  if(!enabled || strcmp(enabled, "1") != 0)
++    return false;
++  VkPhysicalDeviceDriverProperties props = {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES};
++  GetPhysicalDeviceDriverProperties(ObjDisp(physicalDevice), Unwrap(physicalDevice), props);
++  return props.driverID == VK_DRIVER_ID_MESA_LLVMPIPE;
++}
+diff --git a/renderdoc/driver/vulkan/vk_common.h b/renderdoc/driver/vulkan/vk_common.h
+index cac46a4..f534dc5 100644
+--- a/renderdoc/driver/vulkan/vk_common.h
++++ b/renderdoc/driver/vulkan/vk_common.h
+@@ -1495,6 +1495,11 @@ enum class VulkanChunk : uint32_t
+   vkCmdBeginCustomResolveEXT,
+   vkCmdSetCheckpointNV,
+   vkCmdSetDepthBias2EXT,
++  vkWriteSamplerDescriptorsEXT,
++  vkWriteResourceDescriptorsEXT,
++  vkCmdBindSamplerHeapEXT,
++  vkCmdBindResourceHeapEXT,
++  vkCmdPushDataEXT,
+   Max,
+ };
+ 
+@@ -1630,6 +1635,17 @@ DECLARE_REFLECTION_STRUCT(VkDescriptorAddressInfoEXT);
+ DECLARE_REFLECTION_STRUCT(VkDescriptorBufferBindingInfoEXT);
+ DECLARE_REFLECTION_STRUCT(VkDescriptorBufferBindingPushDescriptorBufferHandleEXT);
+ DECLARE_REFLECTION_STRUCT(VkDescriptorGetInfoEXT);
++DECLARE_REFLECTION_STRUCT(VkPhysicalDeviceDescriptorHeapFeaturesEXT);
++DECLARE_DESERIALISE_TYPE(VkPhysicalDeviceDescriptorHeapFeaturesEXT);
++DECLARE_REFLECTION_STRUCT(VkPhysicalDeviceShaderUntypedPointersFeaturesKHR);
++DECLARE_DESERIALISE_TYPE(VkPhysicalDeviceShaderUntypedPointersFeaturesKHR);
++DECLARE_REFLECTION_STRUCT(VkPhysicalDeviceDescriptorHeapPropertiesEXT);
++DECLARE_DESERIALISE_TYPE(VkPhysicalDeviceDescriptorHeapPropertiesEXT);
++DECLARE_REFLECTION_STRUCT(VkDescriptorSetAndBindingMappingEXT);
++DECLARE_DESERIALISE_TYPE(VkDescriptorSetAndBindingMappingEXT);
++DECLARE_REFLECTION_STRUCT(VkShaderDescriptorSetAndBindingMappingInfoEXT);
++DECLARE_DESERIALISE_TYPE(VkShaderDescriptorSetAndBindingMappingInfoEXT);
++
+ DECLARE_REFLECTION_STRUCT(VkDescriptorPoolCreateInfo);
+ DECLARE_REFLECTION_STRUCT(VkDescriptorPoolInlineUniformBlockCreateInfo);
+ DECLARE_REFLECTION_STRUCT(VkDescriptorSetAllocateInfo);
+@@ -3108,3 +3124,6 @@ DECLARE_REFLECTION_ENUM(VkVertexInputRate);
+ #ifdef VK_USE_PLATFORM_WIN32_KHR
+ DECLARE_REFLECTION_ENUM(VkFullScreenExclusiveEXT);
+ #endif
++
++// Experimental descriptor regeneration for the lavapipe software driver.
++bool IsLvpDescriptorReplay(VkPhysicalDevice physicalDevice);
+diff --git a/renderdoc/driver/vulkan/vk_core.cpp b/renderdoc/driver/vulkan/vk_core.cpp
+index 9414394..b8604a7 100644
+--- a/renderdoc/driver/vulkan/vk_core.cpp
++++ b/renderdoc/driver/vulkan/vk_core.cpp
+@@ -1168,6 +1168,10 @@ static const VkExtensionProperties supportedExtensions[] = {
+         VK_EXT_DESCRIPTOR_BUFFER_EXTENSION_NAME,
+         VK_EXT_DESCRIPTOR_BUFFER_SPEC_VERSION,
+     },
++    {
++        VK_EXT_DESCRIPTOR_HEAP_EXTENSION_NAME,
++        VK_EXT_DESCRIPTOR_HEAP_SPEC_VERSION,
++    },
+     {
+         VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME,
+         VK_EXT_DESCRIPTOR_INDEXING_SPEC_VERSION,
+@@ -1992,6 +1996,10 @@ static const VkExtensionProperties supportedExtensions[] = {
+         VK_KHR_SHADER_TERMINATE_INVOCATION_EXTENSION_NAME,
+         VK_KHR_SHADER_TERMINATE_INVOCATION_SPEC_VERSION,
+     },
++    {
++        VK_KHR_SHADER_UNTYPED_POINTERS_EXTENSION_NAME,
++        VK_KHR_SHADER_UNTYPED_POINTERS_SPEC_VERSION,
++    },
+     {
+         VK_KHR_SHARED_PRESENTABLE_IMAGE_EXTENSION_NAME,
+         VK_KHR_SHARED_PRESENTABLE_IMAGE_SPEC_VERSION,
+@@ -2285,6 +2293,10 @@ VkResult WrappedVulkan::FilterDeviceExtensionProperties(VkPhysicalDevice physDev
+ 
+     // extensions with conditional support
+     filtered.removeIf([instDevInfo, physDev](const VkExtensionProperties &ext) {
++      if((!strcmp(ext.extensionName, VK_EXT_DESCRIPTOR_HEAP_EXTENSION_NAME) ||
++          !strcmp(ext.extensionName, VK_KHR_SHADER_UNTYPED_POINTERS_EXTENSION_NAME)) &&
++         !IsLvpDescriptorReplay(physDev))
++        return true;
+       // Anything that depends on VK_EXT_fragment_density_map will need disabling if the
+       // fragmentDensityMapNonSubsampledImages feature is not supported
+       if(!strcmp(ext.extensionName, VK_EXT_FRAGMENT_DENSITY_MAP_EXTENSION_NAME) ||
+@@ -2357,7 +2369,7 @@ VkResult WrappedVulkan::FilterDeviceExtensionProperties(VkPhysicalDevice physDev
+           baseFeats.pNext = &descFeats;
+           ObjDisp(physDev)->GetPhysicalDeviceFeatures2(Unwrap(physDev), &baseFeats);
+ 
+-          if(!descFeats.descriptorBufferCaptureReplay)
++          if(!descFeats.descriptorBufferCaptureReplay && !IsLvpDescriptorReplay(physDev))
+           {
+             if(!filterWarned)
+             {
+@@ -5011,6 +5023,17 @@ bool WrappedVulkan::ProcessChunk(ReadSerialiser &ser, VulkanChunk chunk)
+       return Serialise_vkCmdCopyMemoryToAccelerationStructureKHR(ser, VK_NULL_HANDLE, NULL);
+     case VulkanChunk::vkCreateAccelerationStructureKHR:
+       return Serialise_vkCreateAccelerationStructureKHR(ser, VK_NULL_HANDLE, NULL, NULL, NULL);
++
++    case VulkanChunk::vkWriteSamplerDescriptorsEXT:
++      return Serialise_vkWriteSamplerDescriptorsEXT(ser, VK_NULL_HANDLE, 0, NULL, NULL);
++    case VulkanChunk::vkWriteResourceDescriptorsEXT:
++      return Serialise_vkWriteResourceDescriptorsEXT(ser, VK_NULL_HANDLE, 0, NULL, NULL);
++    case VulkanChunk::vkCmdBindSamplerHeapEXT:
++      return Serialise_vkCmdBindSamplerHeapEXT(ser, VK_NULL_HANDLE, NULL);
++    case VulkanChunk::vkCmdBindResourceHeapEXT:
++      return Serialise_vkCmdBindResourceHeapEXT(ser, VK_NULL_HANDLE, NULL);
++    case VulkanChunk::vkCmdPushDataEXT:
++      return Serialise_vkCmdPushDataEXT(ser, VK_NULL_HANDLE, NULL);
+     case VulkanChunk::vkGetDescriptorEXT:
+       return Serialise_vkGetDescriptorEXT(ser, VK_NULL_HANDLE, NULL, 0, NULL);
+     case VulkanChunk::vkCmdBindDescriptorBuffersEXT:
+diff --git a/renderdoc/driver/vulkan/vk_core.h b/renderdoc/driver/vulkan/vk_core.h
+index 942551a..8db8f4b 100644
+--- a/renderdoc/driver/vulkan/vk_core.h
++++ b/renderdoc/driver/vulkan/vk_core.h
+@@ -546,6 +546,13 @@ private:
+   bool m_Maintenance6 = false;
+   bool m_Maintenance9 = false;
+   bool m_DescriptorBuffers = false;
++  bool m_RehydrateDescriptors = false;
++  bool m_DescriptorHeaps = false;
++  rdcarray<rdcpair<bytebuf, bytebuf>> m_LvpDescriptorPatterns;
++  void RememberLvpDescriptor(const bytebuf &captured, const bytebuf &replayed);
++  void RehydrateLvpDescriptors(ResourceId memory, uint64_t offset, byte *data, uint64_t size);
++  bool DescriptorCaptureReplay() const { return m_DescriptorBuffers && !m_RehydrateDescriptors; }
++
+   bool m_MultiviewPerViewViewports = false;
+   uint32_t m_PreciseFMAMask = 0;
+ 
+@@ -1555,19 +1562,19 @@ public:
+ 
+   VkBufferCreateFlags DefaultBufferCreateFlags()
+   {
+-    return DescriptorBuffers() ? VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT : 0;
++    return DescriptorCaptureReplay() ? VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT : 0;
+   }
+   VkImageCreateFlags DefaultImageCreateFlags()
+   {
+-    return DescriptorBuffers() ? VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT : 0;
++    return DescriptorCaptureReplay() ? VK_IMAGE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT : 0;
+   }
+   VkImageViewCreateFlags DefaultImageViewCreateFlags()
+   {
+-    return DescriptorBuffers() ? VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT : 0;
++    return DescriptorCaptureReplay() ? VK_IMAGE_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT : 0;
+   }
+   VkSamplerCreateFlags DefaultSamplerCreateFlags()
+   {
+-    return DescriptorBuffers() ? VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT : 0;
++    return DescriptorCaptureReplay() ? VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT : 0;
+   }
+ 
+   const VkPhysicalDeviceFeatures &GetDeviceEnabledFeatures()
+@@ -3335,6 +3342,16 @@ public:
+   IMPLEMENT_FUNCTION_SERIALISED(void, vkCmdSetDepthBias2EXT, VkCommandBuffer commandBuffer,
+                                 const VkDepthBiasInfoEXT *pDepthBiasInfo);
+ 
++
++  VkDeviceSize vkGetPhysicalDeviceDescriptorSizeEXT(VkPhysicalDevice physicalDevice, VkDescriptorType descriptorType);
++  IMPLEMENT_FUNCTION_SERIALISED(VkResult, vkWriteSamplerDescriptorsEXT, VkDevice device,
++    uint32_t samplerCount, const VkSamplerCreateInfo *pSamplers, const VkHostAddressRangeEXT *pDescriptors);
++  IMPLEMENT_FUNCTION_SERIALISED(VkResult, vkWriteResourceDescriptorsEXT, VkDevice device,
++    uint32_t resourceCount, const VkResourceDescriptorInfoEXT *pResources, const VkHostAddressRangeEXT *pDescriptors);
++  IMPLEMENT_FUNCTION_SERIALISED(void, vkCmdBindSamplerHeapEXT, VkCommandBuffer commandBuffer, const VkBindHeapInfoEXT *pBindInfo);
++  IMPLEMENT_FUNCTION_SERIALISED(void, vkCmdBindResourceHeapEXT, VkCommandBuffer commandBuffer, const VkBindHeapInfoEXT *pBindInfo);
++  IMPLEMENT_FUNCTION_SERIALISED(void, vkCmdPushDataEXT, VkCommandBuffer commandBuffer, const VkPushDataInfoEXT *pPushDataInfo);
++
+   // VK_EXT_present_timing
+   VkResult vkGetPastPresentationTimingEXT(
+       VkDevice device, const VkPastPresentationTimingInfoEXT *pPastPresentationTimingInfo,
+diff --git a/renderdoc/driver/vulkan/vk_hookset_defs.h b/renderdoc/driver/vulkan/vk_hookset_defs.h
+index 2dfed49..e128323 100644
+--- a/renderdoc/driver/vulkan/vk_hookset_defs.h
++++ b/renderdoc/driver/vulkan/vk_hookset_defs.h
+@@ -555,6 +555,8 @@
+   DeclExt(KHR_maintenance6);                           \
+   DeclExt(EXT_image_compression_control);              \
+   DeclExt(EXT_image_compression_control_swapchain);    \
++  DeclExt(EXT_descriptor_heap); \
++  DeclExt(KHR_shader_untyped_pointers); \
+   DeclExt(EXT_descriptor_buffer);                      \
+   DeclExt(KHR_map_memory2);                            \
+   DeclExt(KHR_present_wait2);                          \
+@@ -705,6 +707,8 @@
+   CheckExt(KHR_maintenance6, VK14);                           \
+   CheckExt(EXT_image_compression_control, VKXX);              \
+   CheckExt(EXT_image_compression_control_swapchain, VKXX);    \
++  CheckExt(EXT_descriptor_heap, VKXX); \
++  CheckExt(KHR_shader_untyped_pointers, VKXX); \
+   CheckExt(EXT_descriptor_buffer, VKXX);                      \
+   CheckExt(KHR_map_memory2, VK14);                            \
+   CheckExt(KHR_present_wait2, VKXX);                          \
+@@ -753,6 +757,7 @@
+   HookInitExtension(KHR_get_surface_capabilities2, GetPhysicalDeviceSurfaceCapabilities2KHR);        \
+   HookInitExtension(KHR_get_display_properties2, GetPhysicalDeviceDisplayProperties2KHR);            \
+   HookInitExtension(KHR_get_display_properties2, GetPhysicalDeviceDisplayPlaneProperties2KHR);       \
++  HookInitExtension(EXT_descriptor_heap, GetPhysicalDeviceDescriptorSizeEXT); \
+   HookInitExtension(EXT_sample_locations, GetPhysicalDeviceMultisamplePropertiesEXT);                \
+   HookInitExtension(EXT_calibrated_timestamps, GetPhysicalDeviceCalibrateableTimeDomainsEXT);        \
+   HookInitExtension(KHR_performance_query,                                                           \
+@@ -820,6 +825,7 @@
+   HookInitExtension(KHR_get_display_properties2, GetPhysicalDeviceDisplayPlaneProperties2KHR);       \
+   HookInitExtension(KHR_get_display_properties2, GetDisplayModeProperties2KHR);                      \
+   HookInitExtension(KHR_get_display_properties2, GetDisplayPlaneCapabilities2KHR);                   \
++  HookInitExtension(EXT_descriptor_heap, GetPhysicalDeviceDescriptorSizeEXT); \
+   HookInitExtension(EXT_sample_locations, GetPhysicalDeviceMultisamplePropertiesEXT);                \
+   HookInitExtension(EXT_calibrated_timestamps, GetPhysicalDeviceCalibrateableTimeDomainsEXT);        \
+   HookInitExtension(EXT_headless_surface, CreateHeadlessSurfaceEXT);                                 \
+@@ -1107,6 +1113,11 @@
+   HookInitExtension(EXT_descriptor_buffer, CmdBindDescriptorBuffersEXT);                             \
+   HookInitExtension(EXT_descriptor_buffer, CmdSetDescriptorBufferOffsetsEXT);                        \
+   HookInitExtension(EXT_descriptor_buffer, GetBufferOpaqueCaptureDescriptorDataEXT);                 \
++  HookInitExtension(EXT_descriptor_heap, WriteSamplerDescriptorsEXT); \
++  HookInitExtension(EXT_descriptor_heap, WriteResourceDescriptorsEXT); \
++  HookInitExtension(EXT_descriptor_heap, CmdBindSamplerHeapEXT); \
++  HookInitExtension(EXT_descriptor_heap, CmdBindResourceHeapEXT); \
++  HookInitExtension(EXT_descriptor_heap, CmdPushDataEXT); \
+   HookInitExtension(EXT_descriptor_buffer, GetDescriptorEXT);                                        \
+   HookInitExtension(EXT_descriptor_buffer, GetDescriptorSetLayoutBindingOffsetEXT);                  \
+   HookInitExtension(EXT_descriptor_buffer, GetDescriptorSetLayoutSizeEXT);                           \
+@@ -2060,6 +2071,12 @@
+               layout, VkDeviceSize *, pLayoutSizeInBytes);                                           \
+   HookDefine4(void, vkGetDescriptorSetLayoutBindingOffsetEXT, VkDevice, device,                      \
+               VkDescriptorSetLayout, layout, uint32_t, binding, VkDeviceSize *, pOffset);            \
++  HookDefine2(VkDeviceSize, vkGetPhysicalDeviceDescriptorSizeEXT, VkPhysicalDevice, physicalDevice, VkDescriptorType, descriptorType); \
++  HookDefine4(VkResult, vkWriteSamplerDescriptorsEXT, VkDevice, device, uint32_t, samplerCount, const VkSamplerCreateInfo *, pSamplers, const VkHostAddressRangeEXT *, pDescriptors); \
++  HookDefine4(VkResult, vkWriteResourceDescriptorsEXT, VkDevice, device, uint32_t, resourceCount, const VkResourceDescriptorInfoEXT *, pResources, const VkHostAddressRangeEXT *, pDescriptors); \
++  HookDefine2(void, vkCmdBindSamplerHeapEXT, VkCommandBuffer, commandBuffer, const VkBindHeapInfoEXT *, pBindInfo); \
++  HookDefine2(void, vkCmdBindResourceHeapEXT, VkCommandBuffer, commandBuffer, const VkBindHeapInfoEXT *, pBindInfo); \
++  HookDefine2(void, vkCmdPushDataEXT, VkCommandBuffer, commandBuffer, const VkPushDataInfoEXT *, pPushDataInfo); \
+   HookDefine4(void, vkGetDescriptorEXT, VkDevice, device, const VkDescriptorGetInfoEXT *,            \
+               pDescriptorInfo, size_t, dataSize, void *, pDescriptor);                               \
+   HookDefine3(void, vkCmdBindDescriptorBuffersEXT, VkCommandBuffer, commandBuffer, uint32_t,         \
+diff --git a/renderdoc/driver/vulkan/vk_initstate.cpp b/renderdoc/driver/vulkan/vk_initstate.cpp
+index d33e9fb..26954f0 100644
+--- a/renderdoc/driver/vulkan/vk_initstate.cpp
++++ b/renderdoc/driver/vulkan/vk_initstate.cpp
+@@ -1611,6 +1611,9 @@ bool WrappedVulkan::Serialise_InitialState(SerialiserType &ser, ResourceId id, V
+     // directly into upload memory
+     ser.Serialise("Contents"_lit, Contents, ContentsSize, SerialiserFlags::NoFlags).Important();
+ 
++    if(IsReplayingAndReading() && type == eResDeviceMemory)
++      RehydrateLvpDescriptors(GetResID(GetResourceManager()->GetHandle<VkDeviceMemory>(id)), 0, Contents, ContentsSize);
++
+     // unmap the resource we mapped before - we need to do this on read and on write.
+     if(!IsStructuredExporting(m_State) && mappedMem.mem != VK_NULL_HANDLE)
+     {
+diff --git a/renderdoc/driver/vulkan/vk_next_chains.cpp b/renderdoc/driver/vulkan/vk_next_chains.cpp
+index ce306e4..4d6093e 100644
+--- a/renderdoc/driver/vulkan/vk_next_chains.cpp
++++ b/renderdoc/driver/vulkan/vk_next_chains.cpp
+@@ -88,6 +88,11 @@ static void AppendModifiedChainedStruct(byte *&tempMem, VkStruct *outputStruct,
+ // define structs that just need to be copied with no unwrapping at all, or only unwrapping some
+ // members - easily shared between GetNextPatchSize and UnwrapNextChain
+ #define PROCESS_SIMPLE_STRUCTS()                                                                      \
++  COPY_STRUCT(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_FEATURES_EXT, VkPhysicalDeviceDescriptorHeapFeaturesEXT); \
++  COPY_STRUCT(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR, VkPhysicalDeviceShaderUntypedPointersFeaturesKHR); \
++  COPY_STRUCT(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_PROPERTIES_EXT, VkPhysicalDeviceDescriptorHeapPropertiesEXT); \
++  COPY_STRUCT(VK_STRUCTURE_TYPE_DESCRIPTOR_SET_AND_BINDING_MAPPING_EXT, VkDescriptorSetAndBindingMappingEXT); \
++  COPY_STRUCT(VK_STRUCTURE_TYPE_SHADER_DESCRIPTOR_SET_AND_BINDING_MAPPING_INFO_EXT, VkShaderDescriptorSetAndBindingMappingInfoEXT); \
+   COPY_STRUCT(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR,                          \
+               VkAccelerationStructureBuildSizesInfoKHR);                                              \
+   COPY_STRUCT(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR,                       \
+@@ -1161,7 +1166,6 @@ static void AppendModifiedChainedStruct(byte *&tempMem, VkStruct *outputStruct,
+   case VK_STRUCTURE_TYPE_DATA_GRAPH_PROCESSING_ENGINE_CREATE_INFO_ARM:                           \
+   case VK_STRUCTURE_TYPE_DECOMPRESS_MEMORY_INFO_EXT:                                             \
+   case VK_STRUCTURE_TYPE_DESCRIPTOR_GET_TENSOR_INFO_ARM:                                         \
+-  case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_AND_BINDING_MAPPING_EXT:                                 \
+   case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_BINDING_REFERENCE_VALVE:                                 \
+   case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_HOST_MAPPING_INFO_VALVE:                          \
+   case VK_STRUCTURE_TYPE_DEVICE_ADDRESS_BINDING_CALLBACK_DATA_EXT:                               \
+@@ -1331,8 +1335,6 @@ static void AppendModifiedChainedStruct(byte *&tempMem, VkStruct *outputStruct,
+   case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT:                       \
+   case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_TENSOR_FEATURES_ARM:                  \
+   case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_TENSOR_PROPERTIES_ARM:                \
+-  case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_FEATURES_EXT:                           \
+-  case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_PROPERTIES_EXT:                         \
+   case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_TENSOR_PROPERTIES_ARM:                  \
+   case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV:             \
+   case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_SET_HOST_MAPPING_FEATURES_VALVE:             \
+@@ -1453,7 +1455,6 @@ static void AppendModifiedChainedStruct(byte *&tempMem, VkStruct *outputStruct,
+   case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_FEATURES_NV:                         \
+   case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV:                       \
+   case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT:       \
+-  case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR:                   \
+   case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV:                         \
+   case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV:                       \
+   case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_MERGE_FEEDBACK_FEATURES_EXT:                    \
+@@ -1543,7 +1544,6 @@ static void AppendModifiedChainedStruct(byte *&tempMem, VkStruct *outputStruct,
+   case VK_STRUCTURE_TYPE_SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA:                               \
+   case VK_STRUCTURE_TYPE_SET_LATENCY_MARKER_INFO_NV:                                             \
+   case VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV:                                                  \
+-  case VK_STRUCTURE_TYPE_SHADER_DESCRIPTOR_SET_AND_BINDING_MAPPING_INFO_EXT:                     \
+   case VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_CREATE_INFO_ARM:                                 \
+   case VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_METRIC_DESCRIPTION_ARM:                          \
+   case VK_STRUCTURE_TYPE_SHADER_MODULE_IDENTIFIER_EXT:                                           \
+diff --git a/renderdoc/driver/vulkan/vk_serialise.cpp b/renderdoc/driver/vulkan/vk_serialise.cpp
+index 1ae7d57..8ac4069 100644
+--- a/renderdoc/driver/vulkan/vk_serialise.cpp
++++ b/renderdoc/driver/vulkan/vk_serialise.cpp
+@@ -1992,12 +1992,12 @@ SERIALISE_VK_HANDLES();
+                                                                                                        \
+   /* VK_EXT_descriptor_heap */                                                                         \
+   PNEXT_UNSUPPORTED(VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_DESCRIPTOR_HEAP_INFO_EXT)             \
+-  PNEXT_UNSUPPORTED(VK_STRUCTURE_TYPE_DESCRIPTOR_SET_AND_BINDING_MAPPING_EXT)                          \
++  PNEXT_STRUCT(VK_STRUCTURE_TYPE_DESCRIPTOR_SET_AND_BINDING_MAPPING_EXT, VkDescriptorSetAndBindingMappingEXT)                          \
+   PNEXT_UNSUPPORTED(VK_STRUCTURE_TYPE_IMAGE_DESCRIPTOR_INFO_EXT)                                       \
+-  PNEXT_UNSUPPORTED(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_FEATURES_EXT)                    \
+-  PNEXT_UNSUPPORTED(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_PROPERTIES_EXT)                  \
++  PNEXT_STRUCT(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_FEATURES_EXT, VkPhysicalDeviceDescriptorHeapFeaturesEXT)                    \
++  PNEXT_STRUCT(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_PROPERTIES_EXT, VkPhysicalDeviceDescriptorHeapPropertiesEXT)                  \
+   PNEXT_UNSUPPORTED(VK_STRUCTURE_TYPE_RESOURCE_DESCRIPTOR_INFO_EXT)                                    \
+-  PNEXT_UNSUPPORTED(VK_STRUCTURE_TYPE_SHADER_DESCRIPTOR_SET_AND_BINDING_MAPPING_INFO_EXT)              \
++  PNEXT_STRUCT(VK_STRUCTURE_TYPE_SHADER_DESCRIPTOR_SET_AND_BINDING_MAPPING_INFO_EXT, VkShaderDescriptorSetAndBindingMappingInfoEXT)              \
+   PNEXT_UNSUPPORTED(VK_STRUCTURE_TYPE_TEXEL_BUFFER_DESCRIPTOR_INFO_EXT)                                \
+   PNEXT_UNSUPPORTED(VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_INDEX_CREATE_INFO_EXT)               \
+   PNEXT_UNSUPPORTED(VK_STRUCTURE_TYPE_SUBSAMPLED_IMAGE_FORMAT_PROPERTIES_EXT)                          \
+@@ -2252,7 +2252,7 @@ SERIALISE_VK_HANDLES();
+   PNEXT_UNSUPPORTED(VK_STRUCTURE_TYPE_PIPELINE_BINARY_HANDLES_INFO_KHR)                                \
+                                                                                                        \
+   /* VK_KHR_shader_untyped_pointers */                                                                 \
+-  PNEXT_UNSUPPORTED(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR)            \
++  PNEXT_STRUCT(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR, VkPhysicalDeviceShaderUntypedPointersFeaturesKHR)            \
+                                                                                                        \
+   /* VK_KHR_video_decode_av1 */                                                                        \
+   PNEXT_UNSUPPORTED(VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_CAPABILITIES_KHR)                               \
+@@ -10806,6 +10806,184 @@ void Deserialise(const VkFenceGetFdInfoKHR &el)
+   DeserialiseNext(el.pNext);
+ }
+ 
++template <typename SerialiserType>
++void DoSerialise(SerialiserType &ser, VkPhysicalDeviceDescriptorHeapFeaturesEXT &el)
++{
++  SerialiseNext(ser, el.sType, el.pNext);
++  SERIALISE_MEMBER(descriptorHeap);
++  SERIALISE_MEMBER(descriptorHeapCaptureReplay);
++}
++template <>
++void Deserialise(const VkPhysicalDeviceDescriptorHeapFeaturesEXT &el)
++{
++  DeserialiseNext(el.pNext);
++}
++
++template <typename SerialiserType>
++void DoSerialise(SerialiserType &ser, VkPhysicalDeviceShaderUntypedPointersFeaturesKHR &el)
++{
++  SerialiseNext(ser, el.sType, el.pNext);
++  SERIALISE_MEMBER(shaderUntypedPointers);
++}
++template <>
++void Deserialise(const VkPhysicalDeviceShaderUntypedPointersFeaturesKHR &el)
++{
++  DeserialiseNext(el.pNext);
++}
++
++template <typename SerialiserType>
++void DoSerialise(SerialiserType &ser, VkPhysicalDeviceDescriptorHeapPropertiesEXT &el)
++{
++  SerialiseNext(ser, el.sType, el.pNext);
++  SERIALISE_MEMBER(samplerHeapAlignment);
++  SERIALISE_MEMBER(resourceHeapAlignment);
++  SERIALISE_MEMBER(maxSamplerHeapSize);
++  SERIALISE_MEMBER(maxResourceHeapSize);
++  SERIALISE_MEMBER(minSamplerHeapReservedRange);
++  SERIALISE_MEMBER(minSamplerHeapReservedRangeWithEmbedded);
++  SERIALISE_MEMBER(minResourceHeapReservedRange);
++  SERIALISE_MEMBER(samplerDescriptorSize);
++  SERIALISE_MEMBER(imageDescriptorSize);
++  SERIALISE_MEMBER(bufferDescriptorSize);
++  SERIALISE_MEMBER(samplerDescriptorAlignment);
++  SERIALISE_MEMBER(imageDescriptorAlignment);
++  SERIALISE_MEMBER(bufferDescriptorAlignment);
++  SERIALISE_MEMBER(maxPushDataSize);
++  SERIALISE_MEMBER(imageCaptureReplayOpaqueDataSize);
++  SERIALISE_MEMBER(maxDescriptorHeapEmbeddedSamplers);
++  SERIALISE_MEMBER(samplerYcbcrConversionCount);
++  SERIALISE_MEMBER(sparseDescriptorHeaps);
++  SERIALISE_MEMBER(protectedDescriptorHeaps);
++}
++template <>
++void Deserialise(const VkPhysicalDeviceDescriptorHeapPropertiesEXT &el)
++{
++  DeserialiseNext(el.pNext);
++}
++
++template <typename SerialiserType>
++void DoSerialise(SerialiserType &ser, VkDescriptorSetAndBindingMappingEXT &el)
++{
++  SerialiseNext(ser, el.sType, el.pNext);
++  SERIALISE_MEMBER(descriptorSet);
++  SERIALISE_MEMBER(firstBinding);
++  SERIALISE_MEMBER(bindingCount);
++  SERIALISE_MEMBER(resourceMask);
++  SERIALISE_MEMBER_TYPED(uint32_t, source);
++  switch(el.source)
++  {
++    case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_CONSTANT_OFFSET_EXT:
++      SERIALISE_MEMBER(sourceData.constantOffset.heapOffset);
++      SERIALISE_MEMBER(sourceData.constantOffset.heapArrayStride);
++      SERIALISE_MEMBER_OPT(sourceData.constantOffset.pEmbeddedSampler);
++      SERIALISE_MEMBER(sourceData.constantOffset.samplerHeapOffset);
++      SERIALISE_MEMBER(sourceData.constantOffset.samplerHeapArrayStride);
++      break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT:
++      SERIALISE_MEMBER(sourceData.pushIndex.heapOffset);
++      SERIALISE_MEMBER(sourceData.pushIndex.pushOffset);
++      SERIALISE_MEMBER(sourceData.pushIndex.heapIndexStride);
++      SERIALISE_MEMBER(sourceData.pushIndex.heapArrayStride);
++      SERIALISE_MEMBER_OPT(sourceData.pushIndex.pEmbeddedSampler);
++      SERIALISE_MEMBER(sourceData.pushIndex.useCombinedImageSamplerIndex);
++      SERIALISE_MEMBER(sourceData.pushIndex.samplerHeapOffset);
++      SERIALISE_MEMBER(sourceData.pushIndex.samplerPushOffset);
++      SERIALISE_MEMBER(sourceData.pushIndex.samplerHeapIndexStride);
++      SERIALISE_MEMBER(sourceData.pushIndex.samplerHeapArrayStride);
++      break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT:
++      SERIALISE_MEMBER(sourceData.indirectIndex.heapOffset);
++      SERIALISE_MEMBER(sourceData.indirectIndex.pushOffset);
++      SERIALISE_MEMBER(sourceData.indirectIndex.addressOffset);
++      SERIALISE_MEMBER(sourceData.indirectIndex.heapIndexStride);
++      SERIALISE_MEMBER(sourceData.indirectIndex.heapArrayStride);
++      SERIALISE_MEMBER_OPT(sourceData.indirectIndex.pEmbeddedSampler);
++      SERIALISE_MEMBER(sourceData.indirectIndex.useCombinedImageSamplerIndex);
++      SERIALISE_MEMBER(sourceData.indirectIndex.samplerHeapOffset);
++      SERIALISE_MEMBER(sourceData.indirectIndex.samplerPushOffset);
++      SERIALISE_MEMBER(sourceData.indirectIndex.samplerAddressOffset);
++      SERIALISE_MEMBER(sourceData.indirectIndex.samplerHeapIndexStride);
++      SERIALISE_MEMBER(sourceData.indirectIndex.samplerHeapArrayStride);
++      break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT:
++      SERIALISE_MEMBER(sourceData.indirectIndexArray.heapOffset);
++      SERIALISE_MEMBER(sourceData.indirectIndexArray.pushOffset);
++      SERIALISE_MEMBER(sourceData.indirectIndexArray.addressOffset);
++      SERIALISE_MEMBER(sourceData.indirectIndexArray.heapIndexStride);
++      SERIALISE_MEMBER_OPT(sourceData.indirectIndexArray.pEmbeddedSampler);
++      SERIALISE_MEMBER(sourceData.indirectIndexArray.useCombinedImageSamplerIndex);
++      SERIALISE_MEMBER(sourceData.indirectIndexArray.samplerHeapOffset);
++      SERIALISE_MEMBER(sourceData.indirectIndexArray.samplerPushOffset);
++      SERIALISE_MEMBER(sourceData.indirectIndexArray.samplerAddressOffset);
++      SERIALISE_MEMBER(sourceData.indirectIndexArray.samplerHeapIndexStride);
++      break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_RESOURCE_HEAP_DATA_EXT:
++      SERIALISE_MEMBER(sourceData.heapData.heapOffset);
++      SERIALISE_MEMBER(sourceData.heapData.pushOffset);
++      break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_DATA_EXT:
++      SERIALISE_MEMBER(sourceData.pushDataOffset);
++      break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT:
++      SERIALISE_MEMBER(sourceData.pushAddressOffset);
++      break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_INDIRECT_ADDRESS_EXT:
++      SERIALISE_MEMBER(sourceData.indirectAddress.pushOffset);
++      SERIALISE_MEMBER(sourceData.indirectAddress.addressOffset);
++      break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT:
++      SERIALISE_MEMBER(sourceData.shaderRecordIndex.heapOffset);
++      SERIALISE_MEMBER(sourceData.shaderRecordIndex.shaderRecordOffset);
++      SERIALISE_MEMBER(sourceData.shaderRecordIndex.heapIndexStride);
++      SERIALISE_MEMBER(sourceData.shaderRecordIndex.heapArrayStride);
++      SERIALISE_MEMBER_OPT(sourceData.shaderRecordIndex.pEmbeddedSampler);
++      SERIALISE_MEMBER(sourceData.shaderRecordIndex.useCombinedImageSamplerIndex);
++      SERIALISE_MEMBER(sourceData.shaderRecordIndex.samplerHeapOffset);
++      SERIALISE_MEMBER(sourceData.shaderRecordIndex.samplerShaderRecordOffset);
++      SERIALISE_MEMBER(sourceData.shaderRecordIndex.samplerHeapIndexStride);
++      SERIALISE_MEMBER(sourceData.shaderRecordIndex.samplerHeapArrayStride);
++      break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_DATA_EXT:
++      SERIALISE_MEMBER(sourceData.shaderRecordDataOffset);
++      break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_SHADER_RECORD_ADDRESS_EXT:
++      SERIALISE_MEMBER(sourceData.shaderRecordAddressOffset);
++      break;
++    default: RDCERR("Unsupported descriptor heap mapping source"); break;
++  }
++}
++template <>
++void Deserialise(const VkDescriptorSetAndBindingMappingEXT &el)
++{
++  DeserialiseNext(el.pNext);
++  const VkSamplerCreateInfo *sampler = NULL;
++  switch(el.source)
++  {
++    case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_CONSTANT_OFFSET_EXT: sampler = el.sourceData.constantOffset.pEmbeddedSampler; break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT: sampler = el.sourceData.pushIndex.pEmbeddedSampler; break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT: sampler = el.sourceData.indirectIndex.pEmbeddedSampler; break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT: sampler = el.sourceData.indirectIndexArray.pEmbeddedSampler; break;
++    case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT: sampler = el.sourceData.shaderRecordIndex.pEmbeddedSampler; break;
++    default: break;
++  }
++  if(sampler) { Deserialise(*sampler); delete sampler; }
++}
++
++template <typename SerialiserType>
++void DoSerialise(SerialiserType &ser, VkShaderDescriptorSetAndBindingMappingInfoEXT &el)
++{
++  SerialiseNext(ser, el.sType, el.pNext);
++  SERIALISE_MEMBER(mappingCount);
++  SERIALISE_MEMBER_ARRAY(pMappings, mappingCount);
++}
++template <>
++void Deserialise(const VkShaderDescriptorSetAndBindingMappingInfoEXT &el)
++{
++  DeserialiseNext(el.pNext);
++  for(uint32_t i = 0; i < el.mappingCount; i++) Deserialise(el.pMappings[i]);
++  delete[] el.pMappings;
++}
++
+ template <typename SerialiserType>
+ void DoSerialise(SerialiserType &ser, VkPhysicalDeviceDescriptorBufferFeaturesEXT &el)
+ {
+@@ -17133,3 +17311,9 @@ INSTANTIATE_SERIALISE_TYPE(VkMemoryGetAndroidHardwareBufferInfoANDROID);
+ INSTANTIATE_SERIALISE_TYPE(VkExternalFormatANDROID);
+ INSTANTIATE_SERIALISE_TYPE(VkAndroidHardwareBufferFormatProperties2ANDROID);
+ #endif
++
++INSTANTIATE_SERIALISE_TYPE(VkPhysicalDeviceDescriptorHeapFeaturesEXT);
++INSTANTIATE_SERIALISE_TYPE(VkPhysicalDeviceShaderUntypedPointersFeaturesKHR);
++INSTANTIATE_SERIALISE_TYPE(VkPhysicalDeviceDescriptorHeapPropertiesEXT);
++INSTANTIATE_SERIALISE_TYPE(VkDescriptorSetAndBindingMappingEXT);
++INSTANTIATE_SERIALISE_TYPE(VkShaderDescriptorSetAndBindingMappingInfoEXT);
+diff --git a/renderdoc/driver/vulkan/vk_stringise.cpp b/renderdoc/driver/vulkan/vk_stringise.cpp
+index b095316..b9275cc 100644
+--- a/renderdoc/driver/vulkan/vk_stringise.cpp
++++ b/renderdoc/driver/vulkan/vk_stringise.cpp
+@@ -28,7 +28,7 @@
+ template <>
+ rdcstr DoStringise(const VulkanChunk &el)
+ {
+-  RDCCOMPILE_ASSERT((uint32_t)VulkanChunk::Max == 1239, "Chunks changed without updating names");
++  RDCCOMPILE_ASSERT((uint32_t)VulkanChunk::Max == 1244, "Chunks changed without updating names");
+ 
+   BEGIN_ENUM_STRINGISE(VulkanChunk)
+   {
+@@ -271,6 +271,12 @@ rdcstr DoStringise(const VulkanChunk &el)
+     STRINGISE_ENUM_CLASS(vkCmdBeginCustomResolveEXT)
+     STRINGISE_ENUM_CLASS(vkCmdSetCheckpointNV)
+     STRINGISE_ENUM_CLASS(vkCmdSetDepthBias2EXT)
++    STRINGISE_ENUM_CLASS(vkWriteSamplerDescriptorsEXT)
++    STRINGISE_ENUM_CLASS(vkWriteResourceDescriptorsEXT)
++    STRINGISE_ENUM_CLASS(vkCmdBindSamplerHeapEXT)
++    STRINGISE_ENUM_CLASS(vkCmdBindResourceHeapEXT)
++    STRINGISE_ENUM_CLASS(vkCmdPushDataEXT)
++
+     STRINGISE_ENUM_CLASS_NAMED(Max, "Max Chunk");
+   }
+   END_ENUM_STRINGISE()
+diff --git a/renderdoc/driver/vulkan/wrappers/vk_cmd_funcs.cpp b/renderdoc/driver/vulkan/wrappers/vk_cmd_funcs.cpp
+index e516e80..c9b9c62 100644
+--- a/renderdoc/driver/vulkan/wrappers/vk_cmd_funcs.cpp
++++ b/renderdoc/driver/vulkan/wrappers/vk_cmd_funcs.cpp
+@@ -10700,3 +10700,136 @@ INSTANTIATE_FUNCTION_SERIALISED(void, vkCmdBeginCustomResolveEXT, VkCommandBuffe
+ 
+ INSTANTIATE_FUNCTION_SERIALISED(void, vkCmdSetCheckpointNV, VkCommandBuffer commandBuffer,
+                                 const void *pCheckpointMarker);
++
++template <typename SerialiserType>
++bool WrappedVulkan::Serialise_vkCmdBindSamplerHeapEXT(SerialiserType &ser,
++    VkCommandBuffer commandBuffer, const VkBindHeapInfoEXT *pBindInfo)
++{
++  SERIALISE_ELEMENT(commandBuffer);
++  VkBindHeapInfoEXT info = {VK_STRUCTURE_TYPE_BIND_HEAP_INFO_EXT};
++  if(ser.IsWriting()) info = *pBindInfo;
++  SERIALISE_ELEMENT_LOCAL(heapAddress, info.heapRange.address).GPUAddress();
++  SERIALISE_ELEMENT_LOCAL(heapSize, info.heapRange.size);
++  SERIALISE_ELEMENT_LOCAL(reservedRangeOffset, info.reservedRangeOffset);
++  SERIALISE_ELEMENT_LOCAL(reservedRangeSize, info.reservedRangeSize);
++  Serialise_DebugMessages(ser);
++  SERIALISE_CHECK_READ_ERRORS();
++  if(IsReplayingAndReading())
++  {
++    info.heapRange = {heapAddress, heapSize};
++    info.reservedRangeOffset = reservedRangeOffset;
++    info.reservedRangeSize = reservedRangeSize;
++    m_LastCmdBufferID = GetResID(commandBuffer);
++    if(IsActiveReplaying(m_State))
++    {
++      if(!InRerecordRange(m_LastCmdBufferID)) return true;
++      commandBuffer = RerecordCmdBuf(m_LastCmdBufferID);
++    }
++    ObjDisp(commandBuffer)->CmdBindSamplerHeapEXT(Unwrap(commandBuffer), &info);
++  }
++  return true;
++}
++void WrappedVulkan::vkCmdBindSamplerHeapEXT(VkCommandBuffer commandBuffer,
++                                         const VkBindHeapInfoEXT *pBindInfo)
++{
++  SCOPED_DBG_SINK();
++  SERIALISE_TIME_CALL(ObjDisp(commandBuffer)->CmdBindSamplerHeapEXT(Unwrap(commandBuffer), pBindInfo));
++  if(IsCaptureMode(m_State))
++  {
++    VkResourceRecord *record = GetRecord(commandBuffer);
++    CACHE_THREAD_SERIALISER();
++    SCOPED_SERIALISE_CHUNK(VulkanChunk::vkCmdBindSamplerHeapEXT);
++    Serialise_vkCmdBindSamplerHeapEXT(ser, commandBuffer, pBindInfo);
++    record->AddChunk(scope.Get(&record->cmdInfo->alloc));
++  }
++}
++INSTANTIATE_FUNCTION_SERIALISED(void, vkCmdBindSamplerHeapEXT, VkCommandBuffer commandBuffer,
++    const VkBindHeapInfoEXT *pBindInfo);
++
++template <typename SerialiserType>
++bool WrappedVulkan::Serialise_vkCmdBindResourceHeapEXT(SerialiserType &ser,
++    VkCommandBuffer commandBuffer, const VkBindHeapInfoEXT *pBindInfo)
++{
++  SERIALISE_ELEMENT(commandBuffer);
++  VkBindHeapInfoEXT info = {VK_STRUCTURE_TYPE_BIND_HEAP_INFO_EXT};
++  if(ser.IsWriting()) info = *pBindInfo;
++  SERIALISE_ELEMENT_LOCAL(heapAddress, info.heapRange.address).GPUAddress();
++  SERIALISE_ELEMENT_LOCAL(heapSize, info.heapRange.size);
++  SERIALISE_ELEMENT_LOCAL(reservedRangeOffset, info.reservedRangeOffset);
++  SERIALISE_ELEMENT_LOCAL(reservedRangeSize, info.reservedRangeSize);
++  Serialise_DebugMessages(ser);
++  SERIALISE_CHECK_READ_ERRORS();
++  if(IsReplayingAndReading())
++  {
++    info.heapRange = {heapAddress, heapSize};
++    info.reservedRangeOffset = reservedRangeOffset;
++    info.reservedRangeSize = reservedRangeSize;
++    m_LastCmdBufferID = GetResID(commandBuffer);
++    if(IsActiveReplaying(m_State))
++    {
++      if(!InRerecordRange(m_LastCmdBufferID)) return true;
++      commandBuffer = RerecordCmdBuf(m_LastCmdBufferID);
++    }
++    ObjDisp(commandBuffer)->CmdBindResourceHeapEXT(Unwrap(commandBuffer), &info);
++  }
++  return true;
++}
++void WrappedVulkan::vkCmdBindResourceHeapEXT(VkCommandBuffer commandBuffer,
++                                         const VkBindHeapInfoEXT *pBindInfo)
++{
++  SCOPED_DBG_SINK();
++  SERIALISE_TIME_CALL(ObjDisp(commandBuffer)->CmdBindResourceHeapEXT(Unwrap(commandBuffer), pBindInfo));
++  if(IsCaptureMode(m_State))
++  {
++    VkResourceRecord *record = GetRecord(commandBuffer);
++    CACHE_THREAD_SERIALISER();
++    SCOPED_SERIALISE_CHUNK(VulkanChunk::vkCmdBindResourceHeapEXT);
++    Serialise_vkCmdBindResourceHeapEXT(ser, commandBuffer, pBindInfo);
++    record->AddChunk(scope.Get(&record->cmdInfo->alloc));
++  }
++}
++INSTANTIATE_FUNCTION_SERIALISED(void, vkCmdBindResourceHeapEXT, VkCommandBuffer commandBuffer,
++    const VkBindHeapInfoEXT *pBindInfo);
++
++template <typename SerialiserType>
++bool WrappedVulkan::Serialise_vkCmdPushDataEXT(SerialiserType &ser, VkCommandBuffer commandBuffer,
++                                               const VkPushDataInfoEXT *pPushDataInfo)
++{
++  SERIALISE_ELEMENT(commandBuffer);
++  SERIALISE_ELEMENT_LOCAL(offset, pPushDataInfo ? pPushDataInfo->offset : 0);
++  bytebuf data;
++  if(ser.IsWriting()) data.assign((const byte *)pPushDataInfo->data.address, pPushDataInfo->data.size);
++  SERIALISE_ELEMENT(data);
++  Serialise_DebugMessages(ser);
++  SERIALISE_CHECK_READ_ERRORS();
++  if(IsReplayingAndReading())
++  {
++    m_LastCmdBufferID = GetResID(commandBuffer);
++    if(IsActiveReplaying(m_State))
++    {
++      if(!InRerecordRange(m_LastCmdBufferID)) return true;
++      commandBuffer = RerecordCmdBuf(m_LastCmdBufferID);
++    }
++    VkPushDataInfoEXT info = {VK_STRUCTURE_TYPE_PUSH_DATA_INFO_EXT};
++    info.offset = offset;
++    info.data.address = data.data();
++    info.data.size = data.size();
++    ObjDisp(commandBuffer)->CmdPushDataEXT(Unwrap(commandBuffer), &info);
++  }
++  return true;
++}
++void WrappedVulkan::vkCmdPushDataEXT(VkCommandBuffer commandBuffer, const VkPushDataInfoEXT *pPushDataInfo)
++{
++  SCOPED_DBG_SINK();
++  SERIALISE_TIME_CALL(ObjDisp(commandBuffer)->CmdPushDataEXT(Unwrap(commandBuffer), pPushDataInfo));
++  if(IsCaptureMode(m_State))
++  {
++    VkResourceRecord *record = GetRecord(commandBuffer);
++    CACHE_THREAD_SERIALISER();
++    SCOPED_SERIALISE_CHUNK(VulkanChunk::vkCmdPushDataEXT);
++    Serialise_vkCmdPushDataEXT(ser, commandBuffer, pPushDataInfo);
++    record->AddChunk(scope.Get(&record->cmdInfo->alloc));
++  }
++}
++INSTANTIATE_FUNCTION_SERIALISED(void, vkCmdPushDataEXT, VkCommandBuffer commandBuffer,
++    const VkPushDataInfoEXT *pPushDataInfo);
+diff --git a/renderdoc/driver/vulkan/wrappers/vk_descriptor_funcs.cpp b/renderdoc/driver/vulkan/wrappers/vk_descriptor_funcs.cpp
+index 8f4575b..7fdaa37 100644
+--- a/renderdoc/driver/vulkan/wrappers/vk_descriptor_funcs.cpp
++++ b/renderdoc/driver/vulkan/wrappers/vk_descriptor_funcs.cpp
+@@ -3409,7 +3409,10 @@ bool WrappedVulkan::Serialise_vkGetDescriptorEXT(SerialiserType &ser, VkDevice d
+     ObjDisp(device)->GetDescriptorEXT(Unwrap(device), unwrappedInfo, (size_t)dataSize,
+                                       replayDescriptor.data());
+ 
+-    if(memcmp(replayDescriptor.data(), pDescriptor, size_t(dataSize)) != 0)
++    if(m_RehydrateDescriptors)
++      RememberLvpDescriptor(bytebuf((byte *)pDescriptor, size_t(dataSize)), replayDescriptor);
++
++    if(!m_RehydrateDescriptors && memcmp(replayDescriptor.data(), pDescriptor, size_t(dataSize)) != 0)
+     {
+       rdcstr bitDifferences;
+ 
+@@ -3696,3 +3699,299 @@ INSTANTIATE_FUNCTION_SERIALISED(void, vkUpdateDescriptorSetWithTemplate, VkDevic
+ INSTANTIATE_FUNCTION_SERIALISED(void, vkGetDescriptorEXT, VkDevice device,
+                                 const VkDescriptorGetInfoEXT *pDescriptorInfo, size_t dataSize,
+                                 void *pDescriptor);
++
++
++void WrappedVulkan::RememberLvpDescriptor(const bytebuf &captured, const bytebuf &replayed)
++{
++  if(captured.size() != replayed.size() || captured.empty())
++  {
++    SET_ERROR_RESULT(m_FailedReplayResult, ResultCode::APIReplayFailed,
++                     "Lavapipe descriptor size changed during regeneration");
++    return;
++  }
++  for(const auto &pattern : m_LvpDescriptorPatterns)
++  {
++    if(pattern.first == captured)
++    {
++      if(pattern.second != replayed)
++        SET_ERROR_RESULT(m_FailedReplayResult, ResultCode::APIReplayFailed,
++                         "One captured descriptor regenerated with conflicting byte patterns");
++      return;
++    }
++  }
++  m_LvpDescriptorPatterns.push_back(make_rdcpair(captured, replayed));
++  std::stable_sort(m_LvpDescriptorPatterns.begin(), m_LvpDescriptorPatterns.end(),
++                   [](const rdcpair<bytebuf, bytebuf> &a, const rdcpair<bytebuf, bytebuf> &b) {
++                     return a.first.size() > b.first.size();
++                   });
++}
++
++void WrappedVulkan::RehydrateLvpDescriptors(ResourceId memory, uint64_t offset, byte *data,
++                                            uint64_t size)
++{
++  if(!m_RehydrateDescriptors || !data || size == 0)
++    return;
++  // Descriptor buffers are the only bytes we rewrite. Image contents and ordinary
++  // data buffers must remain untouched, even if they contain a matching pattern.
++  const uint64_t usages = VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT |
++                          VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT |
++                          VK_BUFFER_USAGE_DESCRIPTOR_HEAP_BIT_EXT;
++  uint64_t replaced = 0;
++  for(const auto &entry : m_CreationInfo.m_Buffer)
++  {
++    const auto &buffer = entry.second;
++    if(buffer.boundMemory != memory || !(buffer.usage & usages))
++      continue;
++    uint64_t begin = RDCMAX(offset, buffer.boundMemoryOffset);
++    uint64_t end = RDCMIN(offset + size, buffer.boundMemoryOffset + buffer.size);
++    for(uint64_t pos = begin; pos < end;)
++    {
++      bool found = false;
++      // Combined image/sampler patterns must precede their shorter components.
++      for(const auto &pattern : m_LvpDescriptorPatterns)
++      {
++        const uint64_t len = pattern.first.size();
++        if(len <= end - pos && memcmp(data + pos - offset, pattern.first.data(), size_t(len)) == 0)
++        {
++          memcpy(data + pos - offset, pattern.second.data(), size_t(len));
++          pos += len;
++          replaced++;
++          found = true;
++          break;
++        }
++      }
++      if(!found)
++        pos++;
++    }
++  }
++  if(replaced)
++    RDCLOG("Regenerated %llu lavapipe descriptors in memory %s", replaced, ToStr(memory).c_str());
++}
++
++// Experimental descriptor heap capture for lavapipe. Descriptors retain their
++// native driver format; replay regenerates process-local pointers from Vulkan
++// resource descriptions before uploading captured descriptor buffer contents.
++VkDeviceSize WrappedVulkan::vkGetPhysicalDeviceDescriptorSizeEXT(
++    VkPhysicalDevice physicalDevice, VkDescriptorType descriptorType)
++{
++  return ObjDisp(physicalDevice)->GetPhysicalDeviceDescriptorSizeEXT(Unwrap(physicalDevice),
++                                                                    descriptorType);
++}
++
++template <typename SerialiserType>
++bool WrappedVulkan::Serialise_vkWriteSamplerDescriptorsEXT(
++    SerialiserType &ser, VkDevice device, uint32_t samplerCount,
++    const VkSamplerCreateInfo *pSamplers, const VkHostAddressRangeEXT *pDescriptors)
++{
++  SERIALISE_ELEMENT(device);
++  SERIALISE_ELEMENT_LOCAL(hasSampler, pSamplers != NULL);
++  VkSamplerCreateInfo sampler = {VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO};
++  bytebuf captured;
++  if(ser.IsWriting())
++  {
++    if(hasSampler) sampler = pSamplers[0];
++    size_t size = size_t(vkGetPhysicalDeviceDescriptorSizeEXT(GetPhysDev(), VK_DESCRIPTOR_TYPE_SAMPLER));
++    captured.assign((byte *)pDescriptors[0].address, size);
++  }
++  SERIALISE_ELEMENT(sampler);
++  SERIALISE_ELEMENT(captured);
++  SERIALISE_CHECK_READ_ERRORS();
++  if(IsReplayingAndReading())
++  {
++    size_t size = size_t(vkGetPhysicalDeviceDescriptorSizeEXT(GetPhysDev(), VK_DESCRIPTOR_TYPE_SAMPLER));
++    if(size != captured.size())
++    {
++      SET_ERROR_RESULT(m_FailedReplayResult, ResultCode::APIHardwareUnsupported,
++                       "Sampler heap descriptor size changed");
++      return false;
++    }
++    bytebuf replayed;
++    replayed.resize(size);
++    VkHostAddressRangeEXT dst = {replayed.data(), size};
++    VkResult ret = ObjDisp(device)->WriteSamplerDescriptorsEXT(Unwrap(device), 1,
++                                                              hasSampler ? &sampler : NULL, &dst);
++    CHECK_VKR(this, ret);
++    if(ret != VK_SUCCESS) return false;
++    RememberLvpDescriptor(captured, replayed);
++  }
++  return true;
++}
++
++VkResult WrappedVulkan::vkWriteSamplerDescriptorsEXT(
++    VkDevice device, uint32_t samplerCount, const VkSamplerCreateInfo *pSamplers,
++    const VkHostAddressRangeEXT *pDescriptors)
++{
++  for(uint32_t i = 0; i < samplerCount; i++)
++  {
++    if(pSamplers && pSamplers[i].pNext)
++      return VK_ERROR_FEATURE_NOT_PRESENT;
++    VkResult ret = ObjDisp(device)->WriteSamplerDescriptorsEXT(Unwrap(device), 1,
++                                                              pSamplers ? &pSamplers[i] : NULL,
++                                                              &pDescriptors[i]);
++    if(ret != VK_SUCCESS) return ret;
++    if(IsCaptureMode(m_State))
++    {
++      CACHE_THREAD_SERIALISER();
++      SCOPED_SERIALISE_CHUNK(VulkanChunk::vkWriteSamplerDescriptorsEXT);
++      Serialise_vkWriteSamplerDescriptorsEXT(ser, device, 1, pSamplers ? &pSamplers[i] : NULL,
++                                             &pDescriptors[i]);
++      GetRecord(device)->AddChunk(scope.Get());
++    }
++  }
++  return VK_SUCCESS;
++}
++
++template <typename SerialiserType>
++bool WrappedVulkan::Serialise_vkWriteResourceDescriptorsEXT(
++    SerialiserType &ser, VkDevice device, uint32_t resourceCount,
++    const VkResourceDescriptorInfoEXT *pResources, const VkHostAddressRangeEXT *pDescriptors)
++{
++  SERIALISE_ELEMENT(device);
++  SERIALISE_ELEMENT_LOCAL(type, pResources ? pResources[0].type : VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE);
++  VkResourceDescriptorInfoEXT info = {VK_STRUCTURE_TYPE_RESOURCE_DESCRIPTOR_INFO_EXT};
++  VkImageDescriptorInfoEXT image = {VK_STRUCTURE_TYPE_IMAGE_DESCRIPTOR_INFO_EXT};
++  VkImageViewCreateInfo view = {VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO};
++  VkTexelBufferDescriptorInfoEXT texel = {VK_STRUCTURE_TYPE_TEXEL_BUFFER_DESCRIPTOR_INFO_EXT};
++  VkDeviceAddressRangeEXT range = {};
++  bool hasData = false;
++  bytebuf captured;
++  if(ser.IsWriting())
++  {
++    info = pResources[0];
++    hasData = info.data.pImage != NULL;
++    size_t size = size_t(vkGetPhysicalDeviceDescriptorSizeEXT(GetPhysDev(), type));
++    captured.assign((byte *)pDescriptors[0].address, size);
++    if(hasData)
++    {
++      if(type == VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE || type == VK_DESCRIPTOR_TYPE_STORAGE_IMAGE ||
++         type == VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT)
++      {
++        image = *info.data.pImage;
++        hasData = image.pView != NULL;
++        if(hasData) view = *image.pView;
++      }
++      else if(type == VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER || type == VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER)
++        texel = *info.data.pTexelBuffer;
++      else
++        range = *info.data.pAddressRange;
++    }
++  }
++  SERIALISE_ELEMENT(hasData);
++  if(type == VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE || type == VK_DESCRIPTOR_TYPE_STORAGE_IMAGE ||
++     type == VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT)
++  {
++    SERIALISE_ELEMENT(view);
++    SERIALISE_ELEMENT_LOCAL(layout, image.layout);
++    image.layout = layout;
++    image.pView = hasData ? &view : NULL;
++    info.data.pImage = &image;
++  }
++  else if(type == VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER || type == VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER)
++  {
++    SERIALISE_ELEMENT_LOCAL(format, texel.format);
++    SERIALISE_ELEMENT_LOCAL(address, texel.addressRange.address).GPUAddress();
++    SERIALISE_ELEMENT_LOCAL(size, texel.addressRange.size);
++    texel.format = format;
++    texel.addressRange = {address, size};
++    info.data.pTexelBuffer = hasData ? &texel : NULL;
++  }
++  else
++  {
++    SERIALISE_ELEMENT_LOCAL(address, range.address).GPUAddress();
++    SERIALISE_ELEMENT_LOCAL(size, range.size);
++    range = {address, size};
++    info.data.pAddressRange = hasData ? &range : NULL;
++  }
++  SERIALISE_ELEMENT(captured);
++  SERIALISE_CHECK_READ_ERRORS();
++  if(IsReplayingAndReading())
++  {
++    info.type = type;
++    view.image = Unwrap(view.image);
++    size_t size = size_t(vkGetPhysicalDeviceDescriptorSizeEXT(GetPhysDev(), type));
++    if(size != captured.size())
++    {
++      SET_ERROR_RESULT(m_FailedReplayResult, ResultCode::APIHardwareUnsupported,
++                       "Resource heap descriptor size changed");
++      return false;
++    }
++    bytebuf replayed;
++    replayed.resize(size);
++    VkHostAddressRangeEXT dst = {replayed.data(), size};
++    VkResult ret = ObjDisp(device)->WriteResourceDescriptorsEXT(Unwrap(device), 1, &info, &dst);
++    CHECK_VKR(this, ret);
++    if(ret != VK_SUCCESS) return false;
++    RememberLvpDescriptor(captured, replayed);
++  }
++  return true;
++}
++
++VkResult WrappedVulkan::vkWriteResourceDescriptorsEXT(
++    VkDevice device, uint32_t resourceCount, const VkResourceDescriptorInfoEXT *pResources,
++    const VkHostAddressRangeEXT *pDescriptors)
++{
++  for(uint32_t i = 0; i < resourceCount; i++)
++  {
++    if(pResources[i].pNext) return VK_ERROR_FEATURE_NOT_PRESENT;
++    VkResourceDescriptorInfoEXT real = pResources[i];
++    VkImageDescriptorInfoEXT image = {VK_STRUCTURE_TYPE_IMAGE_DESCRIPTOR_INFO_EXT};
++    VkImageViewCreateInfo view = {VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO};
++    VkResourceRecord *record = NULL;
++    switch(real.type)
++    {
++      case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
++      case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
++      case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
++        if(real.data.pImage)
++        {
++          image = *real.data.pImage;
++          if(image.pNext) return VK_ERROR_FEATURE_NOT_PRESENT;
++          if(image.pView)
++          {
++            view = *image.pView;
++            if(view.pNext) return VK_ERROR_FEATURE_NOT_PRESENT;
++            record = GetRecord(view.image);
++            view.image = Unwrap(view.image);
++            image.pView = &view;
++          }
++          real.data.pImage = &image;
++        }
++        break;
++      case VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER:
++      case VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER:
++      case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER:
++      case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER:
++      case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR:
++      {
++        VkDeviceAddress address = 0;
++        if(real.data.pAddressRange)
++          address = (real.type == VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER ||
++                     real.type == VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER)
++                        ? real.data.pTexelBuffer->addressRange.address : real.data.pAddressRange->address;
++        ResourceId id;
++        uint64_t offset = 0;
++        GetResIDFromAddr(address, id, offset);
++        record = GetResourceManager()->GetResourceRecord(id);
++        break;
++      }
++      default: return VK_ERROR_FEATURE_NOT_PRESENT;
++    }
++    VkResult ret = ObjDisp(device)->WriteResourceDescriptorsEXT(Unwrap(device), 1, &real, &pDescriptors[i]);
++    if(ret != VK_SUCCESS) return ret;
++    if(IsCaptureMode(m_State))
++    {
++      CACHE_THREAD_SERIALISER();
++      SCOPED_SERIALISE_CHUNK(VulkanChunk::vkWriteResourceDescriptorsEXT);
++      Serialise_vkWriteResourceDescriptorsEXT(ser, device, 1, &pResources[i], &pDescriptors[i]);
++      if(!record) record = GetRecord(device);
++      record->AddChunk(scope.Get());
++      AddForcedReference(record);
++    }
++  }
++  return VK_SUCCESS;
++}
++
++INSTANTIATE_FUNCTION_SERIALISED(VkResult, vkWriteSamplerDescriptorsEXT, VkDevice device,
++    uint32_t samplerCount, const VkSamplerCreateInfo *pSamplers, const VkHostAddressRangeEXT *pDescriptors);
++INSTANTIATE_FUNCTION_SERIALISED(VkResult, vkWriteResourceDescriptorsEXT, VkDevice device,
++    uint32_t resourceCount, const VkResourceDescriptorInfoEXT *pResources, const VkHostAddressRangeEXT *pDescriptors);
+diff --git a/renderdoc/driver/vulkan/wrappers/vk_device_funcs.cpp b/renderdoc/driver/vulkan/wrappers/vk_device_funcs.cpp
+index cca83e9..3041bd8 100644
+--- a/renderdoc/driver/vulkan/wrappers/vk_device_funcs.cpp
++++ b/renderdoc/driver/vulkan/wrappers/vk_device_funcs.cpp
+@@ -1733,6 +1733,7 @@ bool WrappedVulkan::Serialise_vkCreateDevice(SerialiserType &ser, VkPhysicalDevi
+     // see above in Serialise_vkEnumeratePhysicalDevices where this is encoded
+     uint32_t physicalDeviceIndex = GetPhysicalDeviceIndexFromHandle(Unwrap(physicalDevice));
+     physicalDevice = m_PhysicalDevices[physicalDeviceIndex];
++    m_RehydrateDescriptors = IsLvpDescriptorReplay(physicalDevice);
+ 
+     ObjDisp(physicalDevice)
+         ->GetPhysicalDeviceProperties(Unwrap(physicalDevice), &m_PhysicalDeviceData.props);
+@@ -3601,6 +3602,28 @@ bool WrappedVulkan::Serialise_vkCreateDevice(SerialiserType &ser, VkPhysicalDevi
+       }
+       END_PHYS_EXT_CHECK();
+ 
++      BEGIN_PHYS_EXT_CHECK(VkPhysicalDeviceDescriptorHeapFeaturesEXT,
++                           VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_FEATURES_EXT);
++      {
++        CHECK_PHYS_EXT_FEATURE(descriptorHeap);
++        CHECK_PHYS_EXT_FEATURE(descriptorHeapCaptureReplay);
++        m_DescriptorHeaps = ext->descriptorHeap != VK_FALSE;
++        if(m_DescriptorHeaps && !m_RehydrateDescriptors)
++        {
++          SET_ERROR_RESULT(m_FailedReplayResult, ResultCode::APIHardwareUnsupported,
++                           "Descriptor heap replay requires the experimental lavapipe "
++                           "regeneration path (RDOC_LVP_DESCRIPTOR_REPLAY=1)");
++          return false;
++        }
++      }
++      END_PHYS_EXT_CHECK();
++      BEGIN_PHYS_EXT_CHECK(VkPhysicalDeviceShaderUntypedPointersFeaturesKHR,
++                           VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR);
++      {
++        CHECK_PHYS_EXT_FEATURE(shaderUntypedPointers);
++      }
++      END_PHYS_EXT_CHECK();
++
+       BEGIN_PHYS_EXT_CHECK(VkPhysicalDeviceDescriptorBufferFeaturesEXT,
+                            VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_FEATURES_EXT);
+       {
+@@ -3609,7 +3632,7 @@ bool WrappedVulkan::Serialise_vkCreateDevice(SerialiserType &ser, VkPhysicalDevi
+         CHECK_PHYS_EXT_FEATURE(descriptorBufferImageLayoutIgnored);
+         CHECK_PHYS_EXT_FEATURE(descriptorBufferPushDescriptors);
+ 
+-        if(ext->descriptorBuffer && !avail.descriptorBufferCaptureReplay)
++        if(ext->descriptorBuffer && !avail.descriptorBufferCaptureReplay && !m_RehydrateDescriptors)
+         {
+           SET_ERROR_RESULT(m_FailedReplayResult, ResultCode::APIHardwareUnsupported,
+                            "Capture requires descriptorBuffer support, which is available, but "
+@@ -3619,7 +3642,7 @@ bool WrappedVulkan::Serialise_vkCreateDevice(SerialiserType &ser, VkPhysicalDevi
+                            GetPhysDeviceCompatString(false, false).c_str());
+           return false;
+         }
+-        if(ext->descriptorBuffer)
++        if(ext->descriptorBuffer && !m_RehydrateDescriptors)
+           ext->descriptorBufferCaptureReplay = VK_TRUE;
+ 
+         // enable the imageLayoutIgnored feature if available
+@@ -4707,7 +4730,8 @@ bool WrappedVulkan::Serialise_vkCreateDevice(SerialiserType &ser, VkPhysicalDevi
+         VulkanCreationInfo::inlineBufferStorage[i] = ResourceIDGen::GetNewUniqueID();
+       }
+ 
+-      EstimateDescriptorFormats();
++      if(!m_RehydrateDescriptors)
++        EstimateDescriptorFormats();
+ 
+       // indicate to any self-capture that we have reserved the descriptors
+       if(ObjDisp(m_Device)->SetDebugUtilsObjectTagEXT)
+@@ -4744,6 +4768,13 @@ VkResult WrappedVulkan::vkCreateDevice(VkPhysicalDevice physicalDevice,
+                                        const VkAllocationCallbacks *, VkDevice *pDevice)
+ {
+   VkDeviceCreateInfo createInfo = *pCreateInfo;
++  m_RehydrateDescriptors = IsLvpDescriptorReplay(physicalDevice);
++  const VkPhysicalDeviceDescriptorHeapFeaturesEXT *heapFeatures =
++      (const VkPhysicalDeviceDescriptorHeapFeaturesEXT *)FindNextStruct(
++          &createInfo, VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_HEAP_FEATURES_EXT);
++  m_DescriptorHeaps = heapFeatures && heapFeatures->descriptorHeap;
++  if(m_DescriptorHeaps && !m_RehydrateDescriptors)
++    return VK_ERROR_FEATURE_NOT_PRESENT;
+ 
+   for(uint32_t i = 0; i < createInfo.enabledExtensionCount; i++)
+   {
+@@ -5071,7 +5102,8 @@ VkResult WrappedVulkan::vkCreateDevice(VkPhysicalDevice physicalDevice,
+           &createInfo, VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_FEATURES_EXT);
+   if(descBufFeatures && descBufFeatures->descriptorBuffer)
+   {
+-    descBufFeatures->descriptorBufferCaptureReplay = VK_TRUE;
++    if(!m_RehydrateDescriptors)
++      descBufFeatures->descriptorBufferCaptureReplay = VK_TRUE;
+     m_DescriptorBuffers = true;
+ 
+     VkPhysicalDeviceDescriptorBufferFeaturesEXT availDescBufFeatures = {
+@@ -5425,8 +5457,9 @@ VkResult WrappedVulkan::vkCreateDevice(VkPhysicalDevice physicalDevice,
+     m_PhysicalDeviceData.maxMemoryAllocationSize = 0;
+     ChooseMemoryIndices();
+ 
+-    if(DescriptorBuffers())
+-      EstimateDescriptorFormats();
++    if(DescriptorBuffers() && !m_RehydrateDescriptors)
++      if(!m_RehydrateDescriptors)
++        EstimateDescriptorFormats();
+ 
+     m_PhysicalDeviceData.queueCount = (uint32_t)queueProps.size();
+     for(size_t i = 0; i < queueProps.size(); i++)
+diff --git a/renderdoc/driver/vulkan/wrappers/vk_misc_funcs.cpp b/renderdoc/driver/vulkan/wrappers/vk_misc_funcs.cpp
+index 7ca31f7..9580337 100644
+--- a/renderdoc/driver/vulkan/wrappers/vk_misc_funcs.cpp
++++ b/renderdoc/driver/vulkan/wrappers/vk_misc_funcs.cpp
+@@ -828,7 +828,7 @@ VkResult WrappedVulkan::vkCreateSampler(VkDevice device, const VkSamplerCreateIn
+ 
+       OpaqueDataForSerialising opaqueData;
+ 
+-      if(DescriptorBuffers())
++      if(DescriptorCaptureReplay())
+       {
+         opaqueData.fill(device, *pSampler, m_DescriptorBufferProperties);
+         opaqueData.addForSerialising((VkBaseInStructure *)&serialisedCreateInfo);
+@@ -848,7 +848,7 @@ VkResult WrappedVulkan::vkCreateSampler(VkDevice device, const VkSamplerCreateIn
+ 
+       // can't differentiate whether this sampler will be used with descriptor buffers, must force
+       // reference all samplers
+-      if(DescriptorBuffers())
++      if(DescriptorBuffers() || m_DescriptorHeaps)
+         AddForcedReference(record);
+ 
+       const VkSamplerYcbcrConversionInfo *ycbcr =
+diff --git a/renderdoc/driver/vulkan/wrappers/vk_resource_funcs.cpp b/renderdoc/driver/vulkan/wrappers/vk_resource_funcs.cpp
+index 0fa857d..b1ead35 100644
+--- a/renderdoc/driver/vulkan/wrappers/vk_resource_funcs.cpp
++++ b/renderdoc/driver/vulkan/wrappers/vk_resource_funcs.cpp
+@@ -467,7 +467,7 @@ bool WrappedVulkan::Serialise_vkAllocateMemory(SerialiserType &ser, VkDevice dev
+             VK_BUFFER_USAGE_TRANSFER_SRC_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT,
+         };
+ 
+-        if(DescriptorBuffers())
++        if(DescriptorBuffers() || m_DescriptorHeaps)
+         {
+           bufInfo.usage |= VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT;
+         }
+@@ -551,7 +551,7 @@ VkResult WrappedVulkan::vkAllocateMemory(VkDevice device, const VkMemoryAllocate
+         VK_BUFFER_USAGE_TRANSFER_SRC_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT,
+     };
+ 
+-    if(DescriptorBuffers())
++    if(DescriptorBuffers() || m_DescriptorHeaps)
+     {
+       bufInfo.usage |= VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT;
+       bufInfo.flags |= VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT;
+@@ -750,7 +750,7 @@ VkResult WrappedVulkan::vkAllocateMemory(VkDevice device, const VkMemoryAllocate
+ 
+         // can't create a memory-spanning buffer for this allocation. Try again with descriptor
+         // buffers if that is enabled as those memory types are sometimes unique.
+-        if(DescriptorBuffers())
++        if(DescriptorBuffers() || m_DescriptorHeaps)
+         {
+           bufInfo.usage |= VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT;
+ 
+@@ -1181,6 +1181,9 @@ bool WrappedVulkan::SerialiseUnmap(SerialiserType &ser, VkDeviceMemory memory, u
+     }
+   }
+ 
++  if(IsReplayingAndReading() && memory != VK_NULL_HANDLE)
++    RehydrateLvpDescriptors(GetResID(memory), MapOffset, MapData, MapSize);
++
+   return true;
+ }
+ 
+@@ -1566,6 +1569,9 @@ bool WrappedVulkan::Serialise_vkFlushMappedMemoryRanges(SerialiserType &ser, VkD
+     }
+   }
+ 
++  if(IsReplayingAndReading() && MemRange.memory != VK_NULL_HANDLE)
++    RehydrateLvpDescriptors(GetResID(MemRange.memory), MemRange.offset, MappedData, memRangeSize);
++
+   if(IsReplayingAndReading() && MappedData && MemRange.memory != VK_NULL_HANDLE && MemRange.size > 0)
+   {
+     const VulkanCreationInfo::Memory &memInfo = m_CreationInfo.m_Memory[GetResID(MemRange.memory)];
+@@ -2281,7 +2287,7 @@ VkResult WrappedVulkan::vkCreateBuffer(VkDevice device, const VkBufferCreateInfo
+ 
+         record->hasBDA = true;
+ 
+-        if(DescriptorBuffers())
++        if(DescriptorCaptureReplay())
+         {
+           opaqueData.fill(device, *pBuffer, m_DescriptorBufferProperties);
+           opaqueData.addForSerialising((VkBaseInStructure *)&serialisedCreateInfo);
+@@ -3027,7 +3033,7 @@ VkResult WrappedVulkan::vkCreateImage(VkDevice device, const VkImageCreateInfo *
+ 
+       OpaqueDataForSerialising opaqueData;
+ 
+-      if(DescriptorBuffers())
++      if(DescriptorCaptureReplay())
+       {
+         opaqueData.fill(device, *pImage, m_DescriptorBufferProperties);
+         opaqueData.addForSerialising((VkBaseInStructure *)&serialisedCreateInfo);
+@@ -3047,7 +3053,7 @@ VkResult WrappedVulkan::vkCreateImage(VkDevice device, const VkImageCreateInfo *
+ 
+       // can't differentiate whether this image will be used with descriptor buffers, must force
+       // reference all images
+-      if(DescriptorBuffers())
++      if(DescriptorBuffers() || m_DescriptorHeaps)
+         AddForcedReference(record);
+ 
+       record->resInfo = new ResourceInfo();
+@@ -3449,7 +3455,7 @@ VkResult WrappedVulkan::vkCreateImageView(VkDevice device, const VkImageViewCrea
+ 
+       OpaqueDataForSerialising opaqueData;
+ 
+-      if(DescriptorBuffers())
++      if(DescriptorCaptureReplay())
+       {
+         opaqueData.fill(device, *pView, m_DescriptorBufferProperties);
+         opaqueData.addForSerialising((VkBaseInStructure *)&serialisedCreateInfo);
+@@ -3472,7 +3478,7 @@ VkResult WrappedVulkan::vkCreateImageView(VkDevice device, const VkImageViewCrea
+ 
+       // can't differentiate whether this image will be used with descriptor buffers, must force
+       // reference all images
+-      if(DescriptorBuffers())
++      if(DescriptorBuffers() || m_DescriptorHeaps)
+         AddForcedReference(record);
+ 
+       // store the base resource. Note images have a baseResource pointing
+@@ -4087,7 +4093,7 @@ VkResult WrappedVulkan::vkCreateAccelerationStructureKHR(
+ 
+       OpaqueDataForSerialising opaqueData;
+ 
+-      if(DescriptorBuffers())
++      if(DescriptorCaptureReplay())
+       {
+         opaqueData.fill(device, *pAccelerationStructure, m_DescriptorBufferProperties);
+         opaqueData.addForSerialising((VkBaseInStructure *)&serialisedCreateInfo);
+diff --git a/renderdoc/driver/vulkan/wrappers/vk_wsi_funcs.cpp b/renderdoc/driver/vulkan/wrappers/vk_wsi_funcs.cpp
+index b4b6eff..d1973fa 100644
+--- a/renderdoc/driver/vulkan/wrappers/vk_wsi_funcs.cpp
++++ b/renderdoc/driver/vulkan/wrappers/vk_wsi_funcs.cpp
+@@ -389,7 +389,7 @@ bool WrappedVulkan::Serialise_vkCreateSwapchainKHR(SerialiserType &ser, VkDevice
+ 
+   if(IsCaptureMode(m_State) && fakeBackbuffers)
+   {
+-    if(DescriptorBuffers())
++    if(DescriptorCaptureReplay())
+     {
+       opaqueDataFetch.resize(NumImages);
+       opaqueData.resize(NumImages);
+@@ -398,7 +398,7 @@ bool WrappedVulkan::Serialise_vkCreateSwapchainKHR(SerialiserType &ser, VkDevice
+ 
+     for(uint32_t i = 0; i < NumImages; i++)
+     {
+-      if(DescriptorBuffers())
++      if(DescriptorCaptureReplay())
+       {
+         opaqueDataFetch[i].fillUnwrapped(device,
+                                          GetRecord(*pSwapChain)->swapInfo->images[i].userSwapImage,
+@@ -480,7 +480,7 @@ bool WrappedVulkan::Serialise_vkCreateSwapchainKHR(SerialiserType &ser, VkDevice
+ 
+     for(uint32_t i = 0; i < NumImages; i++)
+     {
+-      if(DescriptorBuffers())
++      if(DescriptorCaptureReplay())
+       {
+         RDCASSERT(i < opaqueData.size(), i, opaqueData.size());
+         imInfo.pNext = &opaqueData[i];
